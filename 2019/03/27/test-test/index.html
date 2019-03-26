@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>test test | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="RegularizationAbout RegularizationThe model will become overfitting when it is trying too hard to capture the outliers in the training dataset and the accuracy will have a low accuarcy in the testing">
+<meta property="og:type" content="article">
+<meta property="og:title" content="test test">
+<meta property="og:url" content="http://yoursite.com/2019/03/27/test-test/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="RegularizationAbout RegularizationThe model will become overfitting when it is trying too hard to capture the outliers in the training dataset and the accuracy will have a low accuarcy in the testing">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://img-blog.csdn.net/20160623222921977">
+<meta property="og:updated_time" content="2019-03-26T13:10:53.497Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="test test">
+<meta name="twitter:description" content="RegularizationAbout RegularizationThe model will become overfitting when it is trying too hard to capture the outliers in the training dataset and the accuracy will have a low accuarcy in the testing">
+<meta name="twitter:image" content="https://img-blog.csdn.net/20160623222921977">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-test-test" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/03/27/test-test/" class="article-date">
+  <time datetime="2019-03-26T13:09:56.000Z" itemprop="datePublished">2019-03-27</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      test test
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Regularization"><a href="#Regularization" class="headerlink" title="Regularization"></a>Regularization</h2><h4 id="About-Regularization"><a href="#About-Regularization" class="headerlink" title="About Regularization"></a>About Regularization</h4><p>The model will become overfitting when it is trying too hard to capture the outliers in the training dataset and the accuracy will have a low accuarcy in the testing set. Regularization is one of the most efficient methods for avoiding overfitting, in the essence, this approach could penalise weights(coefficients) in the model by making some of them toward to zero.</p>
+<h4 id="What-is-the-problem"><a href="#What-is-the-problem" class="headerlink" title="What is the problem?"></a>What is the problem?</h4><p>Assume that we have an empirical loss function R:<br>$$R_{emp} = {1\over{N}}\sum_{i=1}^NL(f(x_i), y_i)$$<br>and the model function f:<br>$$f(x_i) = w_0x_0 + w_1x_1 + w_2x_2 + w_3x_3 + … + w_nx_n$$<br>we can see the polynomial f is so complicated if there is no zero or very less zero in metrix <strong><em>w</em></strong> (the set of weights), and the model is also complex, which means this model can just fit well in the training set, in other word, it has a poor generalization ability. Obviously, we do not need that many non-zero and too large weights since not every features is useful in the estimating. Regulariztion is the approach that can cope this trouble. Regularization function can be understood as the complxity of model (cause it is a function about weights), it can be the norm of the model parameter vector, and different choices have different constrains on the weights, so the effect is also different.</p>
+<h4 id="L-P-Norm"><a href="#L-P-Norm" class="headerlink" title="L-P Norm"></a>L-P Norm</h4><p>We can understand norm as distance, it represents the size of vectors in vector space and the size of changing in matrix space. L-P norm is a set of norms:<br>$$Lp = \sqrt[p]{\sum_{i=1}^Nx_i^p}$$<br>Norms change accroding to the values of p:<br><img src="https://img-blog.csdn.net/20160623222921977" alt="715ee105f46adf614ab33700f06cca23.jpeg"><br><br>The above picture shows how the changes of the points whose distance (norm) to the origin is 1 in the three dimensional space.</p>
+<h5 id="L0-Norm"><a href="#L0-Norm" class="headerlink" title="L0 Norm"></a>L0 Norm</h5><p>Normally we use L0 norm to represent the number of non-zero elements in a vector. Therefore, minimize L0 norm meams we want some weights become to zero, so that some features will not use in estimating, we can deduce the complexity of model through using L0 norm, but it is hard to explain and calculate L0 norm since we can not interpret the meaning of zero-sqrt, do not worry, we are going to introduce another norm.</p>
+<h5 id="L1-Norm"><a href="#L1-Norm" class="headerlink" title="L1 Norm"></a>L1 Norm</h5><p>This is the defination of L1 norm:<br>$$||x||_1 = \sum_i{|x_i|}$$<br>It represents the sum of the absolute values of non-zero elements in vector x. Due to the natural nature of L1 norm, the solution to L1 norm optimization is a sparse solution, we can use L1 norm to achieve the sparse of features, so that some unuseful features will be dropped.</p>
+<h5 id="L2-Norm"><a href="#L2-Norm" class="headerlink" title="L2 Norm"></a>L2 Norm</h5><p>The defination of L2 norm is:<br>$$||x||_2 = \sqrt{\sum_ix_i^2}$$<br>We can make the value of weights toward to zero by minimizing L2 norm, but it is just toward instead of reaching at zero, which is different from L0 norm and L1 norm.<br>Although there are several differences among L0, L1 and L2 norm, the essence of them is same, we use them to weaken or even drop some features, so that we can get a simpler model with a better generization ability.</p>
+<h4 id="How-it-works"><a href="#How-it-works" class="headerlink" title="How it works?"></a>How it works?</h4><p>It is easy to answer this question after konwing the concept of norm: we just need to minimize the L1 or L2 norm, it can penalise weights atuomaticlly. However, do not forget our true aim: fitting data by minimizing the loss function. Therefore, we need to minimize loss function and regularization term simultaneously, but it is still easy to do that, we can minimize the sum of them:<br>$$min{[R_{emp} + \lambda{r(w)}]}$$<br>It is:<br>$$min[{1\over{N}}\sum_{i=1}^NL(f(x_i), y_i) + {\lambda\over{2}}{||w||_2^2}]$$<br>A larger lambda can impel to chose a simpler model and a smaller lambda will get a more complex model.</p>
+<h4 id="Why-L1-is-sparse-and-L2-is-smooth"><a href="#Why-L1-is-sparse-and-L2-is-smooth" class="headerlink" title="Why L1 is sparse and L2 is smooth?"></a>Why L1 is sparse and L2 is smooth?</h4>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/03/27/test-test/" data-id="cjtpstszq00006z74z41n5yan" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/03/27/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Hello World</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/03/27/test-test/">test test</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/27/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
