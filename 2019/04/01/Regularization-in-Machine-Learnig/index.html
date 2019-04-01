@@ -112,7 +112,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="Machine Learning,Regularization,">
 
 
 
@@ -124,18 +124,19 @@
 
 
 <meta name="description" content="Regularization About Regularization The model will become overfitting when it is trying too hard to capture the outliers in the training dataset and the accuracy will have a low accuarcy in the testin">
+<meta name="keywords" content="Machine Learning,Regularization">
 <meta property="og:type" content="article">
-<meta property="og:title" content="test test">
-<meta property="og:url" content="http://yoursite.com/2019/03/27/Regularization/index.html">
+<meta property="og:title" content="Regularization in Machine Learnig">
+<meta property="og:url" content="http://yoursite.com/2019/04/01/Regularization-in-Machine-Learnig/index.html">
 <meta property="og:site_name" content="Just For Fun">
 <meta property="og:description" content="Regularization About Regularization The model will become overfitting when it is trying too hard to capture the outliers in the training dataset and the accuracy will have a low accuarcy in the testin">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://img-blog.csdn.net/20160623222921977">
-<meta property="og:updated_time" content="2019-04-01T09:42:00.313Z">
+<meta property="og:image" content="http://yoursite.com/images/norm.jpg">
+<meta property="og:updated_time" content="2019-04-01T09:55:35.585Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="test test">
+<meta name="twitter:title" content="Regularization in Machine Learnig">
 <meta name="twitter:description" content="Regularization About Regularization The model will become overfitting when it is trying too hard to capture the outliers in the training dataset and the accuracy will have a low accuarcy in the testin">
-<meta name="twitter:image" content="https://img-blog.csdn.net/20160623222921977">
+<meta name="twitter:image" content="http://yoursite.com/images/norm.jpg">
 
 
 
@@ -165,13 +166,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/03/27/Regularization/">
+  <link rel="canonical" href="http://yoursite.com/2019/04/01/Regularization-in-Machine-Learnig/">
 
 
 
 
 
-  <title>test test | Just For Fun</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>Regularization in Machine Learnig | Just For Fun</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -308,7 +309,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/27/Regularization/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/01/Regularization-in-Machine-Learnig/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="dylan_houxinglin">
@@ -325,7 +326,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">test test</h1>
+          <h1 class="post-title" itemprop="name headline">Regularization in Machine Learnig</h1>
         
 
         <div class="post-meta">
@@ -337,8 +338,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-27T00:09:56+11:00">
-                2019-03-27
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-01T20:48:43+11:00">
+                2019-04-01
               </time>
             
 
@@ -356,8 +357,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/03/27/Regularization/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/03/27/Regularization/" itemprop="commentCount"></span>
+                <a href="/2019/04/01/Regularization-in-Machine-Learnig/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/04/01/Regularization-in-Machine-Learnig/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -389,9 +390,9 @@
 <h4 id="about-regularization">About Regularization</h4>
 <p>The model will become overfitting when it is trying too hard to capture the outliers in the training dataset and the accuracy will have a low accuarcy in the testing set. Regularization is one of the most efficient methods for avoiding overfitting, in the essence, this approach could penalise weights(coefficients) in the model by making some of them toward to zero.</p>
 <h4 id="what-is-the-problem">What is the problem?</h4>
-<p>Assume that we have an empirical loss function R: <span class="math display">\[R_{emp} = {1\\over{N}}\sum_{i=1}^NL(f(x_i), y_i)\]</span> and the model function f: <span class="math display">\[f(x_i) = w_0x_0 + w_1x_1 + w_2x_2 + w_3x_3 + ... + w_nx_n\]</span> we can see the polynomial f is so complicated if there is no zero or very less zero in metrix <strong><em>w</em></strong> (the set of weights), and the model is also complex, which means this model can just fit well in the training set, in other word, it has a poor generalization ability. Obviously, we do not need that many non-zero and too large weights since not every features is useful in the estimating. Regulariztion is the approach that can cope this trouble. Regularization function can be understood as the complxity of model (cause it is a function about weights), it can be the norm of the model parameter vector, and different choices have different constrains on the weights, so the effect is also different.</p>
+<p>Assume that we have an empirical loss function R: <span class="math display">\[R_{emp} = {1\over{N}}\sum_{i=1}^NL(f(x_i), y_i)\]</span> and the model function f: <span class="math display">\[f(x_i) = w_0x_0 + w_1x_1 + w_2x_2 + w_3x_3 + ... + w_nx_n\]</span> we can see the polynomial f is so complicated if there is no zero or very less zero in metrix <strong><em>w</em></strong> (the set of weights), and the model is also complex, which means this model can just fit well in the training set, in other word, it has a poor generalization ability. Obviously, we do not need that many non-zero and too large weights since not every features is useful in the estimating. Regulariztion is the approach that can cope this trouble. Regularization function can be understood as the complxity of model (cause it is a function about weights), it can be the norm of the model parameter vector, and different choices have different constrains on the weights, so the effect is also different.</p>
 <h4 id="l-p-norm">L-P Norm</h4>
-<p>We can understand norm as distance, it represents the size of vectors in vector space and the size of changing in matrix space. L-P norm is a set of norms: <span class="math display">\[Lp = \sqrt[p]{\sum_{i=1}^Nx_i^p}\]</span> Norms change accroding to the values of p: <img src="https://img-blog.csdn.net/20160623222921977" alt="715ee105f46adf614ab33700f06cca23.jpeg"><br> The above picture shows how the changes of the points whose distance (norm) to the origin is 1 in the three dimensional space.</p>
+<p>We can understand norm as distance, it represents the size of vectors in vector space and the size of changing in matrix space. L-P norm is a set of norms: <span class="math display">\[Lp = \sqrt[p]{\sum_{i=1}^Nx_i^p}\]</span> Norms change accroding to the values of p: <img src="/images/norm.jpg" alt="norm"> The above picture shows how the changes of the points whose distance (norm) to the origin is 1 in the three dimensional space.</p>
 <h5 id="l0-norm">L0 Norm</h5>
 <p>Normally we use L0 norm to represent the number of non-zero elements in a vector. Therefore, minimize L0 norm meams we want some weights become to zero, so that some features will not use in estimating, we can deduce the complexity of model through using L0 norm, but it is hard to explain and calculate L0 norm since we can not interpret the meaning of zero-sqrt, do not worry, we are going to introduce another norm.</p>
 <h5 id="l1-norm">L1 Norm</h5>
@@ -415,6 +416,14 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Machine-Learning/" rel="tag"># Machine Learning</a>
+          
+            <a href="/tags/Regularization/" rel="tag"># Regularization</a>
+          
+        </div>
       
 
       
@@ -514,6 +523,15 @@
 
             
 
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
             
 
           </nav>
@@ -735,15 +753,32 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://yoursite.com/2019/03/27/Regularization/';
-          this.page.identifier = '2019/03/27/Regularization/';
-          this.page.title = 'test test';
+          this.page.url = 'http://yoursite.com/2019/04/01/Regularization-in-Machine-Learnig/';
+          this.page.identifier = '2019/04/01/Regularization-in-Machine-Learnig/';
+          this.page.title = 'Regularization in Machine Learnig';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://.disqus.com/embed.js';
         s.setAttribute('data-timestamp', '' + +new Date());
         (d.head || d.body).appendChild(s);
-      </script>
+      </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src>
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
     
 
   
@@ -792,43 +827,6 @@
   
 
   
-  
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-      });
-    </script>
-
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-      });
-    </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config("");
-</script>
-
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-      all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-  });
-</script>
-
-<script type="text/javascript" src>
-</script>
-<!-- End: Injected MathJax -->
-<!-- hexo-inject:end -->
   
 
 
