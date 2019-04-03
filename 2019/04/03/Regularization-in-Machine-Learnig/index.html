@@ -137,7 +137,7 @@
 <meta property="og:image" content="http://yoursite.com/images/regularization/L1_1.jpg">
 <meta property="og:image" content="http://yoursite.com/images/regularization/L1_2.jpg">
 <meta property="og:image" content="http://yoursite.com/images/regularization/L1_3.jpg">
-<meta property="og:updated_time" content="2019-04-03T10:30:35.196Z">
+<meta property="og:updated_time" content="2019-04-03T10:46:33.641Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Regularization in Machine Learnig">
 <meta name="twitter:description" content="Regularization in Machine Learning About Regularization The model will become overfitting when it is trying too hard to capture the outliers in the training dataset and the accuracy will have a low ac">
@@ -354,6 +354,28 @@
           </span>
 
           
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Machine-Learning/" itemprop="url" rel="index">
+                    <span itemprop="name">Machine Learning</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -414,10 +436,10 @@
 <p><img src="/images/regularization/L1_5.jpg"> For the above picture, we assume that the red line is our empirical risk function(R), the light blue circle is the graph of L2 norm and the deep blue one is L1 norm. As we said, L1 and L2 norms are a kind of constraint for the function R, therefore, the intersection is our best solution, we can see that L1 norm can more easier to make the solution reach at zero.</p>
 <p>The same situation can be found in other empirical loss function, such as squared error:</p>
 <p><img src="/images/regularization/L1_4.jpg"></p>
-<p>I am going to introduce another interpretation in geometric space which I believe us to understand this question better.</p>
-<p><img src="/images/regularization/L1_1.jpg"> As the above graph shows, assume that the pink line is our empirical loss function (R), and the green point is the local minimum. Now, we add L2 norm to the function, so we can get <span class="math inline">\(R+\lambda x^2\)</span>:</p>
+<p>I am going to introduce another interpretation in geometric space which I believe can help us to understand this question better.</p>
+<p><img src="/images/regularization/L1_1.jpg"> As the above graph shows, assume that the purple line is our empirical loss function (R), and the green point is the local minimum. Now, we add L2 norm to the function, so we can get <span class="math inline">\(R+\lambda x^2\)</span>:</p>
 <p><img src="/images/regularization/L1_2.jpg"> The minimun has changed to the yellow point, it can be seen that the optimum value has reduced, but is not zero. We can get the new function <span class="math inline">\(R+\lambda |x|\)</span> with L1 norm:</p>
-<p><img src="/images/regularization/L1_3.jpg"> The optimum changed to zero (the purple line).</p>
+<p><img src="/images/regularization/L1_3.jpg"> The optimum changed to zero (the pink line).</p>
 <p>Remember that the truth is L1 norm can get optimum solution as zero more easier than L2 norm, which means we can not make sure the best value must be zero with L1 norm and L2 norm can also get zero value solution in the specific situation. I am going to interpret this situation.</p>
 <p>Actually, whether the two norms can change the optimal solution (the parameter/weight) to zero is depend on the value of derivative of zero point (x=0) in the empirical loss function: the derivative of zero point can not change to zero so the optimal solution is also non-zero if the original function (R) has non-zero derivative in the point x=0, in other words, L2 norm can change the optimal value to zero if the derivative of <span class="math inline">\(R_{emp}\)</span> is zero in x=0.</p>
 <p>In terms of L1 norm, x=0 can be the optimal solution (local minimum) if the regularization coefficient <span class="math inline">\(\lambda\)</span> is larger than the value of <span class="math inline">\(|R_{emp}&#39;(0)|\)</span> (since we need to guarantee the derivates of left side and right side of x=0 have the opposite sign): The derivative of left side: <span class="math display">\[R_{emp}&#39;(0)-\lambda\]</span> The derivative of right side: <span class="math display">\[R_{emp}&#39;(0)+\lambda\]</span> Therefore, if: <span class="math display">\[\lambda \geq |R_{emp}&#39;(0)|\]</span> Then we can guarantee x=0 is the local minimum.</p>
@@ -560,6 +582,15 @@
               </div>
             
 
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
             
 
             
