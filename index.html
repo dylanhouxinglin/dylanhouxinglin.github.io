@@ -415,6 +415,31 @@
 <h3 id="hybrid-approaches">Hybrid Approaches</h3>
 <p>Since almost all methods have their own disadvantages, we can try to combine them to generate better or more precise recommendations.</p>
 <h1 id="chapter-two-collaborative-recommendation">Chapter Two (Collaborative Recommendation)</h1>
+<h2 id="user-based-nearest-neighbor-recommendation">User-based nearest neighbor recommendation</h2>
+<p>Given a ratings database and the ID of the current (active) user as an input, identify other users (sometimes referred to as peer users or nearest neighbors) that had similar preferences to those of the active user in the past. ### Similarity between users We can use Pearson correlation coefficient to calculate the similarity between two different users： <span class="math display">\[\rho_{x,y} = {cov(x,y)\over{\sigma{x}\sigma{y}}} = {E((x-\mu{x})(y-\mu{y}))\over{\sigma{x}\sigma{y}}}\]</span> And <span class="math inline">\(cov\)</span> is Covariance, <span class="math inline">\(E\)</span> is mathmatical expectation, <span class="math inline">\(\sigma\)</span> is standard deviation.</p>
+<p>We denote <span class="math inline">\(U = {u_1,...,u_n}\)</span> as the set of users, use <span class="math inline">\(P = {p_1,...,p_m}\)</span> to denote products, and <span class="math inline">\(R\)</span> as an <span class="math inline">\(n*m\)</span> matrix of ratings <span class="math inline">\(r_{i,j}\)</span>, so: <img src="/images/recommender_system/sim.jpg"></p>
+<p>And then we can use a possible formula to make prediction: <img src="/images/recommender_system/pred1.jpg"></p>
+<p>But, this measure method does not take into account whether two users have co-rated only a few items (on which they may agree by chance) or whether there are many items on which they agree. In fact, it has been shown that predictions based on the ratings of neighbors with which the active user has rated only a very few items in common are a bad choice and lead to poor predictions.</p>
+<h3 id="neighborhood-selection">Neighborhood Selection</h3>
+<p>The common techniques for reducing the size of the neighborhood are to define a specific minimum threshold of user similarity or to limit the size to a fixed number and to take only the <span class="math inline">\(k\)</span> nearest neighbors into account.</p>
+<h2 id="item-based-nearest-neighbor-recommendation">Item-based nearest neighbor recommendation</h2>
+<p>Item-based recommendation, which is more apt for offline preprocessing and thus allows for the computation of recommendations in real time even for a very large rating matrix.</p>
+<p>The main idea of item-based algorithms is to compute predictions using the similarity between items and not the similarity between users.</p>
+<h3 id="the-cosine-similarity-measure">The cosine similarity measure</h3>
+<p>The similarity between two items a and b – viewed as the corresponding rating vectors a⃗ and b⃗ – is formally defined as follows: <img src="/images/recommender_system/cosine1.jpg"></p>
+<p>The basic cosine measure does not take the differences in the average rating behavior of the users into account. This problem is solved by using the adjusted cosine measure, which subtracts the user average from the ratings.</p>
+<p>The adjusted cosine measure is then calculated as follows: <img src="/images/recommender_system/cosine2.jpg"></p>
+<p>Formally, we can predict the rating for user u for a product p as follows: <img src="/images/recommender_system/pred2.jpg"></p>
+<h3 id="preprocessing-data-for-item-based-filtering">Preprocessing data for item-based filtering</h3>
+<p>It is an option to exploit only a certain fraction of the rating matrix to reduce the computational complexity. Basic techniques include subsampling, which can be accomplished by randomly choosing a subset of the data or by ignoring customer records that have only a very small set of ratings or that only contain very popular items.</p>
+<h2 id="about-ratings">About ratings</h2>
+<h3 id="implicit-and-explicit-ratings">Implicit and Explicit ratings</h3>
+<p>It's not easy to get the explicit ratings from users in some cases.</p>
+<h3 id="data-sparsity">Data Sparsity</h3>
+<p>In real-world applications, of course, the rating matrices tend to be very sparse, as customers typically provide ratings for (or have bought) only a small fraction of the catalog items.</p>
+<p>One straightforward option for dealing with this problem is to exploit additional information about the users, such as gender, age, education, interests, or other available information that can help to classify the user.</p>
+<h3 id="the-cold-start-problems">The Cold-Start Problems</h3>
+<p>The main idea of the approach to solve the cold-start problem is to exploit the supposed “transitivity” of customer tastes and thereby augment the matrix with additional information (external information).</p>
 
           
         
