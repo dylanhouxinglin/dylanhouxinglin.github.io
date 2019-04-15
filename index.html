@@ -64,8 +64,6 @@
   
 
   
-
-  
     
       
     
@@ -83,8 +81,16 @@
 
   
     
+      
     
-    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Merriweather:300,300italic,400,400italic,700,700italic|Lora:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
   
 
 
@@ -142,7 +148,7 @@
     root: '/',
     scheme: 'Mist',
     version: '5.1.4',
-    sidebar: {"position":"right","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"right","display":"always","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -275,9 +281,41 @@
       
 
       
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            Search
+          </a>
+        </li>
+      
     </ul>
   
 
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
   
 </nav>
 
@@ -329,6 +367,10 @@
         
 
         <div class="post-meta">
+	
+    <font color="#FFFFFF"><b style="background-color:#A9A9A9">　Top　</b></font>
+    	<span class="post-meta-divider">|</span>
+		
           <span class="post-time">
             
               <span class="post-meta-item-icon">
@@ -343,7 +385,19 @@
             
 
             
+              <span class="post-meta-divider">|</span>
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2019-04-15T16:37:35+10:00">
+                2019-04-15
+              </time>
             
           </span>
 
@@ -358,6 +412,37 @@
 
           
 
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  2.5k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  15
+                </span>
+              
+            </div>
           
 
           
@@ -376,76 +461,18 @@
 
       
         
-          
-            <h1 id="decision-tree">Decision Tree</h1>
-<h1 id="about-decision-tree">About Decision Tree</h1>
-<p>Decision Tree is a kind of common classification and regression algorithm in machine learning, although it's a basic method, some advanced learning algorithms such as GBDT (Gradient Boosting Decision Tree) are established on it. There are approximate three steps in decision tree learning: feature selection, decision tree generating and decision tree pruning. In the essence, decision tree splits the data set according to the information gain, which means this algorithm chooses the features which can make the data set has the minimum uncertainty in each steps. In this blog, I'm going to introduce the feature selection, decision tree generating and decision tree pruning respectively, and the classification and regression tree (CART) will be detailedly interpreted.</p>
-<h1 id="feature-selection">Feature Selection</h1>
-<p>We need a calculation method or regulation to mark each features in the data set since the essence of decision tree learning is splitting the data set based on features, in other word, we need to determine which feature will be the 'hero' or the 'entrance' in the next level of the decision tree. Therefore, we need to calculate the <strong>information gain</strong> for the current data set.</p>
-<h2 id="entropy-and-conditional-entropy">Entropy and Conditional Entropy</h2>
-<p>For better understanding the information gain, we need to know the concept of <strong>entropy</strong> first. The entropy is defined as <strong>'a metric can represent the uncertainty of random variable'</strong> , assume <span class="math inline">\(X\)</span> is a random variable, such that the probability distribution is: <span class="math display">\[P(X=x_i) = p_i, (i=1,2,3,...,n)\]</span> And the entropy of <span class="math inline">\(X\)</span> is: <span class="math display">\[H(p) = -\sum_{i=1}^n p_i * log(p_i)\]</span> <strong>A large entropy represents a large uncertainty</strong>, and the range of <span class="math inline">\(H(p)\)</span> is: <span class="math display">\[0 \leq H(p) \leq log(n)\]</span> If we assume there is a random variable <span class="math inline">\((X,Y)\)</span>, and the union probability distribution is: <span class="math display">\[P(X=x_i, Y=y_j) = p_{ij}, (i=1,2,...,n; j=1,2,...,m)\]</span> And the conditional entropy is: <span class="math display">\[H(Y|X) = \sum_{i=1}^n p_i * H(Y|X=x_i)\]</span> Which represents the uncertainty of random variable <span class="math inline">\(Y\)</span> with the given random variable <span class="math inline">\(X\)</span>. In this situation, we call entropy and the conditional entropy as empirical entropy and empirical conditional entropy.</p>
-<h2 id="information-gain">Information Gain</h2>
-<h3 id="concept-of-information-gain">Concept of Information Gain</h3>
-<p>Now we can learn what is <strong>information gain</strong>. As the definition, <strong>'information gain represents the degree of reduction of the uncertainty of class <span class="math inline">\(Y\)</span> by giving the feature <span class="math inline">\(X\)</span>'</strong>. Here we use <span class="math inline">\(D\)</span> to denote the data set, and <span class="math inline">\(A\)</span> to denote the specific feature, and the information gain of feature <span class="math inline">\(A\)</span> for data set <span class="math inline">\(D\)</span> is the difference of empirical entropy and empirical conditional entropy: <span class="math display">\[g(D, A) = H(D) - H(D|A)\]</span> We can easily know that <strong>different features always have different information gain, a feature with large information has strong ability on classification</strong>.</p>
-<h3 id="process-of-calculating-information-gain">Process of Calculating Information Gain</h3>
-<ol type="1">
-<li><p>calculate the empirical entropy <span class="math inline">\(H(D)\)</span>: <span class="math display">\[H(D) = -\sum_{k=1}^K {|C_k|\over |D|} * log_2{|C_k|\over |D|}\]</span></p></li>
-<li><p>calculate the empirical conditional entropy of feature <span class="math inline">\(A\)</span>: <span class="math display">\[H(D|A) =\sum_{i=1}^n {|D_i|\over |D|} * H(D_i)=-\sum_{i=1}^n  {|D_i|\over |D|} * \sum_{k=1}^K {|D_{ik}|\over |D_i|} * log_2{|D_{ik}|\over |D_i|}\]</span></p></li>
-<li><p>calculate the information gain: <span class="math display">\[g(D, A) = H(D) - H(D|A)\]</span> Where:</p></li>
-</ol>
-<ul>
-<li><p><span class="math inline">\(C_k\)</span> represents the classes, <span class="math inline">\(|C_k|\)</span> is the amount of class <span class="math inline">\(C_k\)</span>, and <span class="math inline">\(\sum_{k=1}^K|C_k|=|D|\)</span>;</p></li>
-<li><p><span class="math inline">\(D_i\)</span> represents the subsets which are splitted according to the feature <span class="math inline">\(A\)</span>, and <span class="math inline">\(\sum_{i=1}^i|D_i|=|D|\)</span>;</p></li>
-<li><p><span class="math inline">\(D_{ik}\)</span> represents the subset which all the elements are belong to the class <span class="math inline">\(C_k\)</span> in the subset <span class="math inline">\(D_i\)</span></p></li>
-</ul>
-<h3 id="information-gain-ratio">Information Gain Ratio</h3>
-<p>Since splitting the data set by using information gain approach may tends to select the features with more values in some situations, we can use another method named <strong>information gain ratio</strong> to solve this problem. Information gain ratio, as its name, is the ratio of the information gain and empirical entropy: <span class="math display">\[g_R(D,A) = {g(D,A) \over H_A(D)}\]</span></p>
-<h1 id="decision-tree-generation">Decision Tree Generation</h1>
-<p>I'm going to introduce two decision tree generating algorithms which are ID3 and C4.5, the former method will be mainly introduced. In addition, the process of generation and pruning of CART will be explained in the next part.</p>
-<h2 id="id3-algorithm">ID3 Algorithm</h2>
-<p>ID3 algorithm splits the data set by using the features which have the largest information gain value, and generate the decision tree recursively. The process of the algorithm is:</p>
-<h3 id="steps">Steps</h3>
-<ol type="1">
-<li><p>Setting <span class="math inline">\(T\)</span> as the leaf node and use<span class="math inline">\(C_k\)</span> as the class label if all the distances in subset <span class="math inline">\(D\)</span> are belong to class <span class="math inline">\(C_k\)</span>, return <span class="math inline">\(T\)</span>;</p></li>
-<li><p>If there is no further features meet the requirement (the value of information gain less than the threshold), setting <span class="math inline">\(T\)</span> as the leaf node and use the class of most distances as label, return <span class="math inline">\(T\)</span>;</p></li>
-<li><p>Otherwise, calculating the information gain values of each features for data set <span class="math inline">\(D\)</span>, choosing the largest one as <span class="math inline">\(A_g\)</span> which will be the splitting point;</p></li>
-<li><p>For each possible values (<span class="math inline">\(a_i\)</span>) in <span class="math inline">\(A_g\)</span>, splitting the data set into plenty of subsets <span class="math inline">\(D_i\)</span> by <span class="math inline">\(A_g = a_i\)</span>, use the class of most distances in each subset <span class="math inline">\(D_i\)</span> as labels, return <span class="math inline">\(T\)</span>;</p></li>
-<li><p>For each sub-nodes in step 4, use <span class="math inline">\(D_i\)</span> as training set, <span class="math inline">\(A-A_g\)</span> as feature set, execute the step 1 to 4 recursively until meet the stopping conditions, return <span class="math inline">\(T_i\)</span></p></li>
-</ol>
-<h3 id="code">Code</h3>
-<p>Import the necessary third-party libraries : <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">import pandas as pd</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">%matplotlib inline</span><br><span class="line"></span><br><span class="line">from sklearn.datasets import load_iris</span><br><span class="line">from sklearn.model_selection import train_test_split</span><br><span class="line"></span><br><span class="line">from collections import Counter</span><br><span class="line">import math</span><br><span class="line">from math import log</span><br><span class="line"></span><br><span class="line">import sys</span><br><span class="line">import pprint</span><br></pre></td></tr></table></figure></p>
-<p>First we calculate the information gain value : <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"># empirical entropy</span><br><span class="line">def cal_entropy(self, datasets):</span><br><span class="line">    n = len(datasets)</span><br><span class="line">    label_count = &#123;&#125;</span><br><span class="line">    # get distribution(Pi)</span><br><span class="line">    for i in range(n):</span><br><span class="line">        label = datasets[i][-1]</span><br><span class="line">        if label not in label_count:</span><br><span class="line">            label_count[label] = 0</span><br><span class="line">        label_count[label] += 1</span><br><span class="line">    empirical_entropy = -sum([(p/n) * log(p/n, 2) for p in label_count.values()])</span><br><span class="line"></span><br><span class="line">    return empirical_entropy</span><br><span class="line"></span><br><span class="line"># empirical conditional entropy</span><br><span class="line">def cal_conditional_entropy(self, datasets, axis=0):</span><br><span class="line">    n = len(datasets)</span><br><span class="line">    feature_sets = &#123;&#125;</span><br><span class="line">    for i in range(n):</span><br><span class="line">        feature = datasets[i][axis]</span><br><span class="line">        if feature not in feature_sets:</span><br><span class="line">            feature_sets[feature] = []</span><br><span class="line">        feature_sets[feature].append(datasets[i])</span><br><span class="line"></span><br><span class="line">    empirical_conditional_entropy = sum([(len(p)/n) * self.cal_entropy(p)</span><br><span class="line">                                        for p in feature_sets.values()])</span><br><span class="line"></span><br><span class="line">    return empirical_conditional_entropy</span><br><span class="line"></span><br><span class="line"># calculate the difference between two entropy</span><br><span class="line">def info_gain(self, entropy, con_entropy):</span><br><span class="line">    return entropy - con_entropy</span><br><span class="line"></span><br><span class="line"># calculate information gain</span><br><span class="line">def get_info_gain(self, datasets):</span><br><span class="line">    feature_count = len(datasets[0]) - 1</span><br><span class="line">    empirical_entropy = self.cal_entropy(datasets)</span><br><span class="line">    best_feature = []</span><br><span class="line"></span><br><span class="line">    for c in range(feature_count):</span><br><span class="line">        c_info_gain = self.info_gain(empirical_entropy, </span><br><span class="line">                                     self.cal_conditional_entropy(datasets, axis=c))</span><br><span class="line">        best_feature.append((c, c_info_gain))</span><br><span class="line"></span><br><span class="line">    best = max(best_feature, key=lambda x : x[-1])</span><br><span class="line">    # best : ((feature_id, feature_info_gain))</span><br><span class="line">    return best</span><br></pre></td></tr></table></figure></p>
-<p>Define the class Node as : <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">class Node:</span><br><span class="line">    def __init__(self, splitting_feature_id=None, class_label=None, data=None, </span><br><span class="line">                 splitting_feature_value=None):</span><br><span class="line">        self.splitting_feature_id = splitting_feature_id         # splitting feature</span><br><span class="line">        self.splitting_feature_value = splitting_feature_value   # splitting feature value</span><br><span class="line">        self.class_label = class_label                           # class label, only leaf has</span><br><span class="line">        self.data = data                                         # labels of samples, only leaf has</span><br><span class="line">        self.child = []                                          # child node</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    def add_node(self, node):</span><br><span class="line">        self.child.append(node)</span><br></pre></td></tr></table></figure></p>
-<p>Then achieve the ID3 algorithm : <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">def train(self, train_data, node):</span><br><span class="line">        _ = train_data.iloc[:, :-1]</span><br><span class="line">        y_train = train_data.iloc[:, -1]</span><br><span class="line">        features = train_data.columns[:-1]</span><br><span class="line">        </span><br><span class="line">        # 1. if all the data in D belong to the same class C, </span><br><span class="line">        #    set T as single node and use C as the label, return T</span><br><span class="line">        if len(y_train.value_counts()) == 1:</span><br><span class="line">            node.class_label = y_train.iloc[0]</span><br><span class="line">            node.data = y_train</span><br><span class="line">            return </span><br><span class="line">        </span><br><span class="line">        # 2. if feature A is empty, set T as single node and use the label, </span><br><span class="line">        #   most C as the label, return T</span><br><span class="line">        if len(features) == 0:</span><br><span class="line">            node.class_label = y_train.value_counts().sort_values(ascending=False).index[0]</span><br><span class="line">            node.data = y_train</span><br><span class="line">            return </span><br><span class="line">        </span><br><span class="line">        # 3. calculate the largest inforamtion gain, use Ag to represents the best feature</span><br><span class="line">        max_feature_id, max_info_gain = self.get_info_gain(np.array(train_data))</span><br><span class="line">        max_feature_name = features[max_feature_id]</span><br><span class="line">     </span><br><span class="line">        # 4. if the information gain is smaller than threshold, set T as single node,</span><br><span class="line">        #    and use the most C as the label, return T </span><br><span class="line">        if max_info_gain &lt;= self.epsilon:</span><br><span class="line">            node.class_label = y_train.value_counts().sort_values(ascending=False).index[0]</span><br><span class="line">            node.data = y_train</span><br><span class="line">            return </span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">        # 5. splitting D according to each possible values in the feature A</span><br><span class="line">        feature_list = train_data[max_feature_name].value_counts().index</span><br><span class="line">        for Di in feature_list:</span><br><span class="line">            node.splitting_feature_id = max_feature_id</span><br><span class="line">            child = Node(splitting_feature_value = Di)</span><br><span class="line">            node.add_node(child)</span><br><span class="line">            sub_train_data = pd.DataFrame([list(i) for i in train_data.values if i[max_feature_id] == Di],</span><br><span class="line">                                         columns = train_data.columns)</span><br><span class="line">            </span><br><span class="line">            # 6. create tree recursively</span><br><span class="line">            self.train(sub_train_data, child)</span><br></pre></td></tr></table></figure></p>
-<h2 id="c4.5-algorithm">C4.5 Algorithm</h2>
-<p>The C4.5 algorithm becomes extremely easy to understand after introducing the ID3 algorithm, cause there's only one different point between the two methods, that is C4.5 algorithm uses <strong>information gain ratio</strong> to choose the splitting feature instead of using information gain, besides this, other steps in C4.5 are same with those in ID3 algorithm.</p>
-<h1 id="decision-tree-pruning">Decision Tree Pruning</h1>
-<h2 id="a-simple-pruning-approach">A Simple Pruning approach</h2>
-<p>In this part, we just discuss the pruning algorithm for ID3 and C4.5, the pruning for CART will be interpreted in the next part.</p>
-<p>We have discussed the decision tree generating approached in the above part, however, it can overfit easily if there're lots of levels in the decision tree, so we need to prune the tree to avoid overfitting and simplify the process of calculating. Specifically, we cut some leaf nodes or sub-tree from the original tree and use their parents nodes as the new leaf nodes.</p>
-<p>Like the other machine learning algorithms, here we prune the decision tree by minimising the loss function. Assume that <span class="math inline">\(|T|\)</span> is the number of leaf nodes, <span class="math inline">\(t\)</span> represents the leaf nodes and there are <span class="math inline">\(N_t\)</span> samples in it, use <span class="math inline">\(N_{tk}\)</span> to denote the number of samples which belong to class <span class="math inline">\(k\)</span> in <span class="math inline">\(N_t\)</span>, where <span class="math inline">\(k=1,2,...,K\)</span> ; <span class="math inline">\(H_t(T)\)</span> is the empirical entropy of leaf node <span class="math inline">\(t\)</span>, then define the loss function as : <span class="math display">\[C_\alpha(T) = \sum_{t=1}^{|T|}N_t*H_t(T) + \alpha|T|\]</span> We define the training error as : <span class="math display">\[C(T) = \sum_{t=1}^{|T|}N_t*H_t(T) = -\sum_{t=1}^{|T|}\sum_{k=1}^KN_{tk} * log {N_{tk}\over N_t}\]</span> In the above formula, the term <span class="math inline">\(|T|\)</span> which the number of leaf nodes, can represent the complexity of decision tree, the parameter <span class="math inline">\(\alpha\)</span>, can be understood as the coefficient of regularization, so the term <span class="math inline">\(\alpha|T|\)</span> actually has the same function with regularization term, which can find the trade-off between the complexity and precision of model. A larger <span class="math inline">\(\alpha\)</span> can promote to choose a simple model and a smaller <span class="math inline">\(\alpha\)</span> promote to choose a complex model.</p>
-<p>Our pruning algorithm is going to find the sub-tree with the minimum loss function, here we calculate the loss value <span class="math inline">\(C_\alpha(T)\)</span> for the current tree, then calculating it again after cutting the brunch (sub-tree) or leaf node, now we get two different information gain values, record as <span class="math inline">\(C_\alpha(T_B)\)</span> and <span class="math inline">\(C_\alpha(T_A)\)</span>, so we can determine whether it's worth to cut this brunch or not by comparing the two error values, the specific steps are :</p>
-<ol type="1">
-<li><p>Calculating the empirical entropy for each leaf nodes;</p></li>
-<li><p>Going back to the parents nodes recursively, cutting the brunch and comparing the error values between before cutting and after cutting, if <span class="math inline">\(C_\alpha(T_A) \leq C_\alpha(T_B)\)</span>, saving the pruning action and setting the parent node as the new leaf node, otherwise, recover the original tree;</p></li>
-<li><p>Repeating the step 2 until all the nodes have been checked, then get the sub-tree with the minimum loss function</p></li>
-</ol>
-<h2 id="code-1">Code</h2>
-<p>First, we need to achieve the loss function which is the <span class="math inline">\(C_\alpha(T)\)</span> in the above formula : <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"># calculate C_alpha_T for current sub-tree</span><br><span class="line">def c_error(self):   </span><br><span class="line">    leaf = []</span><br><span class="line">    self.find_leaf(self.tree, leaf)</span><br><span class="line">    # count the N_t, len(leaf_num) == |T|</span><br><span class="line">    leaf_num = [len(l) for l in leaf]</span><br><span class="line">    </span><br><span class="line">    # calculate empirical entropy for each leaf nodes</span><br><span class="line">    entropy = [self.cal_entropy(l) for l in leaf]</span><br><span class="line">    </span><br><span class="line">    # alpha * |T|</span><br><span class="line">    alpha_T = self.alpha * len(leaf_num)</span><br><span class="line">    </span><br><span class="line">    error = 0</span><br><span class="line">    C_alpha_T = 0 + alpha_T</span><br><span class="line">    </span><br><span class="line">    for Nt, Ht in zip(leaf_num, entropy):</span><br><span class="line">        C_T = Nt * Ht</span><br><span class="line">        error += C_T</span><br><span class="line">        </span><br><span class="line">    C_alpha_T += error   </span><br><span class="line">    </span><br><span class="line">    return C_alpha_T</span><br><span class="line">   </span><br><span class="line"># find all leaf nodes   </span><br><span class="line">def find_leaf(self, node, leaf):   </span><br><span class="line">    for t in node.child:</span><br><span class="line">        if t.class_label is not None:</span><br><span class="line">            leaf.append(t.data)</span><br><span class="line">        else:</span><br><span class="line">            for c in node.child:</span><br><span class="line">                self.find_leaf(c, leaf)</span><br></pre></td></tr></table></figure></p>
-<p>Then calculate loss value for the original tree, starting pruning : <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">def pruning(self, alpha=0):</span><br><span class="line">    if alpha:</span><br><span class="line">        self.alpha = alpha</span><br><span class="line">        </span><br><span class="line">    error_min = self.c_error()</span><br><span class="line">    </span><br><span class="line">    self.find_parent(self.tree, error_min)</span><br></pre></td></tr></table></figure></p>
-<p>In which the <strong>find_parent</strong> function corresponds the <strong>step 2</strong> in the above principle introduction part : <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line">def find_parent(self, node, error_min):</span><br><span class="line">    &apos;&apos;&apos;</span><br><span class="line">    leaf nodes : class_label -&gt; not None</span><br><span class="line">                 data -&gt; not None</span><br><span class="line">                 splitting_feature_id -&gt; None</span><br><span class="line">                 splitting_feature_value -&gt; None</span><br><span class="line">                 child -&gt; None</span><br><span class="line">    ---------------------------------------------</span><br><span class="line">    other nodes: class_label -&gt; None</span><br><span class="line">                 data -&gt; None</span><br><span class="line">                 splitting_feature_id -&gt; not None</span><br><span class="line">                 splitting_feature_value -&gt; not None(except root)</span><br><span class="line">                 child -&gt; not None</span><br><span class="line">    &apos;&apos;&apos;</span><br><span class="line">    # if not the leaf nodes</span><br><span class="line">    if node.splitting_feature_id is not None:  </span><br><span class="line">        # collect class_labels from child nodes</span><br><span class="line">        class_label = [c.class_label for c in node.child]</span><br><span class="line">        </span><br><span class="line">        # if all the child nodes are leaf nodes</span><br><span class="line">        if None not in class_label:  </span><br><span class="line">            # collect data from child nodes</span><br><span class="line">            child_data = []</span><br><span class="line">            for c in node.child:</span><br><span class="line">                for d in list(c.data):</span><br><span class="line">                    child_data.append(d)</span><br><span class="line">            child_counter = Counter(child_data)</span><br><span class="line"></span><br><span class="line">            # copy the old node</span><br><span class="line">            old_child = node.child</span><br><span class="line">            old_splitting_feature_id = node.splitting_feature_id</span><br><span class="line">            old_class_label = node.class_label</span><br><span class="line">            old_data = node.data</span><br><span class="line">            </span><br><span class="line">            # pruning</span><br><span class="line">            node.splitting_feature_id = None</span><br><span class="line">            node.class_label = child_counter.most_common(1)[0][0]</span><br><span class="line">            node.data = child_data</span><br><span class="line">            </span><br><span class="line">            error_after_pruning = self.c_error()</span><br><span class="line">            </span><br><span class="line">            # if error_after_pruning &lt;= error_min, it is worth to pruning</span><br><span class="line">            if error_after_pruning &lt;= error_min:</span><br><span class="line">                error_min = error_after_pruning</span><br><span class="line">                return 1</span><br><span class="line">                </span><br><span class="line">            # if not, recover the previous tree</span><br><span class="line">            else:</span><br><span class="line">                node.child = old_child</span><br><span class="line">                node.splitting_feature_id = old_splitting_feature_id</span><br><span class="line">                node.class_label = old_class_label</span><br><span class="line">                node.data = old_data</span><br><span class="line">                </span><br><span class="line">        # if not all the child nodes are leaf nodes</span><br><span class="line">        else:</span><br><span class="line">            re = 0</span><br><span class="line">            i = 0</span><br><span class="line">            while i &lt; len(node.child):</span><br><span class="line">                # if the pruning action happend, </span><br><span class="line">                # rescan the sub-tree since some new leaf nodes are created</span><br><span class="line">                if_re = self.find_parent(node.child[i], error_min)</span><br><span class="line">                if if_re == 1:   </span><br><span class="line">                    re = 1</span><br><span class="line">                elif if_re == 2:  </span><br><span class="line">                    i -= 1</span><br><span class="line">                i += 1</span><br><span class="line">            if re:</span><br><span class="line">                return 2</span><br><span class="line"></span><br><span class="line">    return 0</span><br></pre></td></tr></table></figure></p>
-<h1 id="cart">CART</h1>
-<p>As the name of this algorithm -- classification and regression tree, it can apply on both classification and regression, actually the essence of regression tree is based on classification principle, I'm going to explain it later.</p>
-<h2 id="regression-tree">Regression Tree</h2>
-<h3 id="principle-of-generating">Principle of Generating</h3>
-<p>The process of generating regression tree is also the procedure of establishing binary decision tree recursively by minimising the mean square error.</p>
-<p>In the regression problems, we assume the output <span class="math inline">\(Y\)</span> is continuous variable, so the training set is : <span class="math display">\[D = \{(x_1,y_1),(x_2,y_2),...,(x_n,y_n)\}\]</span> Assume that we have splitted the data set into <span class="math inline">\(M\)</span> units: <span class="math inline">\(R_1, R2,...,R_M\)</span> , and there are one unique output value in each units <span class="math inline">\(R_m\)</span>, record as <span class="math inline">\(c_m\)</span>, in other word, we split the training set into plenty of units, and calculate an output or prediction value for each subsets, therefore, the model can be represented as : <span class="math display">\[f(x) = \sum_{m=1}^Mc_m\]</span> And we use the mean square error to evaluate the training error for our model : <span class="math display">\[\sum(y_i-f(x_i))^2\]</span> In addition, the optimal output value of <span class="math inline">\(R_m\)</span> is : <span class="math display">\[c_m = average(y_i|x_i \in R_m)\]</span> Now, we need to choose the appropriate feature and value to split the data set, we call the chosen feature as <strong>splitting variable</strong> and the value is <strong>splitting point</strong></p>
-<h1 id="references">References</h1>
-
-          
+          <h1 id="about-decision-tree">About Decision Tree</h1>
+<p>Decision Tree is a kind of common classification and regression algorithm in machine learning, although it's a basic method, some advanced learning algorithms such as GBDT (Gradient Boosting Decision Tree) are established on it.
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/04/14/Decision-Tree/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
-    </div>
+    </p></div>
     
     
     
@@ -512,6 +539,7 @@
         
 
         <div class="post-meta">
+		
           <span class="post-time">
             
               <span class="post-meta-item-icon">
@@ -526,7 +554,19 @@
             
 
             
+              <span class="post-meta-divider">|</span>
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2019-04-07T23:12:03+10:00">
+                2019-04-07
+              </time>
             
           </span>
 
@@ -563,6 +603,37 @@
 
           
 
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  751
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  4
+                </span>
+              
+            </div>
           
 
           
@@ -694,6 +765,7 @@
         
 
         <div class="post-meta">
+		
           <span class="post-time">
             
               <span class="post-meta-item-icon">
@@ -708,7 +780,19 @@
             
 
             
+              <span class="post-meta-divider">|</span>
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2019-04-03T22:02:53+11:00">
+                2019-04-03
+              </time>
             
           </span>
 
@@ -745,6 +829,37 @@
 
           
 
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  1.7k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  10
+                </span>
+              
+            </div>
           
 
           
@@ -887,6 +1002,7 @@
         
 
         <div class="post-meta">
+		
           <span class="post-time">
             
               <span class="post-meta-item-icon">
@@ -901,7 +1017,19 @@
             
 
             
+              <span class="post-meta-divider">|</span>
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2019-04-01T22:10:34+11:00">
+                2019-04-01
+              </time>
             
           </span>
 
@@ -916,6 +1044,37 @@
 
           
 
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  880
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  5
+                </span>
+              
+            </div>
           
 
           
@@ -1097,7 +1256,7 @@
                   <span class="links-of-author-item">
                     <a href="https://www.zhihu.com/people/hou-xing-lin-72/activities" target="_blank" title="知乎">
                       
-                        <i class="fa fa-fw fa-zhihu"></i>知乎</a>
+                        <i class="fa fa-fw fa-custom zhihu"></i>知乎</a>
                   </span>
                 
             </div>
@@ -1129,11 +1288,20 @@
     <footer id="footer" class="footer">
       <div class="footer-inner">
         <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
-  <span class="with-love">
-    <i class="fa fa-user"></i>
+  <span class="with-love" id="heart">
+    <i class="fa fa-heart"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">dylan_houxinglin</span>
 
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">5.8k</span>
   
 </div>
 
@@ -1152,6 +1320,26 @@
 
 
         
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
 
 
 
@@ -1166,6 +1354,8 @@
     
       <div class="back-to-top">
         <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
         
       </div>
     
@@ -1292,6 +1482,323 @@
 
 
   
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
 
 
 
