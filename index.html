@@ -90,7 +90,7 @@
   
     
     
-    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Merriweather:300,300italic,400,400italic,700,700italic|Lora:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic|Lora:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|Consolas:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
   
 
 
@@ -395,12 +395,34 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2019-04-21T23:19:51+10:00">
-                2019-04-21
+              <time title="Post modified" itemprop="dateModified" datetime="2019-04-22T16:06:04+10:00">
+                2019-04-22
               </time>
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Machine-Learning/" itemprop="url" rel="index">
+                    <span itemprop="name">Machine Learning</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -564,8 +586,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2019-04-07T23:12:03+10:00">
-                2019-04-07
+              <time title="Post modified" itemprop="dateModified" datetime="2019-04-22T16:08:37+10:00">
+                2019-04-22
               </time>
             
           </span>
@@ -652,53 +674,21 @@
 
       
         
-          
-            <h1 id="recommender-system-reading-notes">Recommender System Reading Notes</h1>
+          <h1 id="recommender-system-reading-notes">Recommender System Reading Notes</h1>
 <h1 id="chapter-one-introduction">Chapter One (Introduction)</h1>
 <h2 id="basic-concepts">Basic Concepts</h2>
 <h3 id="collaborative-recommendation">Collaborative Recommendation</h3>
-<p>Recommend something to users according to the behavior of other users who have the same interests or similar historical behaviors with them, this technique is called <strong>collaborative filtering</strong>.</p>
-<h3 id="content-based-recommendation">Content-Based Recommendation</h3>
-<p>Recommend things depend on the content which has two advantages:</p>
-<ul>
-<li><p>Doesn't require large user groups</p></li>
-<li><p>New items can be immediately recommended once item attributes are available.</p></li>
-</ul>
-<h3 id="knowledge-based-recommendation">Knowledge-Based Recommendation</h3>
-<p>Some cases may involve larget numbers of one-time buyers which means can't reyly the purchase history. We can use knowledge-based recommendation such as <strong>constraint-based approach</strong>, we recommend rely on the feature of product so that every user will get the same set of recommendations. In addition, since we don't have any purchase history, we can just ask users for their requirements directly, such as the maximum price and so on.</p>
-<h3 id="hybrid-approaches">Hybrid Approaches</h3>
-<p>Since almost all methods have their own disadvantages, we can try to combine them to generate better or more precise recommendations.</p>
-<h1 id="chapter-two-collaborative-recommendation">Chapter Two (Collaborative Recommendation)</h1>
-<h2 id="user-based-nearest-neighbor-recommendation">User-based nearest neighbor recommendation</h2>
-<p>Given a ratings database and the ID of the current (active) user as an input, identify other users (sometimes referred to as peer users or nearest neighbors) that had similar preferences to those of the active user in the past. ### Similarity between users We can use Pearson correlation coefficient to calculate the similarity between two different users： <span class="math display">\[\rho_{x,y} = {cov(x,y)\over{\sigma{x}\sigma{y}}} = {E((x-\mu{x})(y-\mu{y}))\over{\sigma{x}\sigma{y}}}\]</span> And <span class="math inline">\(cov\)</span> is Covariance, <span class="math inline">\(E\)</span> is mathmatical expectation, <span class="math inline">\(\sigma\)</span> is standard deviation.</p>
-<p>We denote <span class="math inline">\(U = {u_1,...,u_n}\)</span> as the set of users, use <span class="math inline">\(P = {p_1,...,p_m}\)</span> to denote products, and <span class="math inline">\(R\)</span> as an <span class="math inline">\(n*m\)</span> matrix of ratings <span class="math inline">\(r_{i,j}\)</span>, so: <img src="/images/recommender_system/sim.jpg"></p>
-<p>And then we can use a possible formula to make prediction: <img src="/images/recommender_system/pred1.jpg"></p>
-<p>But, this measure method does not take into account whether two users have co-rated only a few items (on which they may agree by chance) or whether there are many items on which they agree. In fact, it has been shown that predictions based on the ratings of neighbors with which the active user has rated only a very few items in common are a bad choice and lead to poor predictions.</p>
-<h3 id="neighborhood-selection">Neighborhood Selection</h3>
-<p>The common techniques for reducing the size of the neighborhood are to define a specific minimum threshold of user similarity or to limit the size to a fixed number and to take only the <span class="math inline">\(k\)</span> nearest neighbors into account.</p>
-<h2 id="item-based-nearest-neighbor-recommendation">Item-based nearest neighbor recommendation</h2>
-<p>Item-based recommendation, which is more apt for offline preprocessing and thus allows for the computation of recommendations in real time even for a very large rating matrix.</p>
-<p>The main idea of item-based algorithms is to compute predictions using the similarity between items and not the similarity between users.</p>
-<h3 id="the-cosine-similarity-measure">The cosine similarity measure</h3>
-<p>The similarity between two items a and b – viewed as the corresponding rating vectors a⃗ and b⃗ – is formally defined as follows: <img src="/images/recommender_system/cosine1.jpg"></p>
-<p>The basic cosine measure does not take the differences in the average rating behavior of the users into account. This problem is solved by using the adjusted cosine measure, which subtracts the user average from the ratings.</p>
-<p>The adjusted cosine measure is then calculated as follows: <img src="/images/recommender_system/cosine2.jpg"></p>
-<p>Formally, we can predict the rating for user u for a product p as follows: <img src="/images/recommender_system/pred2.jpg"></p>
-<h3 id="preprocessing-data-for-item-based-filtering">Preprocessing data for item-based filtering</h3>
-<p>It is an option to exploit only a certain fraction of the rating matrix to reduce the computational complexity. Basic techniques include subsampling, which can be accomplished by randomly choosing a subset of the data or by ignoring customer records that have only a very small set of ratings or that only contain very popular items.</p>
-<h2 id="about-ratings">About ratings</h2>
-<h3 id="implicit-and-explicit-ratings">Implicit and Explicit ratings</h3>
-<p>It's not easy to get the explicit ratings from users in some cases.</p>
-<h3 id="data-sparsity">Data Sparsity</h3>
-<p>In real-world applications, of course, the rating matrices tend to be very sparse, as customers typically provide ratings for (or have bought) only a small fraction of the catalog items.</p>
-<p>One straightforward option for dealing with this problem is to exploit additional information about the users, such as gender, age, education, interests, or other available information that can help to classify the user.</p>
-<h3 id="the-cold-start-problems">The Cold-Start Problems</h3>
-<p>The main idea of the approach to solve the cold-start problem is to exploit the supposed “transitivity” of customer tastes and thereby augment the matrix with additional information (external information).</p>
-
-          
+<p>Recommend something to users according to the behavior of other users who have the same interests or similar historical behaviors with them, this technique is called <strong>collaborative filtering</strong>.
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/04/05/Recommeder-System-Reading-Notes/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
-    </div>
+    </p></div>
     
     
     
@@ -790,8 +780,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2019-04-03T22:02:53+11:00">
-                2019-04-03
+              <time title="Post modified" itemprop="dateModified" datetime="2019-04-22T16:00:57+10:00">
+                2019-04-22
               </time>
             
           </span>
@@ -878,64 +868,19 @@
 
       
         
-          
-            <h1 id="regularization-in-machine-learning">Regularization in Machine Learning</h1>
+          <h1 id="regularization-in-machine-learning">Regularization in Machine Learning</h1>
 <h1 id="about-regularization">About Regularization</h1>
-<p>The model will become overfitting when it is trying too hard to capture the outliers in the training dataset and the accuracy will have a low accuarcy in the testing set. Regularization is one of the most efficient methods for avoiding overfitting, in the essence, this approach could penalise weights(coefficients) in the model by making some of them toward to zero.</p>
-<h1 id="what-is-the-problem">What is the problem?</h1>
-<p>Assume that we have an empirical loss function R: <span class="math display">\[R_{emp} = {1\over{N}}\sum_{i=1}^NL(f(x_i), y_i)\]</span> and the model function f: <span class="math display">\[f(x_i) = w_0x_0 + w_1x_1 + w_2x_2 + w_3x_3 + ... + w_nx_n\]</span> We can see the polynomial f is so complicated if there is no zero or very less zero in metrix <strong><em>w</em></strong> (the set of weights), and the model is also complex, which means this model can just fit well in the training set, in other word, it has a poor generalization ability. Obviously, we do not need that many non-zero and too large weights since not every features is useful in the estimating. Regulariztion is the approach that can cope this trouble. Regularization function can be understood as the complxity of model (cause it is a function about weights), it can be the norm of the model parameter vector, and different choices have different constrains on the weights, so the effect is also different.</p>
-<p>Actually, both a large amount of weights and weights with large values can lead to a complex model. The derivative will have a large fluctuation if our model is trying to fit the outlier in a specific interval, and a large derivative means the weight will also have a large value, therefore, a complex model always have parameters with large values. In the essence of solving overfitting problem, reularization term reduces the complexity of model from controlling the number and the value of parameters, the term is a constraint for the parameters when we are trying to minimize the loss function.</p>
-<h1 id="l-p-norm">L-P Norm</h1>
-<p>We can understand norm as distance, it represents the size of vectors in vector space and the size of changing in matrix space. L-P norm is a set of norms: <span class="math display">\[Lp = \sqrt[p]{\sum_{i=1}^Nx_i^p}\]</span> Norms change accroding to the values of p:</p>
-<p><img src="/images/regularization/norm.jpg" alt="norm"> The above picture shows how the changes of the points whose distance (norm) to the origin is 1 in the three dimensional space.</p>
-<h2 id="l0-norm">L0 Norm</h2>
-<p>Normally we use L0 norm to represent the number of non-zero elements in a vector. Therefore, minimize L0 norm meams we want some weights become to zero, so that some features will not use in estimating, we can deduce the complexity of model through using L0 norm, unfortunately, it is hard to explain and calculate L0 norm since we can not interpret the meaning of zero-sqrt, and optimization of L0 norm is a NP hard question, but do not worry, we can use L1 norm to subtitue, which is an optimal convex approximation of L0 norm.</p>
-<h2 id="l1-norm">L1 Norm</h2>
-<p>This is the defination of L1 norm: <span class="math display">\[||x||_1 = \sum_i{|x_i|}\]</span> It represents the sum of the absolute values of non-zero elements in vector x. Due to the natural nature of L1 norm, the solution to L1 norm optimization is a sparse solution, we can use L1 norm to achieve the sparse of features, so that some unuseful features will be dropped.</p>
-<h2 id="l2-norm">L2 Norm</h2>
-<p>The defination of L2 norm is: <span class="math display">\[||x||_2 = \sqrt{\sum_ix_i^2}\]</span> We can make the value of weights toward to zero by minimizing L2 norm, but it is just toward instead of reaching at zero, which is different from L0 norm and L1 norm. Although there are several differences among L0, L1 and L2 norm, the essence of them is same, we use them to weaken or even drop some features, so that we can get a simpler model with a better generization ability.</p>
-<h1 id="how-it-works">How it works?</h1>
-<p>It is easy to answer this question after konwing the concept of norm: we just need to optimize the L1 or L2 norm, it can penalise weights atuomaticlly. However, do not forget our true aim: fitting data by minimizing the loss function. Therefore, we need to minimize loss function and regularization term simultaneously, but it is still easy to do that, we can minimize the sum of them: <span class="math display">\[min{[R_{emp} + \lambda{r(w)}]}\]</span> That is: <span class="math display">\[min[{1\over{N}}\sum_{i=1}^NL(f(x_i), y_i) + {\lambda\over{2}}{||w||_2^2}]\]</span> A larger lambda can impel to chose a simpler model and a smaller lambda will get a more complex model.</p>
-<h1 id="why-l1-is-sparse-and-l2-is-smooth">Why L1 is sparse and L2 is smooth?</h1>
-<p>As we said, L1 norm can make weights change to zero and L2 norm let the parameters toward to zero, we call L1 norm is sparse and L2 norm is smooth. We can understand this from different aspects.</p>
-<h2 id="mathmatical-formula">Mathmatical Formula</h2>
-<p>Firstly, we assume the structural loss function with L1 norm is: <span class="math display">\[L1 = R + {\lambda\over{n}}\sum_i|w_i|\]</span> So we can calculate the derivative of w: <span class="math display">\[{\partial{L1}\over{\partial{w}}}={\partial{R}\over{\partial{w}}}+{\lambda\over{n}}sign(w)\]</span> And then: <span class="math display">\[w^{t+1} = w^t - \eta{\partial{L1}\over{\partial{w^t}}}\]</span> <span class="math display">\[w^{t+1}=w^t-\eta{\partial{R}\over{\partial{w^t}}}-\eta{\lambda\over{n}}sign(w^t)\]</span> And sign function is defined as: <span class="math display">\[sign(x) = \begin{cases}
-+1 &amp; x&gt;0 \\
--1 &amp; x&lt;0 \\
-[-1,1] &amp; x=0
-\end{cases}\]</span> As for the structural risk function with L2 norm: <span class="math display">\[L2 = R + {\lambda\over{2n}}\sum_iw_i^2\]</span> And then: <span class="math display">\[{\partial{L2}\over{\partial{w}}}={\partial{R}\over{\partial{w}}}+{\lambda\over{n}}w\]</span> <span class="math display">\[w^{t+1} = w^t - \eta{\partial{L2}\over{\partial{w^t}}}\]</span> <span class="math display">\[w^{t+1}=w^t-\eta{\partial{R}\over{\partial{w^t}}}-\eta{\lambda\over{n}}w^t\]</span> <span class="math display">\[w^{t+1}=(1-\eta{\lambda\over{n}})w^t-\eta{\partial{R}\over{\partial{w^t}}}\]</span></p>
-<p>So we can see that the difference between the two formulas: the parameter w in <span class="math inline">\(L1\)</span> minus <span class="math inline">\(\eta{\lambda\over{n}}sign(w)\)</span> which is a constant for each <span class="math inline">\(w\)</span> (see the deifnation of <span class="math inline">\(sign(x)\)</span>). However, in <span class="math inline">\(L2\)</span> it minus <span class="math inline">\(\eta{\lambda\over{n}}w\)</span>, which means <span class="math inline">\(w\)</span> will reduce in a specific proportion in each iterations, and the proportion is <span class="math inline">\(\eta{\lambda\over{n}}\)</span>.</p>
-<p>Therefore, in some extent, L1 norm can make the parameteres(<span class="math inline">\(w\)</span>) reduce to zero since it minus a constant each time, and L2 norm makes the weights toward to zero because reducing with a specific proportion. This is also the reason why we can use L1 norm to do feature selection(automaticlly) and use L2 norm to make the parameters smaller, and we also call L2 norm as weight decay.</p>
-<p>In addition, L2 norm has a more quicker reduction rate than L1 norm when <span class="math inline">\(w\)</span> is in the interval <span class="math inline">\([1, +\infty]\)</span>, and L1 norm has a faster decreasing rate when <span class="math inline">\(w\)</span> is in <span class="math inline">\((0, 1)\)</span>. So L1 norm can make <span class="math inline">\(w\)</span> reach at zero more easier and get more zero elements in the parameter vector.</p>
-<h2 id="geometric-space">Geometric Space</h2>
-<p>We can also understand this question from geometric space.</p>
-<p><img src="/images/regularization/L1_5.jpg"> For the above picture, we assume that the red line is our empirical risk function(R), the light blue circle is the graph of L2 norm and the deep blue one is L1 norm. As we said, L1 and L2 norms are a kind of constraint for the function R, therefore, the intersection is our best solution, we can see that L1 norm can more easier to make the solution reach at zero.</p>
-<p>The same situation can be found in other empirical loss function, such as squared error:</p>
-<p><img src="/images/regularization/L1_4.jpg"></p>
-<p>I am going to introduce another interpretation in geometric space which I believe can help us to understand this question better.</p>
-<p><img src="/images/regularization/L1_1.jpg"> As the above graph shows, assume that the purple line is our empirical loss function (R), and the green point is the local minimum. Now, we add L2 norm to the function, so we can get <span class="math inline">\(R+\lambda x^2\)</span>:</p>
-<p><img src="/images/regularization/L1_2.jpg"> The minimun has changed to the yellow point, it can be seen that the optimum value has reduced, but is not zero. We can get the new function <span class="math inline">\(R+\lambda |x|\)</span> with L1 norm:</p>
-<p><img src="/images/regularization/L1_3.jpg"> The optimum changed to zero (the pink line).</p>
-<p>Remember that the truth is L1 norm can get optimum solution as zero more easier than L2 norm, which means we can not make sure the best value must be zero with L1 norm and L2 norm can also get zero value solution in the specific situation. I am going to interpret this situation.</p>
-<p>Actually, whether the two norms can change the optimal solution (the parameter/weight) to zero is depend on the value of derivative of zero point (x=0) in the empirical loss function: the derivative of zero point can not change to zero so the optimal solution is also non-zero if the original function (R) has non-zero derivative in the point x=0, in other words, L2 norm can change the optimal value to zero if the derivative of <span class="math inline">\(R_{emp}\)</span> is zero in x=0.</p>
-<p>In terms of L1 norm, x=0 can be the optimal solution (local minimum) if the regularization coefficient <span class="math inline">\(\lambda\)</span> is larger than the value of <span class="math inline">\(|R_{emp}&#39;(0)|\)</span> (since we need to guarantee the derivates of left side and right side of x=0 have the opposite sign): The derivative of left side: <span class="math display">\[R_{emp}&#39;(0)-\lambda\]</span> The derivative of right side: <span class="math display">\[R_{emp}&#39;(0)+\lambda\]</span> Therefore, if: <span class="math display">\[\lambda \geq |R_{emp}&#39;(0)|\]</span> Then we can guarantee x=0 is the local minimum.</p>
-<h2 id="probability-degree">Probability Degree</h2>
-<h1 id="some-papers">Some Papers</h1>
-<h1 id="reference">Reference</h1>
-<ul>
-<li><a href="https://www.zhihu.com/question/37096933" target="_blank" rel="noopener">l1 相比于 l2 为什么容易获得稀疏解？</a></li>
-<li><a href="https://plushunter.github.io/2017/07/22/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E7%B3%BB%E5%88%97%EF%BC%8828%EF%BC%89%EF%BC%9AL1%E3%80%81L2%E6%AD%A3%E5%88%99%E5%8C%96/" target="_blank" rel="noopener">机器学习算法系列（28）：L1、L2正则化</a></li>
-<li><a href="https://pspxiaochen.club/l1andl2" target="_blank" rel="noopener">聊一聊L1和2正则化</a></li>
-<li><a href="https://www.jianshu.com/p/475d2c3197d2" target="_blank" rel="noopener">L1,L2,L0区别，为什么可以防止过拟合</a></li>
-<li><a href="https://blog.csdn.net/zouxy09/article/details/24971995" target="_blank" rel="noopener">机器学习中的范数规则化之（一）L0、L1与L2范数</a></li>
-<li><a href="http://www.voidcn.com/article/p-mcttbxat-bpx.html" target="_blank" rel="noopener">常用的范数求导</a></li>
-<li><a href="http://www.dgt-factory.com/uploads/2018/07/0725/%E7%BB%9F%E8%AE%A1%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95.pdf" target="_blank" rel="noopener">统计学习方法</a></li>
-</ul>
-
-          
+<p>The model will become overfitting when it is trying too hard to capture the outliers in the training dataset and the accuracy will have a low accuarcy in the testing set.
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/04/03/Regularization-in-Machine-Learnig/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
-    </div>
+    </p></div>
     
     
     
@@ -1027,8 +972,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2019-04-01T22:10:34+11:00">
-                2019-04-01
+              <time title="Post modified" itemprop="dateModified" datetime="2019-04-22T16:08:20+10:00">
+                2019-04-22
               </time>
             
           </span>
@@ -1093,41 +1038,19 @@
 
       
         
-          
-            <h3 id="roc-auc">ROC &amp; AUC</h3>
+          <h3 id="roc-auc">ROC &amp; AUC</h3>
 <h4 id="confusion-matrix">Confusion Matrix</h4>
-<p>I am going to introduce the concept of Confusion Matrix before talking about the ROC as well as AUC since I think this will help us to understand them better. Confusion Matrix is a performance measurement for machine learning classification, which is a specific table layout. Let us undetstand TP, FP, FN and TN first. <img src="/images/confusion_matrix.jpg" alt="confusion_matrix"> As the above picture show, we define them as:</p>
-<ul>
-<li><p>TP(True Positive): The samples which are <strong>positive</strong> and have been predicted as <strong>positive</strong></p></li>
-<li><p>FP(False Positive): The samples which are <strong>negative but</strong> have been predicted as <strong>positive</strong></p></li>
-<li><p>FN(False Negative): The samples which are <strong>positive but</strong> have been predicted as <strong>negative</strong></p></li>
-<li><p>TN(True Nagetive): The samples which are <strong>negative</strong> and have been predicted as <strong>negative</strong></p></li>
-</ul>
-<p>So we can calculate the Recall and Precision easily. <strong>Recall</strong> means out of all the positive classes, how much we predicted correctly: <span class="math display">\[Recall = {TP\over{TP + FN}}\]</span> <strong>Precision</strong> means out of all the classes, how much we predicted correctly: <span class="math display">\[Precision = {TP\over{TP + FP}}\]</span> And we can also use <strong>F-Score (F1 or F-Measure)</strong>, which can measure recall and precision simultaneously. F-Score is the harmonic mean of recall and precision: <span class="math display">\[F_1 = ({Recall^{-1}+Precision^{-1}\over{2}})^{-1} ={2*Recall*Precision\over{Recall + Precision}}\]</span> <span class="math display">\[F_\beta = (1+\beta^2)*{Precision*Recall\over{(\beta^2*Precision)+Recall}}\]</span> Where β is the weight of F-Score, it will give more proportion to Precision when β &lt; 1 and Recall gets a higher proportion when β &gt; 1, β = 1 is a specific situation which Recall and Precision has the same weight. However, it is difficult to compare two models with low precision and high recall or high precision and low recall since their F-Score could be similar. Here we have another two names: <strong>Sensitivity and Specificity</strong>: <span class="math display">\[Sensitivity = Recall = True Positive Rate (TPR)\]</span> <span class="math display">\[Specificity = 1 - False Positive Rate (FPR) = 1 - {FP\over{FP + TN}}\]</span> We can try to understand these from conditional probability aspect. Assume that our predict vales is Y' and Y is the true vale, so that: <span class="math display">\[Precision = P(Y=1|Y&#39;=1)\]</span> <span class="math display">\[Recall = Sensitivity = P(Y&#39;=1|Y=1)\]</span> <span class="math display">\[Specificity = P(Y&#39;=0|Y=0)\]</span> It can be seen that Recall (Sensitivity) and Specificity do not be influenced by imbalanced data but Precision relies on the proportion of positive and negative samples.</p>
-<h4 id="the-precision-recall-curve">The Precision-Recall Curve</h4>
-<h4 id="whats-the-problem-of-accuracy">What's the problem of accuracy?</h4>
-<p>Accuracy is one of the most common evaluation methods in machine learning, but it is not always appropriate: assume we have 100 samples in the test set, and there are 99 negative samples and just 1 positive sample, so that the accuracy of my model is 99/100 = 99% if it predicts all samples as negative class. Obviously, it can not evaluate our model in this case. <span class="math display">\[Accuracy = {TP + TN\over{TP+TN+FP+FN}}\]</span></p>
-<h4 id="what-is-roc">What is ROC?</h4>
-<p>ROC(Receiver Operating Characteristics) curve is a kind of tool which we can use to check or visualize the performance of the multi-classification models. ROC is based on confusion matrix which use <strong>FPR as x-axis and</strong> <strong>TPR as y-axis</strong>. We go through all the thresholds and draw the ROC graph, so that each points in ROC represents the FPR and TRP value in a specific threshold. <img src="/images/pic1.jpg"></p>
-<h4 id="how-to-evaluate-roc">How to evaluate ROC?</h4>
-<p>The ROC will not change even we modify the threshold, the x-axis, FPR value can be understand as how much we predicted negative samples as positive which should be lower, and the y-axis, TPR value is how much we predicted correctly in the positive samples which should be higher, therefore, the performance of a model is good with high TPR and low FPR, which reflects as a steep ROC curve (The curve should tend to upper left corner). <img src="/images/pic2.jpg"> In addition, as we said Recall (Sensitivity, TPR) and Specificity (1-FPR) do not be influenced by imbalanced, so ROC curve will also not influenced by imbalanced data: <img src="/images/pic3.jpg"></p>
-<h4 id="what-is-auc">What is AUC?</h4>
-<p>AUC (Area Under the Curve) is the area under the ROC curve, the diagonal represents random effect which value is 0.5, positive and negative samples occupy the same proportion is the data set in this specific situation. The best value of AUC is 1 but can not reach in the most situation, and the worst is 0.5 which means classify samples ramdomly. For example, AUC is 0.7 means there is 70% chance that model will be able to distinguish between positive class and negative class.</p>
-<h4 id="relation-between-tpr-and-fpr">Relation between TPR and FPR</h4>
-<p>As we know FPR is 1 - specificity, so when we increase TPR, FPR also increases and vice versa.</p>
-<h4 id="achievement-by-python">Achievement by Python</h4>
-<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">from sklearn import metrics</span><br><span class="line">from sklearn.metics import f1_score</span><br><span class="line">import numpy as np</span><br><span class="line"></span><br><span class="line"># True lables</span><br><span class="line">y_true = np.array([<span class="number">1</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>])  </span><br><span class="line"># Probability estimates of the positive class</span><br><span class="line">y_scores = np.array([<span class="number">0</span>,<span class="number">1</span>, <span class="number">0.4</span>, <span class="number">0.35</span>, <span class="number">0.8</span>])</span><br><span class="line">auc_score = metrics.roc_auc_score(y_true, y_scores)</span><br><span class="line">&gt;&gt;&gt;print(auc_score)</span><br><span class="line"><span class="number">0.75</span></span><br><span class="line"></span><br><span class="line">y_true = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>]</span><br><span class="line">y_pred = [<span class="number">0</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>]</span><br><span class="line">&gt;&gt;&gt;print(f1_score(f1_score(y_true, y_pred, average='micro')))</span><br><span class="line"><span class="number">0.33</span>...</span><br></pre></td></tr></table></figure>
-<h4 id="reference">Reference</h4>
-<ul>
-<li><a href="https://en.wikipedia.org/wiki/Confusion_matrix" target="_blank" rel="noopener">Confusion matrix Wikipedia</a></li>
-<li><a href="https://www.zhihu.com/question/30643044" target="_blank" rel="noopener">精确率、召回率、F1 值、ROC、AUC 各自的优缺点是什么？</a></li>
-<li><a href="https://towardsdatascience.com/understanding-auc-roc-curve-68b2303cc9c5" target="_blank" rel="noopener">Understanding AUC - ROC Curve</a></li>
-</ul>
-
-          
+<p>I am going to introduce the concept of Confusion Matrix before talking about the ROC as well as AUC since I think this will help us to understand them better. Confusion Matrix is a performance measurement for machine learning classification, which is a specific table layout. Let us undetstand TP, FP, FN and TN first.
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/04/01/ROC-and-AUC/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
-    </div>
+    </p></div>
     
     
     
@@ -1228,7 +1151,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -1301,7 +1224,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">9.1k</span>
+    <span title="Site words total count">9.2k</span>
   
 </div>
 

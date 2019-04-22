@@ -90,7 +90,7 @@
   
     
     
-    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Merriweather:300,300italic,400,400italic,700,700italic|Lora:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic|Lora:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|Consolas:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
   
 
 
@@ -143,7 +143,7 @@
 <meta property="og:image" content="http://yoursite.com/images/regularization/L1_1.jpg">
 <meta property="og:image" content="http://yoursite.com/images/regularization/L1_2.jpg">
 <meta property="og:image" content="http://yoursite.com/images/regularization/L1_3.jpg">
-<meta property="og:updated_time" content="2019-04-03T11:02:53.474Z">
+<meta property="og:updated_time" content="2019-04-22T06:00:57.805Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Regularization in Machine Learnig">
 <meta name="twitter:description" content="Regularization in Machine Learning About Regularization The model will become overfitting when it is trying too hard to capture the outliers in the training dataset and the accuracy will have a low ac">
@@ -398,8 +398,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2019-04-03T22:02:53+11:00">
-                2019-04-03
+              <time title="Post modified" itemprop="dateModified" datetime="2019-04-22T16:00:57+10:00">
+                2019-04-22
               </time>
             
           </span>
@@ -492,7 +492,7 @@
       
         <h1 id="regularization-in-machine-learning">Regularization in Machine Learning</h1>
 <h1 id="about-regularization">About Regularization</h1>
-<p>The model will become overfitting when it is trying too hard to capture the outliers in the training dataset and the accuracy will have a low accuarcy in the testing set. Regularization is one of the most efficient methods for avoiding overfitting, in the essence, this approach could penalise weights(coefficients) in the model by making some of them toward to zero.</p>
+<p>The model will become overfitting when it is trying too hard to capture the outliers in the training dataset and the accuracy will have a low accuarcy in the testing set.<a id="more"></a> Regularization is one of the most efficient methods for avoiding overfitting, in the essence, this approach could penalise weights(coefficients) in the model by making some of them toward to zero.</p>
 <h1 id="what-is-the-problem">What is the problem?</h1>
 <p>Assume that we have an empirical loss function R: <span class="math display">\[R_{emp} = {1\over{N}}\sum_{i=1}^NL(f(x_i), y_i)\]</span> and the model function f: <span class="math display">\[f(x_i) = w_0x_0 + w_1x_1 + w_2x_2 + w_3x_3 + ... + w_nx_n\]</span> We can see the polynomial f is so complicated if there is no zero or very less zero in metrix <strong><em>w</em></strong> (the set of weights), and the model is also complex, which means this model can just fit well in the training set, in other word, it has a poor generalization ability. Obviously, we do not need that many non-zero and too large weights since not every features is useful in the estimating. Regulariztion is the approach that can cope this trouble. Regularization function can be understood as the complxity of model (cause it is a function about weights), it can be the norm of the model parameter vector, and different choices have different constrains on the weights, so the effect is also different.</p>
 <p>Actually, both a large amount of weights and weights with large values can lead to a complex model. The derivative will have a large fluctuation if our model is trying to fit the outlier in a specific interval, and a large derivative means the weight will also have a large value, therefore, a complex model always have parameters with large values. In the essence of solving overfitting problem, reularization term reduces the complexity of model from controlling the number and the value of parameters, the term is a constraint for the parameters when we are trying to minimize the loss function.</p>
@@ -689,7 +689,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -778,7 +778,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">9.1k</span>
+    <span title="Site words total count">9.2k</span>
   
 </div>
 

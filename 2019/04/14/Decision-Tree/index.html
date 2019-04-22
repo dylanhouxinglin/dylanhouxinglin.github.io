@@ -90,7 +90,7 @@
   
     
     
-    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Merriweather:300,300italic,400,400italic,700,700italic|Lora:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic|Lora:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|Consolas:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
   
 
 
@@ -118,7 +118,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="Machine Learning,Decision Tree,">
 
 
 
@@ -130,6 +130,7 @@
 
 
 <meta name="description" content="About Decision Tree Decision Tree is a kind of common classification and regression algorithm in machine learning, although it&apos;s a basic method, some advanced learning algorithms such as GBDT (Gradien">
+<meta name="keywords" content="Machine Learning,Decision Tree">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Decision Tree">
 <meta property="og:url" content="http://yoursite.com/2019/04/14/Decision-Tree/index.html">
@@ -137,7 +138,7 @@
 <meta property="og:description" content="About Decision Tree Decision Tree is a kind of common classification and regression algorithm in machine learning, although it&apos;s a basic method, some advanced learning algorithms such as GBDT (Gradien">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/images/decision_tree/decision_tree_1.png">
-<meta property="og:updated_time" content="2019-04-21T13:19:51.825Z">
+<meta property="og:updated_time" content="2019-04-22T06:06:04.740Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Decision Tree">
 <meta name="twitter:description" content="About Decision Tree Decision Tree is a kind of common classification and regression algorithm in machine learning, although it&apos;s a basic method, some advanced learning algorithms such as GBDT (Gradien">
@@ -395,12 +396,34 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2019-04-21T23:19:51+10:00">
-                2019-04-21
+              <time title="Post modified" itemprop="dateModified" datetime="2019-04-22T16:06:04+10:00">
+                2019-04-22
               </time>
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Machine-Learning/" itemprop="url" rel="index">
+                    <span itemprop="name">Machine Learning</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -467,6 +490,7 @@
       
         <h1 id="about-decision-tree">About Decision Tree</h1>
 <p>Decision Tree is a kind of common classification and regression algorithm in machine learning, although it's a basic method, some advanced learning algorithms such as GBDT (Gradient Boosting Decision Tree) are established on it. <a id="more"></a>There are approximate three steps in decision tree learning: feature selection, decision tree generating and decision tree pruning. In the essence, decision tree splits the data set according to the information gain, which means this algorithm chooses the features which can make the data set has the minimum uncertainty in each steps. In this blog, I'm going to introduce the feature selection, decision tree generating and decision tree pruning respectively, and the classification and regression tree (CART) will be detailedly interpreted.</p>
+<p><strong>All the codes in this atricle are collected on my github: <a href="https://github.com/dylanhouxinglin/lihang-statistical-learning-method/tree/master/lihang-code/DecisionTree" target="_blank" rel="noopener">Decision Tree</a></strong></p>
 <h1 id="feature-selection">Feature Selection</h1>
 <p>We need a calculation method or regulation to mark each features in the data set since the essence of decision tree learning is splitting the data set based on features, in other word, we need to determine which feature will be the 'hero' or the 'entrance' in the next level of the decision tree. Therefore, we need to calculate the <strong>information gain</strong> for the current data set.</p>
 <h2 id="entropy-and-conditional-entropy">Entropy and Conditional Entropy</h2>
@@ -583,6 +607,7 @@
 <p>ID3, C4.5 and CART are all the algorithms in decision tree, since there's tiny different between ID3 and C4.5, here I just compare the two algorithms : ID3 and CART.</p>
 <p><strong>The generating principle.</strong> In ID3 algorithm, we use <strong>information gain</strong> to determine the data set splitting, we choice the feature which has the largest value of information gain in each step, split the data set into plenty of units according to <span class="math inline">\(A_i = a_i\)</span>, which means the decision tree which is generated by ID3 may not be a binary tree, it's depends on the possible value of splitting features. However, in CART, we use <strong>Gini index</strong> as the splitting condition, we choice the feature which has the smallest gini index value in each step, split the data set according to whether <span class="math inline">\(A_i = a_i\)</span>, that means the CART is a <strong>binary tree</strong>. The similarity of two algorithms is on iterating, both the two methods need to calculate the information gain or gini index for each possible values for each features in each step.</p>
 <p><strong>The pruning process.</strong> The basic idea of two pruning methods is similar, both of them use the idea of pre-pruning, which means the essence of pruning is judge whether it's worth to cut the brunch by comparing the loss function between before and after pruning. The pruning algorithm in CART is more advanced since the parameter <span class="math inline">\(\alpha\)</span> is not a fixed number, and the pruning is happened in the local area (actually, the pruning in ID3 can also be improved to cut in a local area cause each time we just cut one brunch in the tree, which means the difference of loss function in that local area has the same value with that in the entire tree). CART pruning algorithm uses a series <span class="math inline">\(\alpha\)</span> to find out the optimal tree instead of using a fixed value.</p>
+<p><strong>All the codes in this atricle are collected on my github: <a href="https://github.com/dylanhouxinglin/lihang-statistical-learning-method/tree/master/lihang-code/DecisionTree" target="_blank" rel="noopener">Decision Tree</a></strong></p>
 <h1 id="references">References</h1>
 <ul>
 <li><a href="http://www.dgt-factory.com/uploads/2018/07/0725/%E7%BB%9F%E8%AE%A1%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95.pdf" target="_blank" rel="noopener">统计学习方法</a></li>
@@ -602,6 +627,14 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Machine-Learning/" rel="tag"># Machine Learning</a>
+          
+            <a href="/tags/Decision-Tree/" rel="tag"># Decision Tree</a>
+          
+        </div>
       
 
       
@@ -723,7 +756,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -812,7 +845,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">9.1k</span>
+    <span title="Site words total count">9.2k</span>
   
 </div>
 
