@@ -118,7 +118,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="Machine Learning,Recommender System,">
 
 
 
@@ -129,15 +129,18 @@
 
 
 
-<meta name="keywords" content="Recommender System &#x2F; Machine Learning">
-<meta property="og:type" content="website">
-<meta property="og:title" content="about">
-<meta property="og:url" content="http://yoursite.com/about/index.html">
+<meta name="description" content="隐语义模型实践 关于隐语义模型(latent factor model)的介绍，项亮博士在《推荐系统实践》中有过介绍，尽管书中部分公式存在纰漏，一些代码缺少解释，但这本书的确是推荐系统方向非常非常棒的书籍.">
+<meta name="keywords" content="Machine Learning,Recommender System">
+<meta property="og:type" content="article">
+<meta property="og:title" content="隐语义模型实践">
+<meta property="og:url" content="http://yoursite.com/2019/05/08/隐语义模型实践/index.html">
 <meta property="og:site_name" content="Just For Fun">
+<meta property="og:description" content="隐语义模型实践 关于隐语义模型(latent factor model)的介绍，项亮博士在《推荐系统实践》中有过介绍，尽管书中部分公式存在纰漏，一些代码缺少解释，但这本书的确是推荐系统方向非常非常棒的书籍.">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-25T07:58:56.677Z">
+<meta property="og:updated_time" content="2019-05-08T13:13:31.014Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="about">
+<meta name="twitter:title" content="隐语义模型实践">
+<meta name="twitter:description" content="隐语义模型实践 关于隐语义模型(latent factor model)的介绍，项亮博士在《推荐系统实践》中有过介绍，尽管书中部分公式存在纰漏，一些代码缺少解释，但这本书的确是推荐系统方向非常非常棒的书籍.">
 
 
 
@@ -167,13 +170,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/about/">
+  <link rel="canonical" href="http://yoursite.com/2019/05/08/隐语义模型实践/">
 
 
 
 
 
-  <title>about | Just For Fun</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>隐语义模型实践 | Just For Fun</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -330,34 +333,259 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/08/隐语义模型实践/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="dylan_houxinglin">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/head.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Just For Fun">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-	<h1 class="post-title" itemprop="name headline">about</h1>
-
-
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
+          <h1 class="post-title" itemprop="name headline">隐语义模型实践</h1>
+        
+
+        <div class="post-meta">
+		
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-05-08T22:54:56+10:00">
+                2019-05-08
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2019-05-08T23:13:31+10:00">
+                2019-05-08
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Recommender-System/" itemprop="url" rel="index">
+                    <span itemprop="name">Recommender System</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Recommender-System/Neighbourhood-based/" itemprop="url" rel="index">
+                    <span itemprop="name">Neighbourhood-based</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
-        
-      </div>
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  1.5k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  6
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
       
+
+      
+        <h2 id="隐语义模型实践">隐语义模型实践</h2>
+<p>关于隐语义模型(latent factor model)的介绍，项亮博士在《推荐系统实践》中有过介绍，尽管书中部分公式存在纰漏，一些代码缺少解释，但这本书的确是推荐系统方向非常非常棒的书籍. <a id="more"></a> 我在用python实现书中隐语义模型时遇到了一些问题和坑，因此用这篇博客进行记录并总结，之后有新的或更深的理解会及时更新本文.</p>
+<h2 id="关于latent-factor-model">关于Latent Factor Model</h2>
+<p>隐语义模型本质上是通过对用户历史行为中的items进行聚类，从而完成推荐. 这样做的好处在于我们不需要对样本进行标记，在分类过程中也不需要关心类别的可解释性. LFM通过在用户和物品中构建一个“中间层”的方式来建立联系，使用算法自动得到物品和用户的分类权数. LFM通过以下模型来衡量这层关系:<br>
+<span class="math display">\[R_{UI} = P_{U}*Q_{I} = \sum_{k=1}^K p_{uk}*q_{ki}\]</span><br>
+其中<span class="math inline">\(K\)</span>为“中间层”中隐类的个数，我们笼统的把用户历史行为中的物品划分为<span class="math inline">\(K\)</span>个类，每个类对于每个用户都学习一个权重参数，表示该类在用户历史行为中的权重，公式中<span class="math inline">\(P_{uk}\)</span>用来衡量用户和<span class="math inline">\(K\)</span>个类别的关系；<span class="math inline">\(Q_{ki}\)</span>用来衡量每个物品和<span class="math inline">\(K\)</span>个类之间的关系，LFM模型需要学习每个物品所占每个类的权重参数，我们将两者相乘就可以得到用户对每个物品的兴趣度.</p>
+<p>对于模型，我们首先需要定义好损失函数：<br>
+<span class="math display">\[C = \sum_{(u,i)\in k}^K (r_{ui} - \hat{r_{ui}})^2 = \sum_{(u,i)\in k}^K (r_{ui} - \sum_{k=1}^K p_{uk}*q_{ki})^2 + \lambda ||p_u||_2^2 + \lambda ||q_i||_2^2\]</span><br>
+为了优化目标函数，我们还需要对 <span class="math inline">\(p\)</span> 和 <span class="math inline">\(q\)</span> 分别求出其一阶偏导数(partial derivertive) :<br>
+<span class="math display">\[{\partial{C}\over p_{uk}} = 2(r_{ui} - \sum_{k=1}^K p_{uk}*q_{ki})(-q_{ki}) + 2\lambda p_{uk} = 2*error*(-q_{ki}) + 2\lambda p_{uk}\]</span><br>
+<span class="math display">\[{\partial{C}\over q_{ki}} = 2(r_{ui} - \sum_{k=1}^K p_{uk}*q_{ki})(-p_{uk}) + 2\lambda p_{ki} = 2*error*(-p_{uk}) + 2\lambda q_{ki}\]</span><br>
+之后，我们需要在每次迭代时使用梯度下降法更新这两个权重参数 :<br>
+<span class="math display">\[p_{uk} = p_{uk} - \alpha {\partial{C}\over p_{uk}}\]</span><br>
+<span class="math display">\[q_{ki} = q_{ki} - \alpha {\partial{C}\over q_{ki}}\]</span></p>
+<h2 id="lfm实现">LFM实现</h2>
+<h3 id="初始化模型">初始化模型</h3>
+<p>根据书中的代码，模型训练之前需要首先初始化模型，即初始化两个权重的值. 可以直接使用<code>numpy.random.rand()</code> 函数 :</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">init_model</span><span class="params">(self)</span>:</span>  </span><br><span class="line">    <span class="keyword">for</span> user <span class="keyword">in</span> self.user_item.keys():  </span><br><span class="line">        self.P[user] = np.random.rand(self.K)  </span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> item <span class="keyword">in</span> self.item_pool:  </span><br><span class="line">        self.Q[item] = np.random.rand(self.K)</span><br></pre></td></tr></table></figure>
+<h3 id="采样">采样</h3>
+<p>对于每一个用户，根据物品的流行度进行负采样，即根据物品的热门程度构建负样本，因为我们一般认为如果用户没有对热门物品有交互行为，可能意味着用户对其不感兴趣，而对于长尾物品，用户可能未曾有交互机会，因此不能够一定程度上认定对其不感兴趣，以下为采样函数 :</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">collect_samples</span><span class="params">(self, user_items)</span>:</span></span><br><span class="line">    <span class="string">'''</span></span><br><span class="line"><span class="string">    collect samples, set the items which the</span></span><br><span class="line"><span class="string">    user hava interacted as positives; and denote</span></span><br><span class="line"><span class="string">    the popular items which user haven't interacted</span></span><br><span class="line"><span class="string">    as negatives.</span></span><br><span class="line"><span class="string">    @user_items: item set of user (set)</span></span><br><span class="line"><span class="string">    '''</span></span><br><span class="line">    <span class="comment"># collect positive samples</span></span><br><span class="line">    labels = dict()</span><br><span class="line">    <span class="keyword">for</span> movie <span class="keyword">in</span> user_items:</span><br><span class="line">        labels[movie] = <span class="number">1</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># collect negative smaples</span></span><br><span class="line">    n_negative = <span class="number">0</span></span><br><span class="line">    i = <span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> n_negative &lt; len(user_items)*self.ratio:</span><br><span class="line">        <span class="comment">#negative_sample = self.item_pool[np.random.randint(0, len(self.item_pool)-1)]</span></span><br><span class="line">        negative_sample = self.item_pool[i]</span><br><span class="line">        i += <span class="number">1</span></span><br><span class="line">        <span class="keyword">if</span> negative_sample <span class="keyword">in</span> labels:</span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line">        labels[negative_sample] = <span class="number">0</span></span><br><span class="line">        n_negative += <span class="number">1</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> labels</span><br></pre></td></tr></table></figure>
+<p>这里在对负样本进行采集时，有两种思路：</p>
+<ol type="1">
+<li><p>对热门物品按照交互数量进行排序，每次采样时从最热门的物品开始检索；</p></li>
+<li><p>将所有物品存储在list当中，每次采样时随机采样；</p></li>
+</ol>
+<p>第一种方法由于每次迭代时的负样本相同，因此可以快速收敛，理论上这样训练出的模型不具备较好的泛化能力，尤其当用户兴趣广泛、历史行为较少时，但实际实践中效果却稍好，猜测可能时由于数据量较小的原因，这一点需要进一步探索； 第二种方法由于list中存在重复的物品，而且越热门的物品因为交互次数多而重复更多，因此随机采样也符合根据流行度采样的要求，在实验中发现由于每次训练时的负样本不相同，损失函数的值一直较大，虽然随着迭代次数的增加有所改善，但效果稍差.</p>
+<h3 id="训练">训练</h3>
+<p>在训练中，根据上文中提到的公式进行迭代训练，优化损失函数 : <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> epoch <span class="keyword">in</span> range(self.epoches):</span><br><span class="line">    <span class="keyword">for</span> user, items <span class="keyword">in</span> self.user_item.items():</span><br><span class="line">        samples = self.collect_samples(items)</span><br><span class="line">            </span><br><span class="line">        <span class="comment"># samples : &#123;movie_id : label&#125;</span></span><br><span class="line">        <span class="keyword">for</span> item, label <span class="keyword">in</span> samples.items():</span><br><span class="line">            error = label - self.predict(user, item)</span><br><span class="line">            self.P[user] += self.alpha * (error * self.Q[item] - </span><br><span class="line">                self.lambda_r * self.P[user])</span><br><span class="line">            self.Q[item] += self.alpha * (error * self.P[user] - </span><br><span class="line">                self.lambda_r * self.Q[item])</span><br></pre></td></tr></table></figure></p>
+<p>这里在计算残差时需要用到<code>predict()</code>函数，需要注意的是，由于我们的样本标签为 0 和 1，因此在计算完成之后需要用 sigmoid 函数处理 : <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">predict</span><span class="params">(self, user, item)</span>:</span></span><br><span class="line">       rank = np.dot(self.P[user], self.Q[item])</span><br><span class="line">       rank = <span class="number">1.0</span>/(<span class="number">1</span> + np.exp(-rank))</span><br><span class="line">       </span><br><span class="line">       <span class="keyword">return</span> rank</span><br></pre></td></tr></table></figure></p>
+<h3 id="推荐">推荐</h3>
+<p>对每一个不在用户历史交互列表中的物品，计算推荐分数，然后从高到低排序，选取前N个作为推荐结果 : <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">recommend</span><span class="params">(self, user, N)</span>:</span></span><br><span class="line">       iteracted_item = self.user_item[user]</span><br><span class="line">       recommend_score = dict()</span><br><span class="line">       <span class="keyword">for</span> item <span class="keyword">in</span> self.item_pool:</span><br><span class="line">           <span class="keyword">if</span> item <span class="keyword">not</span> <span class="keyword">in</span> iteracted_item:</span><br><span class="line">               <span class="comment"># recommend_score : item_id : score</span></span><br><span class="line">               recommend_score[item] = np.dot(self.P[user], self.Q[item])</span><br><span class="line">       </span><br><span class="line">       recs = sorted(recommend_score.items(), reverse=<span class="literal">True</span>, key=<span class="keyword">lambda</span> x:x[<span class="number">1</span>])[<span class="number">0</span>:N]</span><br><span class="line">       </span><br><span class="line">       <span class="keyword">return</span> recs</span><br></pre></td></tr></table></figure></p>
+<h2 id="参考">参考</h2>
+<ul>
+<li><a href="%5Bhttps://donche.github.io/2017/10/28/LFMRecommender.html#2-lfm-%E7%9A%84%E5%AE%9E%E7%8E%B0%5D(https://donche.github.io/2017/10/28/LFMRecommender.html#2-lfm-%E7%9A%84%E5%AE%9E%E7%8E%B0)">隐语义模型 (LFM) 推荐算法</a></li>
+<li><a href="%5Bhttps://github.com/Magic-Bubble/RecommendSystemPractice/blob/master/Chapter2/%E9%9A%90%E8%AF%AD%E4%B9%89%E6%A8%A1%E5%9E%8B.ipynb%5D(https://github.com/Magic-Bubble/RecommendSystemPractice/blob/master/Chapter2/%E9%9A%90%E8%AF%AD%E4%B9%89%E6%A8%A1%E5%9E%8B.ipynb)">隐语义模型 code from github</a></li>
+</ul>
+
       
     </div>
     
     
     
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Machine-Learning/" rel="tag"># Machine Learning</a>
+          
+            <a href="/tags/Recommender-System/" rel="tag"># Recommender System</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/02/2019-5-2-近期问题总结/" rel="next" title="2019.5.2 近期问题总结">
+                <i class="fa fa-chevron-left"></i> 2019.5.2 近期问题总结
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
@@ -390,8 +618,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -475,6 +712,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#隐语义模型实践"><span class="nav-number">1.</span> <span class="nav-text">隐语义模型实践</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关于latent-factor-model"><span class="nav-number">2.</span> <span class="nav-text">关于Latent Factor Model</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lfm实现"><span class="nav-number">3.</span> <span class="nav-text">LFM实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#初始化模型"><span class="nav-number">3.1.</span> <span class="nav-text">初始化模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#采样"><span class="nav-number">3.2.</span> <span class="nav-text">采样</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#训练"><span class="nav-number">3.3.</span> <span class="nav-text">训练</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#推荐"><span class="nav-number">3.4.</span> <span class="nav-text">推荐</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">4.</span> <span class="nav-text">参考</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -986,7 +1239,42 @@
         onPopupClose();
       }
     });
-  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config("");
 </script>
@@ -1004,21 +1292,6 @@
 </script>
 <!-- End: Injected MathJax -->
 <!-- hexo-inject:end -->
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-  
-
-  
   
 
 
