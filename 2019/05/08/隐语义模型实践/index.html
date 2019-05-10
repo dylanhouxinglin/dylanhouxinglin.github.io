@@ -129,18 +129,18 @@
 
 
 
-<meta name="description" content="隐语义模型实践 关于隐语义模型(latent factor model)的介绍，项亮博士在《推荐系统实践》中有过介绍，尽管书中部分公式存在纰漏，一些代码缺少解释，但这本书的确是推荐系统方向非常非常棒的书籍.">
+<meta name="description" content="隐语义模型 关于隐语义模型(latent factor model)的介绍，项亮博士在《推荐系统实践》中有过介绍，这本书的确是推荐系统方向非常非常棒的书籍. 我在用python实现书中隐语义模型时遇到了一些问题和坑，因此用这篇博客进行记录并总结，之后有新的或更深的理解会及时更新本文.">
 <meta name="keywords" content="Machine Learning,Recommender System">
 <meta property="og:type" content="article">
-<meta property="og:title" content="隐语义模型实践">
+<meta property="og:title" content="隐语义模型(LFM)">
 <meta property="og:url" content="http://yoursite.com/2019/05/08/隐语义模型实践/index.html">
 <meta property="og:site_name" content="Just For Fun">
-<meta property="og:description" content="隐语义模型实践 关于隐语义模型(latent factor model)的介绍，项亮博士在《推荐系统实践》中有过介绍，尽管书中部分公式存在纰漏，一些代码缺少解释，但这本书的确是推荐系统方向非常非常棒的书籍.">
+<meta property="og:description" content="隐语义模型 关于隐语义模型(latent factor model)的介绍，项亮博士在《推荐系统实践》中有过介绍，这本书的确是推荐系统方向非常非常棒的书籍. 我在用python实现书中隐语义模型时遇到了一些问题和坑，因此用这篇博客进行记录并总结，之后有新的或更深的理解会及时更新本文.">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-08T13:13:31.014Z">
+<meta property="og:updated_time" content="2019-05-10T11:29:09.993Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="隐语义模型实践">
-<meta name="twitter:description" content="隐语义模型实践 关于隐语义模型(latent factor model)的介绍，项亮博士在《推荐系统实践》中有过介绍，尽管书中部分公式存在纰漏，一些代码缺少解释，但这本书的确是推荐系统方向非常非常棒的书籍.">
+<meta name="twitter:title" content="隐语义模型(LFM)">
+<meta name="twitter:description" content="隐语义模型 关于隐语义模型(latent factor model)的介绍，项亮博士在《推荐系统实践》中有过介绍，这本书的确是推荐系统方向非常非常棒的书籍. 我在用python实现书中隐语义模型时遇到了一些问题和坑，因此用这篇博客进行记录并总结，之后有新的或更深的理解会及时更新本文.">
 
 
 
@@ -176,7 +176,7 @@
 
 
 
-  <title>隐语义模型实践 | Just For Fun</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>隐语义模型(LFM) | Just For Fun</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -362,7 +362,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">隐语义模型实践</h1>
+          <h1 class="post-title" itemprop="name headline">隐语义模型(LFM)</h1>
         
 
         <div class="post-meta">
@@ -391,8 +391,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2019-05-08T23:13:31+10:00">
-                2019-05-08
+              <time title="Post modified" itemprop="dateModified" datetime="2019-05-10T21:29:09+10:00">
+                2019-05-10
               </time>
             
           </span>
@@ -452,7 +452,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  1.5k
+                  1.7k
                 </span>
               
 
@@ -489,8 +489,8 @@
       
 
       
-        <h2 id="隐语义模型实践">隐语义模型实践</h2>
-<p>关于隐语义模型(latent factor model)的介绍，项亮博士在《推荐系统实践》中有过介绍，尽管书中部分公式存在纰漏，一些代码缺少解释，但这本书的确是推荐系统方向非常非常棒的书籍. <a id="more"></a> 我在用python实现书中隐语义模型时遇到了一些问题和坑，因此用这篇博客进行记录并总结，之后有新的或更深的理解会及时更新本文.</p>
+        <h2 id="隐语义模型">隐语义模型</h2>
+<p>关于隐语义模型(latent factor model)的介绍，项亮博士在《推荐系统实践》中有过介绍，这本书的确是推荐系统方向非常非常棒的书籍. 我在用python实现书中隐语义模型时遇到了一些问题和坑，因此用这篇博客进行记录并总结，之后有新的或更深的理解会及时更新本文. <a id="more"></a></p>
 <h2 id="关于latent-factor-model">关于Latent Factor Model</h2>
 <p>隐语义模型本质上是通过对用户历史行为中的items进行聚类，从而完成推荐. 这样做的好处在于我们不需要对样本进行标记，在分类过程中也不需要关心类别的可解释性. LFM通过在用户和物品中构建一个“中间层”的方式来建立联系，使用算法自动得到物品和用户的分类权数. LFM通过以下模型来衡量这层关系:<br>
 <span class="math display">\[R_{UI} = P_{U}*Q_{I} = \sum_{k=1}^K p_{uk}*q_{ki}\]</span><br>
@@ -506,22 +506,82 @@
 <h2 id="lfm实现">LFM实现</h2>
 <h3 id="初始化模型">初始化模型</h3>
 <p>根据书中的代码，模型训练之前需要首先初始化模型，即初始化两个权重的值. 可以直接使用<code>numpy.random.rand()</code> 函数 :</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">init_model</span><span class="params">(self)</span>:</span>  </span><br><span class="line">    <span class="keyword">for</span> user <span class="keyword">in</span> self.user_item.keys():  </span><br><span class="line">        self.P[user] = np.random.rand(self.K)  </span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> item <span class="keyword">in</span> self.item_pool:  </span><br><span class="line">        self.Q[item] = np.random.rand(self.K)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">init_model</span><span class="params">(self)</span>:</span>  </span><br><span class="line">    <span class="keyword">for</span> user <span class="keyword">in</span> self.user_item.keys():  </span><br><span class="line">        self.P[user] = np.random.rand(self.K)  </span><br><span class="line">      </span><br><span class="line">    <span class="keyword">for</span> item <span class="keyword">in</span> self.item_pool:  </span><br><span class="line">        self.Q[item] = np.random.rand(self.K)</span><br></pre></td></tr></table></figure>
 <h3 id="采样">采样</h3>
 <p>对于每一个用户，根据物品的流行度进行负采样，即根据物品的热门程度构建负样本，因为我们一般认为如果用户没有对热门物品有交互行为，可能意味着用户对其不感兴趣，而对于长尾物品，用户可能未曾有交互机会，因此不能够一定程度上认定对其不感兴趣，以下为采样函数 :</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">collect_samples</span><span class="params">(self, user_items)</span>:</span></span><br><span class="line">    <span class="string">'''</span></span><br><span class="line"><span class="string">    collect samples, set the items which the</span></span><br><span class="line"><span class="string">    user hava interacted as positives; and denote</span></span><br><span class="line"><span class="string">    the popular items which user haven't interacted</span></span><br><span class="line"><span class="string">    as negatives.</span></span><br><span class="line"><span class="string">    @user_items: item set of user (set)</span></span><br><span class="line"><span class="string">    '''</span></span><br><span class="line">    <span class="comment"># collect positive samples</span></span><br><span class="line">    labels = dict()</span><br><span class="line">    <span class="keyword">for</span> movie <span class="keyword">in</span> user_items:</span><br><span class="line">        labels[movie] = <span class="number">1</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># collect negative smaples</span></span><br><span class="line">    n_negative = <span class="number">0</span></span><br><span class="line">    i = <span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> n_negative &lt; len(user_items)*self.ratio:</span><br><span class="line">        <span class="comment">#negative_sample = self.item_pool[np.random.randint(0, len(self.item_pool)-1)]</span></span><br><span class="line">        negative_sample = self.item_pool[i]</span><br><span class="line">        i += <span class="number">1</span></span><br><span class="line">        <span class="keyword">if</span> negative_sample <span class="keyword">in</span> labels:</span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line">        labels[negative_sample] = <span class="number">0</span></span><br><span class="line">        n_negative += <span class="number">1</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> labels</span><br></pre></td></tr></table></figure>
-<p>这里在对负样本进行采集时，有两种思路：</p>
-<ol type="1">
-<li><p>对热门物品按照交互数量进行排序，每次采样时从最热门的物品开始检索；</p></li>
-<li><p>将所有物品存储在list当中，每次采样时随机采样；</p></li>
-</ol>
-<p>第一种方法由于每次迭代时的负样本相同，因此可以快速收敛，理论上这样训练出的模型不具备较好的泛化能力，尤其当用户兴趣广泛、历史行为较少时，但实际实践中效果却稍好，猜测可能时由于数据量较小的原因，这一点需要进一步探索； 第二种方法由于list中存在重复的物品，而且越热门的物品因为交互次数多而重复更多，因此随机采样也符合根据流行度采样的要求，在实验中发现由于每次训练时的负样本不相同，损失函数的值一直较大，虽然随着迭代次数的增加有所改善，但效果稍差.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">collect_samples</span><span class="params">(self, items)</span>:</span></span><br><span class="line">    <span class="comment"># collect positive samples</span></span><br><span class="line">    labels = dict()</span><br><span class="line">    <span class="keyword">for</span> movie <span class="keyword">in</span> items:</span><br><span class="line">        labels[movie] = <span class="number">1</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># collect negative smaples</span></span><br><span class="line">    n_negative = <span class="number">0</span></span><br><span class="line">    </span><br><span class="line">    seen = set(items)</span><br><span class="line">    pos_num = len(seen)</span><br><span class="line">    item = np.random.choice(self.items, int(pos_num*self.ratio*<span class="number">3</span>), self.pops)</span><br><span class="line">    item = [x <span class="keyword">for</span> x <span class="keyword">in</span> item <span class="keyword">if</span> x <span class="keyword">not</span> <span class="keyword">in</span> seen][:int(pos_num*self.ratio)]</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> item:</span><br><span class="line">        labels[i] = <span class="number">0</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> labels</span><br></pre></td></tr></table></figure>
 <h3 id="训练">训练</h3>
-<p>在训练中，根据上文中提到的公式进行迭代训练，优化损失函数 : <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> epoch <span class="keyword">in</span> range(self.epoches):</span><br><span class="line">    <span class="keyword">for</span> user, items <span class="keyword">in</span> self.user_item.items():</span><br><span class="line">        samples = self.collect_samples(items)</span><br><span class="line">            </span><br><span class="line">        <span class="comment"># samples : &#123;movie_id : label&#125;</span></span><br><span class="line">        <span class="keyword">for</span> item, label <span class="keyword">in</span> samples.items():</span><br><span class="line">            error = label - self.predict(user, item)</span><br><span class="line">            self.P[user] += self.alpha * (error * self.Q[item] - </span><br><span class="line">                self.lambda_r * self.P[user])</span><br><span class="line">            self.Q[item] += self.alpha * (error * self.P[user] - </span><br><span class="line">                self.lambda_r * self.Q[item])</span><br></pre></td></tr></table></figure></p>
-<p>这里在计算残差时需要用到<code>predict()</code>函数，需要注意的是，由于我们的样本标签为 0 和 1，因此在计算完成之后需要用 sigmoid 函数处理 : <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">predict</span><span class="params">(self, user, item)</span>:</span></span><br><span class="line">       rank = np.dot(self.P[user], self.Q[item])</span><br><span class="line">       rank = <span class="number">1.0</span>/(<span class="number">1</span> + np.exp(-rank))</span><br><span class="line">       </span><br><span class="line">       <span class="keyword">return</span> rank</span><br></pre></td></tr></table></figure></p>
+<p>在训练中，根据上文中提到的公式进行迭代训练，优化损失函数 : <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> epoch <span class="keyword">in</span> range(self.epoches):</span><br><span class="line">    <span class="keyword">for</span> user, items <span class="keyword">in</span> self.user_item.items():</span><br><span class="line">        samples = self.collect_samples(items)</span><br><span class="line">        <span class="comment"># samples : &#123;movie_id : label&#125;</span></span><br><span class="line">        <span class="keyword">for</span> item, label <span class="keyword">in</span> samples.items():</span><br><span class="line">            error = label - self.predict(user, item)</span><br><span class="line">            self.P[user] += self.alpha * (error * self.Q[item] - </span><br><span class="line">                self.lambda_r * self.P[user])</span><br><span class="line">            self.Q[item] += self.alpha * (error * self.P[user] - </span><br><span class="line">                self.lambda_r * self.Q[item])</span><br></pre></td></tr></table></figure></p>
 <h3 id="推荐">推荐</h3>
-<p>对每一个不在用户历史交互列表中的物品，计算推荐分数，然后从高到低排序，选取前N个作为推荐结果 : <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">recommend</span><span class="params">(self, user, N)</span>:</span></span><br><span class="line">       iteracted_item = self.user_item[user]</span><br><span class="line">       recommend_score = dict()</span><br><span class="line">       <span class="keyword">for</span> item <span class="keyword">in</span> self.item_pool:</span><br><span class="line">           <span class="keyword">if</span> item <span class="keyword">not</span> <span class="keyword">in</span> iteracted_item:</span><br><span class="line">               <span class="comment"># recommend_score : item_id : score</span></span><br><span class="line">               recommend_score[item] = np.dot(self.P[user], self.Q[item])</span><br><span class="line">       </span><br><span class="line">       recs = sorted(recommend_score.items(), reverse=<span class="literal">True</span>, key=<span class="keyword">lambda</span> x:x[<span class="number">1</span>])[<span class="number">0</span>:N]</span><br><span class="line">       </span><br><span class="line">       <span class="keyword">return</span> recs</span><br></pre></td></tr></table></figure></p>
-<h2 id="参考">参考</h2>
+<p>对每一个不在用户历史交互列表中的物品，计算推荐分数，然后从高到低排序，选取前N个作为推荐结果 : <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">recommend</span><span class="params">(self, user, N)</span>:</span></span><br><span class="line">    iteracted_item = self.user_item[user]</span><br><span class="line">    recommend_score = dict()</span><br><span class="line">    <span class="keyword">for</span> item <span class="keyword">in</span> self.item_pool:</span><br><span class="line">        <span class="keyword">if</span> item <span class="keyword">not</span> <span class="keyword">in</span> iteracted_item:</span><br><span class="line">            <span class="comment"># recommend_score : item_id : score</span></span><br><span class="line">            recommend_score[item] = np.dot(self.P[user], self.Q[item])</span><br><span class="line">    </span><br><span class="line">    recs = sorted(recommend_score.items(), reverse=<span class="literal">True</span>, key=<span class="keyword">lambda</span> x:x[<span class="number">1</span>])[<span class="number">0</span>:N]</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> recs</span><br></pre></td></tr></table></figure></p>
+<h2 id="问题总结">问题总结</h2>
+<h3 id="负样本采集">负样本采集</h3>
+<p>因为这里我们把用户对电影完成评分这一行为作为正样本，因此在构造训练集时需要采集相应的负样本，根据书中的介绍，在采集负样本时，应尽量选取和正样本数量相同且较热门的物品. 我在最初的尝试中每次训练时对用户按照物品流行度降序选取相同的物品，过程中发现 loss 可以下降到比较低的数值，但 recall 一直停留在 1.5 左右，且覆盖率较高(接近50%)，我认为这种方法在推荐过程中过于随机化 :</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">recall</th>
+<th style="text-align: center;">precision</th>
+<th style="text-align: center;">coverage</th>
+<th style="text-align: center;">popularity</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1.63</td>
+<td style="text-align: center;">5.42</td>
+<td style="text-align: center;">46.55</td>
+<td style="text-align: center;">5.61</td>
+</tr>
+</tbody>
+</table>
+<p>更加合理的方式是按照流行度随机采集负样本，这里我尝试了两种不同的方法.</p>
+<ol type="1">
+<li>将所有用户历史行为中的物品存储在 list 中，每次采样时随机抽取，由于流行度越高的物品出现的次数越多，因此这种抽取方式理论上实现了按照物品热度采用的思想. 但实际效果并不理想，原因在于用户交互过的物品有限，当采用次数没有达到一定量级时，不能保证尽可能的选出热门物品，可以看到此时 recall 和 precision 有明显提升：</li>
+</ol>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">recall</th>
+<th style="text-align: center;">precision</th>
+<th style="text-align: center;">coverage</th>
+<th style="text-align: center;">popularity</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">5.31</td>
+<td style="text-align: center;">17.63</td>
+<td style="text-align: center;">47.47</td>
+<td style="text-align: center;">3.89</td>
+</tr>
+</tbody>
+</table>
+<ol start="2" type="1">
+<li>按照物品出现的概率采样是我实验中发现效果比较好的方式，统计每种物品的出现次数，用<code>numpy.ramdom.choice()</code>函数按概率取样，发现 recall 和 precision 有明显提升，但覆盖率有所下降:</li>
+</ol>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">recall</th>
+<th style="text-align: center;">precision</th>
+<th style="text-align: center;">coverage</th>
+<th style="text-align: center;">popularity</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">7.74</td>
+<td style="text-align: center;">24.66</td>
+<td style="text-align: center;">41.90</td>
+<td style="text-align: center;">6.81</td>
+</tr>
+</tbody>
+</table>
+<p>负样本的采集对结果具有决定性的影响，每次选取不同的负样本进行训练具有更好的效果.</p>
+<h3 id="正则化参数">正则化参数</h3>
+<p>正则化的最用和意义在我另一篇文章中有较详细的介绍: <a href="https://dylanhouxinglin.github.io/2019/04/03/Regularization-in-Machine-Learnig/" target="_blank" rel="noopener">Regularization in Machine Learning</a>. 当正则化参数较大时，对模型的惩罚加大，损失函数可能会一直居高不下，下降缓慢并在较大值处收敛，这是由于模型较简单所导致的，可以根据结果调整参数大小，一般当 K 值较小时倾向于选取较小的正则化参数.</p>
+<h2 id="references">References</h2>
 <ul>
 <li><a href="%5Bhttps://donche.github.io/2017/10/28/LFMRecommender.html#2-lfm-%E7%9A%84%E5%AE%9E%E7%8E%B0%5D(https://donche.github.io/2017/10/28/LFMRecommender.html#2-lfm-%E7%9A%84%E5%AE%9E%E7%8E%B0)">隐语义模型 (LFM) 推荐算法</a></li>
 <li><a href="%5Bhttps://github.com/Magic-Bubble/RecommendSystemPractice/blob/master/Chapter2/%E9%9A%90%E8%AF%AD%E4%B9%89%E6%A8%A1%E5%9E%8B.ipynb%5D(https://github.com/Magic-Bubble/RecommendSystemPractice/blob/master/Chapter2/%E9%9A%90%E8%AF%AD%E4%B9%89%E6%A8%A1%E5%9E%8B.ipynb)">隐语义模型 code from github</a></li>
@@ -722,7 +782,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#隐语义模型实践"><span class="nav-number">1.</span> <span class="nav-text">隐语义模型实践</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关于latent-factor-model"><span class="nav-number">2.</span> <span class="nav-text">关于Latent Factor Model</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lfm实现"><span class="nav-number">3.</span> <span class="nav-text">LFM实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#初始化模型"><span class="nav-number">3.1.</span> <span class="nav-text">初始化模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#采样"><span class="nav-number">3.2.</span> <span class="nav-text">采样</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#训练"><span class="nav-number">3.3.</span> <span class="nav-text">训练</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#推荐"><span class="nav-number">3.4.</span> <span class="nav-text">推荐</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">4.</span> <span class="nav-text">参考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#隐语义模型"><span class="nav-number">1.</span> <span class="nav-text">隐语义模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关于latent-factor-model"><span class="nav-number">2.</span> <span class="nav-text">关于Latent Factor Model</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lfm实现"><span class="nav-number">3.</span> <span class="nav-text">LFM实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#初始化模型"><span class="nav-number">3.1.</span> <span class="nav-text">初始化模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#采样"><span class="nav-number">3.2.</span> <span class="nav-text">采样</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#训练"><span class="nav-number">3.3.</span> <span class="nav-text">训练</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#推荐"><span class="nav-number">3.4.</span> <span class="nav-text">推荐</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#问题总结"><span class="nav-number">4.</span> <span class="nav-text">问题总结</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#负样本采集"><span class="nav-number">4.1.</span> <span class="nav-text">负样本采集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#正则化参数"><span class="nav-number">4.2.</span> <span class="nav-text">正则化参数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#references"><span class="nav-number">5.</span> <span class="nav-text">References</span></a></li></ol></div>
             
 
           </div>
@@ -756,7 +816,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">11.3k</span>
+    <span title="Site words total count">11.5k</span>
   
 </div>
 
