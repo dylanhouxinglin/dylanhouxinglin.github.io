@@ -118,7 +118,7 @@
 
 
 
-  <meta name="keywords" content="Collaborative Filtering,">
+  <meta name="keywords" content="Hexo, NexT">
 
 
 
@@ -129,18 +129,18 @@
 
 
 
-<meta name="description" content="About Collaborative Filtering Collaborative filtering is a kind of neighbourhood-based algorithm in recommender system. User-based CF and Item-based CF are two common method to calculate the recommend">
-<meta name="keywords" content="Collaborative Filtering">
+<meta name="description" content="About Auto Encoder Auto Encoder is a popular feature extracting method in recent few years.">
+<meta name="keywords" content="Recommender System &#x2F; Machine Learning">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Collaborative Filtering">
-<meta property="og:url" content="http://yoursite.com/2019/04/29/Collaborative-Filtering/index.html">
+<meta property="og:title" content="Auto Encoder">
+<meta property="og:url" content="http://yoursite.com/2019/05/12/Auto-Encoder/index.html">
 <meta property="og:site_name" content="Just For Fun">
-<meta property="og:description" content="About Collaborative Filtering Collaborative filtering is a kind of neighbourhood-based algorithm in recommender system. User-based CF and Item-based CF are two common method to calculate the recommend">
+<meta property="og:description" content="About Auto Encoder Auto Encoder is a popular feature extracting method in recent few years.">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-29T06:38:11.440Z">
+<meta property="og:updated_time" content="2019-05-12T13:30:45.876Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Collaborative Filtering">
-<meta name="twitter:description" content="About Collaborative Filtering Collaborative filtering is a kind of neighbourhood-based algorithm in recommender system. User-based CF and Item-based CF are two common method to calculate the recommend">
+<meta name="twitter:title" content="Auto Encoder">
+<meta name="twitter:description" content="About Auto Encoder Auto Encoder is a popular feature extracting method in recent few years.">
 
 
 
@@ -170,13 +170,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/04/29/Collaborative-Filtering/">
+  <link rel="canonical" href="http://yoursite.com/2019/05/12/Auto-Encoder/">
 
 
 
 
 
-  <title>Collaborative Filtering | Just For Fun</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>Auto Encoder | Just For Fun</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -345,7 +345,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/29/Collaborative-Filtering/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/12/Auto-Encoder/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="dylan_houxinglin">
@@ -362,7 +362,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Collaborative Filtering</h1>
+          <h1 class="post-title" itemprop="name headline">Auto Encoder</h1>
         
 
         <div class="post-meta">
@@ -375,8 +375,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-29T16:34:27+10:00">
-                2019-04-29
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-05-12T23:29:15+10:00">
+                2019-05-12
               </time>
             
 
@@ -391,45 +391,12 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2019-04-29T16:38:11+10:00">
-                2019-04-29
+              <time title="Post modified" itemprop="dateModified" datetime="2019-05-12T23:30:45+10:00">
+                2019-05-12
               </time>
             
           </span>
 
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Recommender-System/" itemprop="url" rel="index">
-                    <span itemprop="name">Recommender System</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Recommender-System/Neighbourhood-based/" itemprop="url" rel="index">
-                    <span itemprop="name">Neighbourhood-based</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -452,7 +419,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  859
+                  15
                 </span>
               
 
@@ -468,7 +435,7 @@
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
                 <span title="Reading time">
-                  5
+                  1
                 </span>
               
             </div>
@@ -489,20 +456,8 @@
       
 
       
-        <h1 id="about-collaborative-filtering">About Collaborative Filtering</h1>
-<p>Collaborative filtering is a kind of neighbourhood-based algorithm in recommender system. User-based CF and Item-based CF are two common method to calculate the recommendation scores.<a id="more"></a> In this article, i am going to introduce the above two algorithms and codes in python will be given.</p>
-<p>All the codes in this article are collected in <a href="https://github.com/dylanhouxinglin/Recommender-in-Action/tree/master/%E5%9F%BA%E4%BA%8E%E9%82%BB%E5%9F%9F%E7%9A%84%E7%AE%97%E6%B3%95" target="_blank" rel="noopener">github</a>. Data set used in this section is from <a href="https://grouplens.org/datasets/movielens/" target="_blank" rel="noopener">MovieLens</a>, which includes 1 million ratings from 6000 users on 4000 movies.</p>
-<h2 id="user-cf">User CF</h2>
-<h3 id="basic-principle">Basic Principle</h3>
-<p>User CF (user-based collaborative filtering) recommends items to the specific users according to calculating the similarities among the user crowd, is one of the most common filtering method in collaborative filtering. Basically, we can find similar users through analysis their history behaviours.</p>
-<p>In the essence, we can use a two dimensional matrix to store and represent the values of similarity between every two different users. If a user comes to our application, we can recommend the items which are liked by his/her similar users but haven't been interacted by him/her. It seems the procedure is pretty easy once the approach of calculating the similarities among users is determined.</p>
-<p>However, it's extremely expensive to calculate all the similarities in the most real cases, since there are large amount of users in the database, and actually except a few specific applications, most users always don't have a large intersection with other most users. Almost each user has his/or own interest area, the common point is very small if there are huge amount of items and users in the system. Therefore, the similarity matrix will be very sparse, and the cost of calculating is high since most calculation will be useless.</p>
-<p>In terms of coping with this problem, we can establish an item-user table for each items first, which stores all the users who like it. Then iterate the user list for each items, update the corresponding values in the similarity matrix.</p>
-<h3 id="similarity-calculating-method">Similarity Calculating Method</h3>
-<h3 id="code">Code</h3>
-<p>To achieve the User CF algorithm, we need to load and split the data set first : <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">UserCF</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">load_data</span><span class="params">(self)</span>:</span></span><br><span class="line">        path1 = <span class="string">'movielens_data/users.dat'</span></span><br><span class="line">        path2 = <span class="string">'movielens_data/ratings.dat'</span></span><br><span class="line">        path3 = <span class="string">'movielens_data/movies.dat'</span></span><br><span class="line">        </span><br><span class="line">        users = pd.read_csv(path1, header = <span class="literal">None</span>, sep = <span class="string">'::'</span>)</span><br><span class="line">        ratings = pd.read_csv(path2, header = <span class="literal">None</span>, sep = <span class="string">'::'</span>)</span><br><span class="line">        movies = pd.read_csv(path3, header = <span class="literal">None</span>, sep = <span class="string">'::'</span>)</span><br><span class="line">        </span><br><span class="line">        users.columns = [<span class="string">'user_id'</span>, <span class="string">'gender'</span>, <span class="string">'age'</span>, <span class="string">'occupation'</span>, <span class="string">'zip_code'</span>]</span><br><span class="line">        ratings.columns = [<span class="string">'user_id'</span>, <span class="string">'movie_id'</span>, <span class="string">'rating'</span>, <span class="string">'timestamp'</span>]</span><br><span class="line">        movies.columns = [<span class="string">'movie_id'</span>, <span class="string">'title'</span>, <span class="string">'genres'</span>]</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> users, ratings, movies</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">split_train_test</span><span class="params">(self, users, ratings)</span>:</span></span><br><span class="line">        <span class="comment"># merge ratings and users set</span></span><br><span class="line">        all_data = ratings.merge(users, on = <span class="string">'user_id'</span>, how = <span class="string">'left'</span>)</span><br><span class="line">        </span><br><span class="line">        shuffled_indices = np.random.permutation(len(all_data))</span><br><span class="line">        test_set_size = int(len(all_data) * <span class="number">0.2</span>)</span><br><span class="line">        </span><br><span class="line">        test_indices = shuffled_indices[:test_set_size]</span><br><span class="line">        train_indices = shuffled_indices[test_set_size:]</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> all_data.iloc[train_indices], all_data.iloc[test_indices]</span><br></pre></td></tr></table></figure></p>
-<p>Then the similarity calculating : <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">user_similarity</span><span class="params">(self, train_data)</span>:</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># build inverse table for item_users</span></span><br><span class="line">    print(<span class="string">'establising the inverse table...'</span>)</span><br><span class="line">    self.item_users = dict()</span><br><span class="line">    <span class="keyword">for</span> index, row <span class="keyword">in</span> train_data.iterrows():</span><br><span class="line">        <span class="keyword">if</span> row[<span class="string">'movie_id'</span>] <span class="keyword">not</span> <span class="keyword">in</span> self.item_users:</span><br><span class="line">            self.item_users[row[<span class="string">'movie_id'</span>]] = set()</span><br><span class="line">        self.item_users[row[<span class="string">'movie_id'</span>]].add(row[<span class="string">'user_id'</span>])</span><br><span class="line">        </span><br><span class="line">    <span class="comment"># calculate co-rated items between users</span></span><br><span class="line">    print(<span class="string">'calculating the co-rated matrix...'</span>)</span><br><span class="line">    self.user_list = list(set(train_data[<span class="string">'user_id'</span>]))</span><br><span class="line">    movie_list_len = len(set(train_data[<span class="string">'movie_id'</span>]))</span><br><span class="line">    </span><br><span class="line">    C = [[<span class="number">0</span> <span class="keyword">for</span> i <span class="keyword">in</span> range(len(self.user_list))] <span class="keyword">for</span> i <span class="keyword">in</span> range(len(self.user_list))]</span><br><span class="line">    W = copy.deepcopy(C)</span><br><span class="line">    </span><br><span class="line">    self.N = dict()</span><br><span class="line">    i = <span class="number">1</span></span><br><span class="line">    <span class="keyword">for</span> movie, users <span class="keyword">in</span> self.item_users.items():</span><br><span class="line">        <span class="comment">#print(str(i) + ' in ' + str(movie_list_len))</span></span><br><span class="line">        i += <span class="number">1</span></span><br><span class="line">        <span class="keyword">for</span> u <span class="keyword">in</span> users:</span><br><span class="line">            <span class="keyword">if</span> self.user_list.index(u) <span class="keyword">not</span> <span class="keyword">in</span> self.N:</span><br><span class="line">                self.N[self.user_list.index(u)] = <span class="number">0</span></span><br><span class="line">            self.N[self.user_list.index(u)] += <span class="number">1</span></span><br><span class="line">            <span class="keyword">for</span> v <span class="keyword">in</span> users:</span><br><span class="line">                <span class="keyword">if</span> u == v:</span><br><span class="line">                    <span class="keyword">continue</span></span><br><span class="line">                <span class="comment">#C[self.user_list.index(u)][self.user_list.index(v)] += 1</span></span><br><span class="line">                C[self.user_list.index(u)][self.user_list.index(v)] += <span class="number">1</span> / math.log(<span class="number">1</span> + len(users))</span><br><span class="line">                </span><br><span class="line">    <span class="comment"># calculate finial similarity matrix W</span></span><br><span class="line">    print(<span class="string">'calculating the final similarity matrix...'</span>)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(C)):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(len(C)):</span><br><span class="line">            <span class="keyword">if</span> i == j <span class="keyword">or</span> C[i][j] == <span class="number">0</span>:</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            W[i][j] = C[i][j] / math.sqrt(self.N[i] * self.N[j])</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> W</span><br></pre></td></tr></table></figure></p>
-<p>Finally, recommend items to the specific users : <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">recommend</span><span class="params">(self, movies, ratings, user, W, k=<span class="number">5</span>, threshold=<span class="number">3</span>)</span>:</span></span><br><span class="line">    <span class="comment"># find the first k highest similarity values</span></span><br><span class="line">    similar = sorted(enumerate(W[self.user_list.index(user)]), reverse=<span class="literal">True</span>, key=<span class="keyword">lambda</span> x:x[<span class="number">1</span>])[<span class="number">0</span>:k]</span><br><span class="line">    </span><br><span class="line">    first_k = []</span><br><span class="line">    similar_users = []</span><br><span class="line">    <span class="keyword">for</span> s <span class="keyword">in</span> similar:</span><br><span class="line">        first_k.append(s[<span class="number">1</span>])</span><br><span class="line">        similar_users.append(s[<span class="number">0</span>])</span><br><span class="line">    <span class="comment">#print(first_k)</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> first_k[<span class="number">0</span>] == <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> []</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    recommend_score = dict()</span><br><span class="line">    movie_list = list(movies[<span class="string">'movie_id'</span>])</span><br><span class="line"></span><br><span class="line">    <span class="comment"># check all the products,</span></span><br><span class="line">    <span class="comment"># if current user hasn't touch the product,</span></span><br><span class="line">    <span class="comment"># and his 'similar users' have touched the product,</span></span><br><span class="line">    <span class="comment"># and gave an evluation more than the threshold,</span></span><br><span class="line">    <span class="comment"># then recommend it to the current user</span></span><br><span class="line">    <span class="keyword">for</span> movie <span class="keyword">in</span> movie_list:</span><br><span class="line">        <span class="keyword">if</span> movie <span class="keyword">in</span> self.item_users:</span><br><span class="line">            <span class="keyword">if</span> user <span class="keyword">not</span> <span class="keyword">in</span> self.item_users[movie]:    <span class="comment"># if user didn't interact with the product</span></span><br><span class="line">                i = <span class="number">0</span></span><br><span class="line">                <span class="keyword">for</span> u <span class="keyword">in</span> similar_users:</span><br><span class="line">                    <span class="keyword">if</span> u <span class="keyword">in</span> self.item_users[movie]:    <span class="comment"># if the similar users have interacted with the product</span></span><br><span class="line">                        rating = int(ratings.loc[(ratings[<span class="string">'user_id'</span>] == u) &amp; (ratings[<span class="string">'movie_id'</span>] == movie)][<span class="string">'rating'</span>])</span><br><span class="line">                        <span class="keyword">if</span> rating &gt;= threshold:</span><br><span class="line">                            <span class="keyword">if</span> movie <span class="keyword">not</span> <span class="keyword">in</span> recommend_score:</span><br><span class="line">                                recommend_score[movie] = <span class="number">0</span></span><br><span class="line">                            recommend_score[movie] += first_k[i] * rating     </span><br><span class="line">                    i += <span class="number">1</span></span><br><span class="line">        <span class="comment">#sys.exit()</span></span><br><span class="line">                    </span><br><span class="line">    <span class="keyword">return</span> recommend_score</span><br></pre></td></tr></table></figure></p>
+        <h2 id="about-auto-encoder">About Auto Encoder</h2>
+<p>Auto Encoder is a popular feature extracting method in recent few years.</p>
 
       
     </div>
@@ -518,12 +473,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/Collaborative-Filtering/" rel="tag"># Collaborative Filtering</a>
-          
-        </div>
-      
 
       
       
@@ -533,8 +482,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/04/14/Decision-Tree/" rel="next" title="Decision Tree">
-                <i class="fa fa-chevron-left"></i> Decision Tree
+              <a href="/2019/05/08/隐语义模型实践/" rel="next" title="隐语义模型(LFM)">
+                <i class="fa fa-chevron-left"></i> 隐语义模型(LFM)
               </a>
             
           </div>
@@ -542,10 +491,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/05/02/2019-5-2-近期问题总结/" rel="prev" title="2019.5.2 近期问题总结">
-                2019.5.2 近期问题总结 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -701,7 +646,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#about-collaborative-filtering"><span class="nav-number">1.</span> <span class="nav-text">About Collaborative Filtering</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#user-cf"><span class="nav-number">1.1.</span> <span class="nav-text">User CF</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#basic-principle"><span class="nav-number">1.1.1.</span> <span class="nav-text">Basic Principle</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#similarity-calculating-method"><span class="nav-number">1.1.2.</span> <span class="nav-text">Similarity Calculating Method</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#code"><span class="nav-number">1.1.3.</span> <span class="nav-text">Code</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#about-auto-encoder"><span class="nav-number">1.</span> <span class="nav-text">About Auto Encoder</span></a></li></ol></div>
             
 
           </div>
@@ -1218,42 +1163,7 @@
         onPopupClose();
       }
     });
-  </script>
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-  
-
-  
-  
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-      });
-    </script>
-
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-      });
-    </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config("");
 </script>
@@ -1271,6 +1181,21 @@
 </script>
 <!-- End: Injected MathJax -->
 <!-- hexo-inject:end -->
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
   
 
 
