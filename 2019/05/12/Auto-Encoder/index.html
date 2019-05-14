@@ -118,7 +118,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="Feature Engineering,Machine Learning,">
 
 
 
@@ -129,18 +129,21 @@
 
 
 
-<meta name="description" content="About Auto Encoder Auto Encoder is a popular feature extracting method in recent few years.">
-<meta name="keywords" content="Recommender System &#x2F; Machine Learning">
+<meta name="description" content="Auto Encoder Auto encoder is a kind of method to reduce the dimension of input data, it&apos;s a shallow neural network which learning the weights by back propagation.">
+<meta name="keywords" content="Feature Engineering,Machine Learning">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Auto Encoder">
 <meta property="og:url" content="http://yoursite.com/2019/05/12/Auto-Encoder/index.html">
 <meta property="og:site_name" content="Just For Fun">
-<meta property="og:description" content="About Auto Encoder Auto Encoder is a popular feature extracting method in recent few years.">
+<meta property="og:description" content="Auto Encoder Auto encoder is a kind of method to reduce the dimension of input data, it&apos;s a shallow neural network which learning the weights by back propagation.">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-12T13:30:45.876Z">
+<meta property="og:image" content="http://yoursite.com/images/auto_encoder/1.jpg">
+<meta property="og:image" content="http://yoursite.com/images/auto_encoder/2.jpg">
+<meta property="og:updated_time" content="2019-05-14T12:37:44.648Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Auto Encoder">
-<meta name="twitter:description" content="About Auto Encoder Auto Encoder is a popular feature extracting method in recent few years.">
+<meta name="twitter:description" content="Auto Encoder Auto encoder is a kind of method to reduce the dimension of input data, it&apos;s a shallow neural network which learning the weights by back propagation.">
+<meta name="twitter:image" content="http://yoursite.com/images/auto_encoder/1.jpg">
 
 
 
@@ -391,12 +394,34 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2019-05-12T23:30:45+10:00">
-                2019-05-12
+              <time title="Post modified" itemprop="dateModified" datetime="2019-05-14T22:37:44+10:00">
+                2019-05-14
               </time>
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Feature-Engineering/" itemprop="url" rel="index">
+                    <span itemprop="name">Feature Engineering</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -419,7 +444,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  15
+                  244
                 </span>
               
 
@@ -456,8 +481,18 @@
       
 
       
-        <h2 id="about-auto-encoder">About Auto Encoder</h2>
-<p>Auto Encoder is a popular feature extracting method in recent few years.</p>
+        <h2 id="auto-encoder">Auto Encoder</h2>
+<p>Auto encoder is a kind of method to reduce the dimension of input data, it's a shallow neural network which learning the weights by back propagation. <a id="more"></a> By this algorithm, the auto encoder can learn the useful features automatically, so it's always used in feature extraction and generally has a better performance than PCA, which is another common way to reduce dimensions.</p>
+<p>A typical auto encoder is consist of encoder and decoder :</p>
+<figure>
+<img src="/images/auto_encoder/1.jpg" alt="auto coder"><figcaption>auto coder</figcaption>
+</figure>
+<p>As the above picture shows, firstly, the encoder transfer the input into <span class="math inline">\(y=f(x)\)</span>, and then it will be decoded into <span class="math inline">\(g(y)=g(f(x))\)</span>. Auto encoder is a kind of unsupervised learning algorithm, the main target of it is going to encode the input data <span class="math inline">\(x\)</span> according to the output which is decoded from <span class="math inline">\(y\)</span>, that means the algorithm tries to copy its input to its output, the auto encoder modifies the weights in the hidden layer as well as the output layer according to calculate the difference (we call this as loss function or cost function).</p>
+<p>Here is the graph of the auto encoder, shown in neural network :</p>
+<figure>
+<img src="/images/auto_encoder/2.jpg" alt="neural network"><figcaption>neural network</figcaption>
+</figure>
+<p>The formulas of the above neural network are, where <span class="math inline">\(L\)</span> means the loss function (usually squared error or cross entropy loss) : <span class="math display">\[y=f(x)=s(w1*x+b1)\]</span> <span class="math display">\[\hat{x}=g(y)=s(w2*x+b)s\]</span> <span class="math display">\[L(x, \hat x) = L(x, g(f(x)))\]</span> feature extracting method in recent few years.</p>
 
       
     </div>
@@ -472,6 +507,14 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Feature-Engineering/" rel="tag"># Feature Engineering</a>
+          
+            <a href="/tags/Machine-Learning/" rel="tag"># Machine Learning</a>
+          
+        </div>
       
 
       
@@ -491,6 +534,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/05/14/协同过滤/" rel="prev" title="协同过滤">
+                协同过滤 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -569,7 +616,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -580,7 +627,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -591,7 +638,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -646,7 +693,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#about-auto-encoder"><span class="nav-number">1.</span> <span class="nav-text">About Auto Encoder</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#auto-encoder"><span class="nav-number">1.</span> <span class="nav-text">Auto Encoder</span></a></li></ol></div>
             
 
           </div>
@@ -680,7 +727,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">10.6k</span>
+    <span title="Site words total count">10.9k</span>
   
 </div>
 
@@ -1163,7 +1210,42 @@
         onPopupClose();
       }
     });
-  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config("");
 </script>
@@ -1181,21 +1263,6 @@
 </script>
 <!-- End: Injected MathJax -->
 <!-- hexo-inject:end -->
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-  
-
-  
   
 
 

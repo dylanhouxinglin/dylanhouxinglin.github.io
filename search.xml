@@ -1,9 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[协同过滤]]></title>
+    <url>%2F2019%2F05%2F14%2F%E5%8D%8F%E5%90%8C%E8%BF%87%E6%BB%A4%2F</url>
+    <content type="text"><![CDATA[]]></content>
+  </entry>
+  <entry>
     <title><![CDATA[Auto Encoder]]></title>
     <url>%2F2019%2F05%2F12%2FAuto-Encoder%2F</url>
-    <content type="text"><![CDATA[About Auto Encoder Auto Encoder is a popular feature extracting method in recent few years.]]></content>
+    <content type="text"><![CDATA[Auto Encoder Auto encoder is a kind of method to reduce the dimension of input data, it's a shallow neural network which learning the weights by back propagation. By this algorithm, the auto encoder can learn the useful features automatically, so it's always used in feature extraction and generally has a better performance than PCA, which is another common way to reduce dimensions. A typical auto encoder is consist of encoder and decoder : auto coder As the above picture shows, firstly, the encoder transfer the input into \(y=f(x)\), and then it will be decoded into \(g(y)=g(f(x))\). Auto encoder is a kind of unsupervised learning algorithm, the main target of it is going to encode the input data \(x\) according to the output which is decoded from \(y\), that means the algorithm tries to copy its input to its output, the auto encoder modifies the weights in the hidden layer as well as the output layer according to calculate the difference (we call this as loss function or cost function). Here is the graph of the auto encoder, shown in neural network : neural network The formulas of the above neural network are, where \(L\) means the loss function (usually squared error or cross entropy loss) : \[y=f(x)=s(w1*x+b1)\] \[\hat{x}=g(y)=s(w2*x+b)s\] \[L(x, \hat x) = L(x, g(f(x)))\] feature extracting method in recent few years.]]></content>
+      <categories>
+        <category>Feature Engineering</category>
+      </categories>
+      <tags>
+        <tag>Feature Engineering</tag>
+        <tag>Machine Learning</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[隐语义模型(LFM)]]></title>
