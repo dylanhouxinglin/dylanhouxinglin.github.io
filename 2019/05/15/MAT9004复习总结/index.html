@@ -118,7 +118,7 @@
 
 
 
-  <meta name="keywords" content="Machine Learning,Model Evaluation,">
+  <meta name="keywords" content="math,">
 
 
 
@@ -129,23 +129,18 @@
 
 
 
-<meta name="description" content="ROC &amp;amp; AUC Confusion Matrix I am going to introduce the concept of Confusion Matrix before talking about the ROC as well as AUC since I think this will help us to understand them better. Confusion">
-<meta name="keywords" content="Machine Learning,Model Evaluation">
+<meta name="description" content="MAT9004复习总结 快到期末了......最近在复习MAT9004这门课，这门课主要讲的是高数、线性代数和概率论的一些基础知识，lecture上一般讲的比较简单，但每个知识点的切入点都很不错，在复习过程中有一些困惑，结合一些资料以及之前的知识储备浅略的探索了一下，总结的可能比较零碎，如果篇幅较长的话后期再做分类整理.">
+<meta name="keywords" content="math">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ROC and AUC">
-<meta property="og:url" content="http://yoursite.com/2019/04/01/ROC-and-AUC/index.html">
+<meta property="og:title" content="MAT9004复习总结">
+<meta property="og:url" content="http://yoursite.com/2019/05/15/MAT9004复习总结/index.html">
 <meta property="og:site_name" content="Just For Fun">
-<meta property="og:description" content="ROC &amp;amp; AUC Confusion Matrix I am going to introduce the concept of Confusion Matrix before talking about the ROC as well as AUC since I think this will help us to understand them better. Confusion">
+<meta property="og:description" content="MAT9004复习总结 快到期末了......最近在复习MAT9004这门课，这门课主要讲的是高数、线性代数和概率论的一些基础知识，lecture上一般讲的比较简单，但每个知识点的切入点都很不错，在复习过程中有一些困惑，结合一些资料以及之前的知识储备浅略的探索了一下，总结的可能比较零碎，如果篇幅较长的话后期再做分类整理.">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://yoursite.com/images/confusion_matrix.jpg">
-<meta property="og:image" content="http://yoursite.com/images/pic1.jpg">
-<meta property="og:image" content="http://yoursite.com/images/pic2.jpg">
-<meta property="og:image" content="http://yoursite.com/images/pic3.jpg">
-<meta property="og:updated_time" content="2019-04-22T06:08:20.057Z">
+<meta property="og:updated_time" content="2019-05-15T07:24:24.735Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ROC and AUC">
-<meta name="twitter:description" content="ROC &amp;amp; AUC Confusion Matrix I am going to introduce the concept of Confusion Matrix before talking about the ROC as well as AUC since I think this will help us to understand them better. Confusion">
-<meta name="twitter:image" content="http://yoursite.com/images/confusion_matrix.jpg">
+<meta name="twitter:title" content="MAT9004复习总结">
+<meta name="twitter:description" content="MAT9004复习总结 快到期末了......最近在复习MAT9004这门课，这门课主要讲的是高数、线性代数和概率论的一些基础知识，lecture上一般讲的比较简单，但每个知识点的切入点都很不错，在复习过程中有一些困惑，结合一些资料以及之前的知识储备浅略的探索了一下，总结的可能比较零碎，如果篇幅较长的话后期再做分类整理.">
 
 
 
@@ -175,13 +170,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/04/01/ROC-and-AUC/">
+  <link rel="canonical" href="http://yoursite.com/2019/05/15/MAT9004复习总结/">
 
 
 
 
 
-  <title>ROC and AUC | Just For Fun</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>MAT9004复习总结 | Just For Fun</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -350,7 +345,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/01/ROC-and-AUC/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/15/MAT9004复习总结/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="dylan_houxinglin">
@@ -367,7 +362,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">ROC and AUC</h1>
+          <h1 class="post-title" itemprop="name headline">MAT9004复习总结</h1>
         
 
         <div class="post-meta">
@@ -380,8 +375,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-01T21:00:52+11:00">
-                2019-04-01
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-05-15T17:18:55+10:00">
+                2019-05-15
               </time>
             
 
@@ -396,8 +391,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2019-04-22T16:08:20+10:00">
-                2019-04-22
+              <time title="Post modified" itemprop="dateModified" datetime="2019-05-15T17:24:24+10:00">
+                2019-05-15
               </time>
             
           </span>
@@ -424,7 +419,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  878
+                  1.6k
                 </span>
               
 
@@ -440,7 +435,7 @@
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
                 <span title="Reading time">
-                  5
+                  6
                 </span>
               
             </div>
@@ -461,34 +456,50 @@
       
 
       
-        <h3 id="roc-auc">ROC &amp; AUC</h3>
-<h4 id="confusion-matrix">Confusion Matrix</h4>
-<p>I am going to introduce the concept of Confusion Matrix before talking about the ROC as well as AUC since I think this will help us to understand them better. Confusion Matrix is a performance measurement for machine learning classification, which is a specific table layout. Let us undetstand TP, FP, FN and TN first.<a id="more"></a> <img src="/images/confusion_matrix.jpg" alt="confusion_matrix"> As the above picture show, we define them as:</p>
+        <h1 id="mat9004复习总结">MAT9004复习总结</h1>
+<p>快到期末了......最近在复习MAT9004这门课，这门课主要讲的是高数、线性代数和概率论的一些基础知识，lecture上一般讲的比较简单，但每个知识点的切入点都很不错，在复习过程中有一些困惑，结合一些资料以及之前的知识储备浅略的探索了一下，总结的可能比较零碎，如果篇幅较长的话后期再做分类整理. <a id="more"></a></p>
+<h1 id="一阶近似引出的点">一阶近似引出的点</h1>
+<p>首先给出一阶近似(first order approximation)的概念 : <span class="math display">\[f(x_0+  \Delta x) \approx f(x) + f&#39;(x)\Delta x\]</span> 对于二元函数 : <span class="math display">\[f(x + \Delta x, y + \Delta y) \approx f(x, y) + f_x (x, y) \Delta x + f_y (x, y) \Delta y\]</span> 这里的一阶近似就是一阶泰勒展式，这里可以联想到几处知识点，<a href="#泰勒公式">泰勒公式</a>，<a href="#海森矩阵">海森矩阵</a>，<a href="#极值点判定">极值点判定</a>和<a href="#牛顿法">牛顿法</a>.</p>
+<h2 id="泰勒公式">泰勒公式</h2>
+<p>泰勒公式(Taylor's Formula)本质上是用多项式函数对光滑函数进行逼近，也就是在<span class="math inline">\(x_0\)</span>处用<span class="math inline">\(n\)</span>阶多项式模拟(逼近)复杂函数 : <span class="math display">\[f(x)=\sum_{n=0}^N {f^{n}(a) \over n!} (x-a)^n + R_n(x)\]</span></p>
+<p>表示函数在<span class="math inline">\(a\)</span>处的泰勒展式，其中<span class="math inline">\(R\)</span>是余项，是对误差的近似估计. 这里除以<span class="math inline">\(n!\)</span>是为了惩罚高阶多项式，应为当低阶和高阶相加时，由于幂函数增长速度非常快，导致低阶的特性完全没覆盖，因此通过施加这种惩罚来让多项式在<span class="math inline">\(x\)</span>值较小时呈现出低阶的特性，随着<span class="math inline">\(x\)</span>的增大再显现处高阶特性.</p>
+<p>至于为什么泰勒公式可以实现在<span class="math inline">\(x_0\)</span>处，用一个多项式函数去近似一个复杂函数，这是因为本质上泰勒公式的做法是让近似多项式函数在 <span class="math inline">\(x=x_0\)</span>处的<span class="math inline">\(y\)</span>值，一阶导数，二阶导数，......，n阶导数 <span class="math inline">\(=\)</span> 原函数在 <span class="math inline">\(x=x_0\)</span>处的<span class="math inline">\(y\)</span>值，一阶导数，二阶导数，......，n阶导数，即近似函数和原函数在某点的值一样，变化率一样，变化率的变化率一样，变化率的变化率的变化率也一样......至于为什么要这样做，这里引用知乎上的一个举例 ：</p>
+<blockquote>
+<p><strong>一小滑块以<span class="math inline">\(v_0\)</span>的初速度，从<span class="math inline">\(x=S_0\)</span>处运动(以向右为正方向)，求<span class="math inline">\(t\)</span>时小滑块的路程<span class="math inline">\(S\)</span></strong>. <span class="math display">\[S=S_0+v_0t, S&#39;=v_0\]</span> <strong>一小滑块以<span class="math inline">\(v_0\)</span>的初速度，<span class="math inline">\(a\)</span>的加速度，从<span class="math inline">\(x=S_0\)</span>处运动(以向右为正方向)，求<span class="math inline">\(t\)</span>时小滑块的路程<span class="math inline">\(S\)</span></strong>. <span class="math display">\[S = S_0 + v_0t + {1\over2}at^2, S&#39;=v_0+at, S&#39;&#39;=a\]</span> <strong>一小滑块以<span class="math inline">\(v_0\)</span>的初速度，<span class="math inline">\(a\)</span>的初加速度，<span class="math inline">\(b\)</span>的初加加速度，从<span class="math inline">\(x=S_0\)</span>处运动(以向右为正方向)，求<span class="math inline">\(t\)</span>时小滑块的路程<span class="math inline">\(S\)</span></strong>. 这里加加速度其实就是加速度对时间的导数 : <span class="math display">\[S=S_0 + v_0t + {1\over2}at^2 + {1\over6}bt^3, S&#39;=v_0+at+{1\over2}bt^2,S&#39;&#39;&#39;=a+bt,S&#39;&#39;&#39;&#39;=b\]</span> 总结一下上面的规律可以发现 : <span class="math display">\[S=S_0+{1\over1!}v_0t + {1\over2!}at^2 + {1\over3!}bt^3\]</span> 我们继续往后扩展 :</p>
+<p><strong>一小滑块以<span class="math inline">\(v_0\)</span>的初速度，<span class="math inline">\(a\)</span>的初加速度，<span class="math inline">\(b\)</span>的初加加速度，<span class="math inline">\(c\)</span>的初加加加速度，<span class="math inline">\(d\)</span>的初加加加加速度......，从<span class="math inline">\(x=S_0\)</span>处运动(表征了一个小滑块的任意运动情况)(以向右为正方向)，求<span class="math inline">\(t\)</span>时小滑块的路程<span class="math inline">\(S\)</span></strong>. 根据上面找到的规律 : <span class="math display">\[S=S_0+{1\over1!}v_0t + {1\over2!}at^2 + {1\over3!}bt^3 + {1\over4!}ct^4 + {1\over5!}dt^5...\]</span> 因此规律可以归结为 : <span class="math display">\[S={S_0\over0!}+{S^{(1)}\over1!}v_0t + {S^{(2)}\over2!}at^2 + {S^{(3)}\over3!}bt^3 + {S^{(4)}\over4!}ct^4 + ... +{S^{(n)}\over n!}dt^n\]</span></p>
+</blockquote>
+<p>这个例子形象说明了无论小滑块沿着直线如何运动，我们只要从初始点开始，把整个过程中每一处加速度的变化，加速度变化的变化，加速度变化的变化的变化......全部计算进去，就能够得到最终所到达的位置. 而在实际应用中由于不可能将这些变化全部考虑进去，因此得到的就是原函数的近似值(approximation)，这也就是泰勒公式用多项式函数逼近复杂函数的大致过程.</p>
+<h2 id="海森矩阵">海森矩阵</h2>
+<p>海森矩阵(The Hessian Matrix) 是由函数的<strong>二阶偏导数</strong>组成的n阶方块矩阵，二元函数的海森矩阵 : <span class="math display">\[H(x) =  \left[  \begin{matrix} f_{xx}(x,y) &amp; f_{xy}(x,y)  \\ f_{yx}(x,y) &amp; f_{yy}(x,y) \end{matrix}  \right] \]</span> 其一阶导向量，也就是梯度向量为 : <span class="math display">\[\nabla f = \left[ \begin{matrix} f_x(x,y) \\ f_y(x,y) \end{matrix} \right]\]</span> 对于n元函数，<span class="math inline">\(x=(x_1, x_2, x_3,...,x_n)\)</span>，Hessian Matrix 表示为 : <span class="math display">\[\begin{bmatrix} 
+\frac{\partial^2 f}{\partial x_1^2} &amp; \frac{\partial^2 f}{\partial x_1\,\partial x_2} &amp; \cdots &amp; \frac{\partial^2 f}{\partial x_1\,\partial x_n} \\  \\ 
+\frac{\partial^2 f}{\partial x_2\,\partial x_1} &amp; \frac{\partial^2 f}{\partial x_2^2} &amp; \cdots &amp; \frac{\partial^2 f}{\partial x_2\,\partial x_n} \\  \\ 
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\  \\ 
+\frac{\partial^2 f}{\partial x_n\,\partial x_1} &amp; \frac{\partial^2 f}{\partial x_n\,\partial x_2} &amp; \cdots &amp; \frac{\partial^2 f}{\partial x_n^2} 
+\end{bmatrix}\]</span> 海森矩阵可以应用于判定极值点以及牛顿法解决大规模优化问题.</p>
+<h2 id="极值点判定">极值点判定</h2>
+<p>我们可以应用上一节提到的Hessain Matrix判定极值点是否存在. 首先需要计算Hessian Matrix的行列式(determinate) : <span class="math display">\[D = det(H(x, y))\]</span></p>
+<p>将能够使一阶导为零的点<span class="math inline">\((x,y)\)</span>代入上式 :</p>
 <ul>
-<li><p>TP(True Positive): The samples which are <strong>positive</strong> and have been predicted as <strong>positive</strong></p></li>
-<li><p>FP(False Positive): The samples which are <strong>negative but</strong> have been predicted as <strong>positive</strong></p></li>
-<li><p>FN(False Negative): The samples which are <strong>positive but</strong> have been predicted as <strong>negative</strong></p></li>
-<li><p>TN(True Nagetive): The samples which are <strong>negative</strong> and have been predicted as <strong>negative</strong></p></li>
+<li><p>if <span class="math inline">\(D &gt; 0\)</span>, <span class="math inline">\((x,y)\)</span> 是极值点(local extrema);</p></li>
+<li><p>if <span class="math inline">\(D = 0\)</span>, 判定无意义 (inconclusive);</p></li>
+<li><p>if <span class="math inline">\(D &lt; 0\)</span>, <span class="math inline">\((x,y)\)</span> 是鞍点 (saddle point).</p></li>
 </ul>
-<p>So we can calculate the Recall and Precision easily. <strong>Recall</strong> means out of all the positive classes, how much we predicted correctly: <span class="math display">\[Recall = {TP\over{TP + FN}}\]</span> <strong>Precision</strong> means out of all the classes, how much we predicted correctly: <span class="math display">\[Precision = {TP\over{TP + FP}}\]</span> And we can also use <strong>F-Score (F1 or F-Measure)</strong>, which can measure recall and precision simultaneously. F-Score is the harmonic mean of recall and precision: <span class="math display">\[F_1 = ({Recall^{-1}+Precision^{-1}\over{2}})^{-1} ={2*Recall*Precision\over{Recall + Precision}}\]</span> <span class="math display">\[F_\beta = (1+\beta^2)*{Precision*Recall\over{(\beta^2*Precision)+Recall}}\]</span> Where β is the weight of F-Score, it will give more proportion to Precision when β &lt; 1 and Recall gets a higher proportion when β &gt; 1, β = 1 is a specific situation which Recall and Precision has the same weight. However, it is difficult to compare two models with low precision and high recall or high precision and low recall since their F-Score could be similar. Here we have another two names: <strong>Sensitivity and Specificity</strong>: <span class="math display">\[Sensitivity = Recall = True Positive Rate (TPR)\]</span> <span class="math display">\[Specificity = 1 - False Positive Rate (FPR) = 1 - {FP\over{FP + TN}}\]</span> We can try to understand these from conditional probability aspect. Assume that our predict vales is Y' and Y is the true vale, so that: <span class="math display">\[Precision = P(Y=1|Y&#39;=1)\]</span> <span class="math display">\[Recall = Sensitivity = P(Y&#39;=1|Y=1)\]</span> <span class="math display">\[Specificity = P(Y&#39;=0|Y=0)\]</span> It can be seen that Recall (Sensitivity) and Specificity do not be influenced by imbalanced data but Precision relies on the proportion of positive and negative samples.</p>
-<h4 id="the-precision-recall-curve">The Precision-Recall Curve</h4>
-<h4 id="whats-the-problem-of-accuracy">What's the problem of accuracy?</h4>
-<p>Accuracy is one of the most common evaluation methods in machine learning, but it is not always appropriate: assume we have 100 samples in the test set, and there are 99 negative samples and just 1 positive sample, so that the accuracy of my model is 99/100 = 99% if it predicts all samples as negative class. Obviously, it can not evaluate our model in this case. <span class="math display">\[Accuracy = {TP + TN\over{TP+TN+FP+FN}}\]</span></p>
-<h4 id="what-is-roc">What is ROC?</h4>
-<p>ROC(Receiver Operating Characteristics) curve is a kind of tool which we can use to check or visualize the performance of the multi-classification models. ROC is based on confusion matrix which use <strong>FPR as x-axis and</strong> <strong>TPR as y-axis</strong>. We go through all the thresholds and draw the ROC graph, so that each points in ROC represents the FPR and TRP value in a specific threshold. <img src="/images/pic1.jpg"></p>
-<h4 id="how-to-evaluate-roc">How to evaluate ROC?</h4>
-<p>The ROC will not change even we modify the threshold, the x-axis, FPR value can be understand as how much we predicted negative samples as positive which should be lower, and the y-axis, TPR value is how much we predicted correctly in the positive samples which should be higher, therefore, the performance of a model is good with high TPR and low FPR, which reflects as a steep ROC curve (The curve should tend to upper left corner). <img src="/images/pic2.jpg"> In addition, as we said Recall (Sensitivity, TPR) and Specificity (1-FPR) do not be influenced by imbalanced, so ROC curve will also not influenced by imbalanced data: <img src="/images/pic3.jpg"></p>
-<h4 id="what-is-auc">What is AUC?</h4>
-<p>AUC (Area Under the Curve) is the area under the ROC curve, the diagonal represents random effect which value is 0.5, positive and negative samples occupy the same proportion is the data set in this specific situation. The best value of AUC is 1 but can not reach in the most situation, and the worst is 0.5 which means classify samples ramdomly. For example, AUC is 0.7 means there is 70% chance that model will be able to distinguish between positive class and negative class.</p>
-<h4 id="relation-between-tpr-and-fpr">Relation between TPR and FPR</h4>
-<p>As we know FPR is 1 - specificity, so when we increase TPR, FPR also increases and vice versa.</p>
-<h4 id="achievement-by-python">Achievement by Python</h4>
-<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">from sklearn import metrics</span><br><span class="line">from sklearn.metics import f1_score</span><br><span class="line">import numpy as np</span><br><span class="line"></span><br><span class="line"># True lables</span><br><span class="line">y_true = np.array([<span class="number">1</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>])  </span><br><span class="line"># Probability estimates of the positive class</span><br><span class="line">y_scores = np.array([<span class="number">0</span>,<span class="number">1</span>, <span class="number">0.4</span>, <span class="number">0.35</span>, <span class="number">0.8</span>])</span><br><span class="line">auc_score = metrics.roc_auc_score(y_true, y_scores)</span><br><span class="line">&gt;&gt;&gt;print(auc_score)</span><br><span class="line"><span class="number">0.75</span></span><br><span class="line"></span><br><span class="line">y_true = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>]</span><br><span class="line">y_pred = [<span class="number">0</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>]</span><br><span class="line">&gt;&gt;&gt;print(f1_score(f1_score(y_true, y_pred, average='micro')))</span><br><span class="line"><span class="number">0.33</span>...</span><br></pre></td></tr></table></figure>
-<h4 id="reference">Reference</h4>
+<p>其中鞍点 (saddle point) 是指从不同的角度来看，该点是不同类型的极值点 (In one direction it looks like a local maximum, while in another direction it looks like a local minimum).</p>
+<p>For local extrema :</p>
 <ul>
-<li><a href="https://en.wikipedia.org/wiki/Confusion_matrix" target="_blank" rel="noopener">Confusion matrix Wikipedia</a></li>
-<li><a href="https://www.zhihu.com/question/30643044" target="_blank" rel="noopener">精确率、召回率、F1 值、ROC、AUC 各自的优缺点是什么？</a></li>
-<li><a href="https://towardsdatascience.com/understanding-auc-roc-curve-68b2303cc9c5" target="_blank" rel="noopener">Understanding AUC - ROC Curve</a></li>
+<li><p>if <span class="math inline">\(f_{xx} &gt; 0\)</span>, then <span class="math inline">\((x,y)\)</span> is a <strong>local minimum</strong>;</p></li>
+<li><p>if <span class="math inline">\(f_{xx} &lt; 0\)</span>, then <span class="math inline">\((x,y)\)</span> is a <strong>local maximum</strong>.</p></li>
+</ul>
+<h2 id="牛顿法">牛顿法</h2>
+<p>这个模块主要记录一下<a href="#牛顿法介绍">牛顿法</a>以及<a href="#牛顿法与梯度下降">牛顿法和梯度下降的区别</a>. (越写越多，坑真的大......) 明天再写吧，扩展太多怕是复习不完了......</p>
+<h3 id="牛顿法介绍">牛顿法介绍</h3>
+<h3 id="牛顿法与梯度下降">牛顿法与梯度下降</h3>
+<h1 id="references">References</h1>
+<ul>
+<li><a href="https://www.matongxue.com/madocs/7.html" target="_blank" rel="noopener">泰勒公式图像解释</a></li>
+<li><a href="https://www.zhihu.com/question/21149770/answer/68051674" target="_blank" rel="noopener">如何通俗的理解泰勒公式@单手倒立拍星轨</a></li>
+<li><a href="http://jacoxu.com/jacobian%E7%9F%A9%E9%98%B5%E5%92%8Chessian%E7%9F%A9%E9%98%B5/" target="_blank" rel="noopener">Jacobian矩阵和Hessian矩阵</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Hessian_matrix" target="_blank" rel="noopener">Hessian Martix--Wikipeida</a></li>
 </ul>
 
       
@@ -507,9 +518,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Machine-Learning/" rel="tag"># Machine Learning</a>
-          
-            <a href="/tags/Model-Evaluation/" rel="tag"># Model Evaluation</a>
+            <a href="/tags/math/" rel="tag"># math</a>
           
         </div>
       
@@ -522,15 +531,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2019/05/14/shell-总结/" rel="next" title="shell 总结">
+                <i class="fa fa-chevron-left"></i> shell 总结
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/04/03/Regularization-in-Machine-Learnig/" rel="prev" title="Regularization in Machine Learnig">
-                Regularization in Machine Learnig <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -686,7 +695,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#roc-auc"><span class="nav-number">1.</span> <span class="nav-text">ROC &amp; AUC</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#confusion-matrix"><span class="nav-number">1.1.</span> <span class="nav-text">Confusion Matrix</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#the-precision-recall-curve"><span class="nav-number">1.2.</span> <span class="nav-text">The Precision-Recall Curve</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#whats-the-problem-of-accuracy"><span class="nav-number">1.3.</span> <span class="nav-text">What&#39;s the problem of accuracy?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#what-is-roc"><span class="nav-number">1.4.</span> <span class="nav-text">What is ROC?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#how-to-evaluate-roc"><span class="nav-number">1.5.</span> <span class="nav-text">How to evaluate ROC?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#what-is-auc"><span class="nav-number">1.6.</span> <span class="nav-text">What is AUC?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#relation-between-tpr-and-fpr"><span class="nav-number">1.7.</span> <span class="nav-text">Relation between TPR and FPR</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#achievement-by-python"><span class="nav-number">1.8.</span> <span class="nav-text">Achievement by Python</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#reference"><span class="nav-number">1.9.</span> <span class="nav-text">Reference</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#mat9004复习总结"><span class="nav-number">1.</span> <span class="nav-text">MAT9004复习总结</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#一阶近似引出的点"><span class="nav-number">2.</span> <span class="nav-text">一阶近似引出的点</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#泰勒公式"><span class="nav-number">2.1.</span> <span class="nav-text">泰勒公式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#海森矩阵"><span class="nav-number">2.2.</span> <span class="nav-text">海森矩阵</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#极值点判定"><span class="nav-number">2.3.</span> <span class="nav-text">极值点判定</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#牛顿法"><span class="nav-number">2.4.</span> <span class="nav-text">牛顿法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#牛顿法介绍"><span class="nav-number">2.4.1.</span> <span class="nav-text">牛顿法介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#牛顿法与梯度下降"><span class="nav-number">2.4.2.</span> <span class="nav-text">牛顿法与梯度下降</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#references"><span class="nav-number">3.</span> <span class="nav-text">References</span></a></li></ol></div>
             
 
           </div>
