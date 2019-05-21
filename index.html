@@ -751,8 +751,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2019-05-16T15:38:08+10:00">
-                2019-05-16
+              <time title="Post modified" itemprop="dateModified" datetime="2019-05-21T22:21:53+10:00">
+                2019-05-21
               </time>
             
           </span>
@@ -801,7 +801,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  487
+                  574
                 </span>
               
 
@@ -817,7 +817,7 @@
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
                 <span title="Reading time">
-                  1
+                  2
                 </span>
               
             </div>
@@ -839,18 +839,21 @@
 
       
         
-          <h2 id="梯度下降">梯度下降</h2>
-<p>梯度下降是机器学习优化中常用的算法，因为凸函数 (convex function) 沿着负梯度方向移动一定能够到达全局最小值 (global minimum)，在实际应用中由于损失函数大多数情况下不能保证为凸函数，因此梯度下降法更可能在局部 (局部凸函数) 找到局部极小值 (local minimum).
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/05/16/梯度下降/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <h2 id="梯度下降">梯度下降</h2>
+<p>梯度下降是机器学习优化中常用的算法，因为凸函数 (convex function) 沿着负梯度方向移动一定能够到达全局最小值 (global minimum)，在实际应用中由于损失函数大多数情况下不能保证为凸函数，因此梯度下降法更可能在局部 (局部凸函数) 找到局部极小值 (local minimum).</p>
+<h2 id="什么是梯度">什么是梯度</h2>
+<p>首先梯度 (gradient) 是一个向量，这样意味着<strong>梯度是有方向的</strong>. 在迭代过程中，通过沿着函数的负梯度方向慢慢移动，可以最快速的找到局部极小值. 而梯度的值本身是某一点的所有方向导数中值最大的一个.</p>
+<h2 id="为什么梯度是函数下降最快的方向">为什么梯度是函数下降最快的方向</h2>
+<p>为了解释这个问题，首先需要明确方向导数和偏导数的概念. 其中方向导数是指在多位空间内对某一方向求导得出的导数，对于空间内某一点来说，其方向导数有很多个；偏导数是指函数沿着某一特定坐标轴方向的导数，也是函数沿着该方向的变化率.</p>
+<p>对于空间内的一点来说，我们能够很容易的求得给个自变量所对应的偏导数，对于二元函数来说 : <span class="math display">\[\nabla f = \left[ \begin{matrix} f_x(x,y) \\ f_y(x,y) \end{matrix} \right]\]</span> 根据空间向量的知识可以很容易的知道：空间内任意方向都可以由一组不共线的向量组成 : <span class="math display">\[D = f_xcos\theta + f_ysin\theta\]</span> 设<span class="math inline">\(A=(f_x,f_y)\)</span>, <span class="math inline">\(I = (cos\theta, sin\theta)\)</span>，根据向量内积的公式可得 : <span class="math display">\[A⋅I = |A|⋅|I|⋅cos\alpha\]</span> <strong>其中<span class="math inline">\(\alpha\)</span>是向量<span class="math inline">\(A\)</span>和向量<span class="math inline">\(I\)</span>的夹角度. 由上面的公式可以看出，当<span class="math inline">\(cos\alpha\)</span>值为1时，<span class="math inline">\(\alpha\)</span>为0度 (也就是<span class="math inline">\(I\)</span>与<span class="math inline">\(A\)</span>平行时)，方向导数最大. 也就是说函数沿着与向量<span class="math inline">\((f_x, f_y)\)</span>平行的反方向移动时，在局部的下降速度是最快的.</strong></p>
+<h2 id="更新参数">更新参数</h2>
+<p>有了梯度向量，我们在每次更新参数时就变得非常容易了，只要在每次迭代中向梯度方向移动就可以了 : <span class="math display">\[w&#39;_i = w_i - \alpha {\partial L \over \partial w_i }\]</span></p>
+
+          
         
       
-    </p></div>
+    </div>
     
     
     
