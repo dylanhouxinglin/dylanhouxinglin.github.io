@@ -708,7 +708,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/20/SQL总结/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/20/SQL Summary/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="dylan_houxinglin">
@@ -727,7 +727,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/05/20/SQL总结/" itemprop="url">SQL Summary</a></h1>
+                <a class="post-title-link" href="/2019/05/20/SQL Summary/" itemprop="url">SQL Summary</a></h1>
         
 
         <div class="post-meta">
@@ -756,8 +756,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2019-06-02T22:09:37+10:00">
-                2019-06-02
+              <time title="Post modified" itemprop="dateModified" datetime="2019-06-04T14:10:30+10:00">
+                2019-06-04
               </time>
             
           </span>
@@ -806,7 +806,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  331
+                  1.3k
                 </span>
               
 
@@ -822,7 +822,7 @@
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
                 <span title="Reading time">
-                  2
+                  8
                 </span>
               
             </div>
@@ -844,28 +844,16 @@
 
       
         
-          
-            <h2 id="sql-summary">SQL Summary</h2>
+          <h2 id="sql-summary">SQL Summary</h2>
 <h2 id="creating-tables">Creating Tables</h2>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> unit</span><br><span class="line">(</span><br><span class="line">    unit_code  <span class="built_in">char</span>(<span class="number">7</span>)  <span class="keyword">not</span> <span class="literal">null</span>,</span><br><span class="line">    unit_name  varchar2(<span class="number">50</span>) <span class="keyword">constraint</span> uq_unit_name <span class="keyword">unique</span> <span class="keyword">not</span> <span class="literal">null</span>,</span><br><span class="line">    student_id <span class="built_in">number</span>(<span class="number">7</span>, <span class="number">0</span>)  <span class="keyword">not</span> <span class="literal">null</span>,</span><br><span class="line">    <span class="keyword">constraint</span> pk_unit primary <span class="keyword">key</span> (unit_code)</span><br><span class="line">    <span class="keyword">constraint</span> fk_student <span class="keyword">foreign</span> <span class="keyword">key</span> (student_id) <span class="keyword">references</span> student(student_id)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-<p>And another way to add constraint: <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> unit </span><br><span class="line"><span class="keyword">add</span> (<span class="keyword">constraint</span> fk_student <span class="keyword">foreign</span> <span class="keyword">key</span> (student_id) <span class="keyword">references</span> student(student_id));</span><br></pre></td></tr></table></figure></p>
-<p>The difference between varchar and varchar2: <strong>VARCHAR</strong> is reserved by <strong>Oracle</strong> to support distinction between NULL and empty string in future, as ANSI standard prescribes. <strong>VARCHAR2</strong> does not distinguish between a NULL and empty string, and never will.</p>
-<h3 id="referential-integrity">Referential Integrity</h3>
-<ol type="1">
-<li><p>RESTRICT :<br>
-Deletion of tuples is NOT ALLOWED for those tuples in the table referred by the FK (the table containing PK) if there is corresponding tuple in the table containing the FK.</p></li>
-<li><p>CASCADE : A deletion of a tuple in the table referred by the FK (the table containing PK) will result in the deletion of the corresponding tuples in the table containing the FK.</p></li>
-<li><p>NULLIFY : A deletion of a tuple in the table referred by the FK (the table containing PK) will result in the update of the corresponding tuples in the table containing the FK to NULL.</p></li>
-</ol>
-<h3 id="using-sequence">Using Sequence</h3>
-<p>Oracle supports auto-increment of a numeric PRIMARY KEY. <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">sequence</span> sno_seq <span class="keyword">start</span> <span class="keyword">with</span> <span class="number">0</span> <span class="keyword">increment</span> <span class="keyword">by</span> <span class="number">1</span>;</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> student <span class="keyword">values</span> (sno_seq.nextval, <span class="string">'Bond'</span>, <span class="string">'James'</span>, </span><br><span class="line">                            <span class="keyword">to_date</span>(<span class="string">'01-Jan-1994’, '</span>DD-MM-YYYY<span class="string">'));</span></span><br><span class="line"><span class="string">insert into enrolment values (sno_seq.currval, ’FIT9132’);</span></span><br></pre></td></tr></table></figure></p>
-<h2 id="alter-tables">Alter Tables</h2>
-<p>Adding columns to the original table : <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> student</span><br><span class="line"><span class="keyword">add</span> (stu_address  <span class="built_in">varchar</span>(<span class="number">200</span>,</span><br><span class="line">     <span class="keyword">status</span>  <span class="built_in">char</span>(<span class="number">1</span>)  <span class="keyword">default</span> <span class="string">'C'</span>,</span><br><span class="line">     <span class="keyword">constraint</span> status_ck <span class="keyword">check</span> (<span class="keyword">status</span> <span class="keyword">in</span> (<span class="string">'G'</span>, <span class="string">'C'</span>))</span><br><span class="line">     );</span><br></pre></td></tr></table></figure></p>
-<p>Adding referential integrity : <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> enrolment</span><br><span class="line"><span class="keyword">add</span> (<span class="keyword">constraint</span> fk_enrolment_student <span class="keyword">foreign</span> <span class="keyword">key</span> (stu_nbr) <span class="keyword">references</span> student (stu_nbr) <span class="keyword">on</span> <span class="keyword">delete</span> <span class="keyword">cascade</span>, </span><br><span class="line">     <span class="keyword">constraint</span> fk_enrolment_unit <span class="keyword">foreign</span> <span class="keyword">key</span> (unit_code) <span class="keyword">references</span> unit (unit_code) <span class="keyword">on</span> <span class="keyword">delete</span> <span class="keyword">cascade</span>);</span><br></pre></td></tr></table></figure></p>
-<h2 id="add-rows">Add Rows</h2>
-<p><strong>Use to_char() and to_date() to convert the format between string and date</strong>. <code>rollback</code> function can undo the changes. <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> student <span class="keyword">values</span> (<span class="number">112233</span>, <span class="string">'Wild'</span>, <span class="string">'Wilbur'</span>, <span class="keyword">to_date</span>(<span class="string">'01-Jan-1995 18:00:00'</span>, <span class="string">'DD-MM-YYYY HH24:MI:SS'</span>))</span><br></pre></td></tr></table></figure></p>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/05/20/SQL Summary/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -2319,7 +2307,7 @@ Deletion of tuples is NOT ALLOWED for those tuples in the table referred by the 
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">14.9k</span>
+    <span title="Site words total count">15.9k</span>
   
 </div>
 
