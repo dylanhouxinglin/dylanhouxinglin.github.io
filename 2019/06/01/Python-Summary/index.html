@@ -138,7 +138,7 @@
 <meta property="og:description" content="Python Summary A brief summary of Python, including some basic foundations.">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/images/python_summary/1.jpg">
-<meta property="og:updated_time" content="2019-06-02T12:10:07.072Z">
+<meta property="og:updated_time" content="2019-06-10T09:55:01.652Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python Summary">
 <meta name="twitter:description" content="Python Summary A brief summary of Python, including some basic foundations.">
@@ -393,8 +393,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2019-06-02T22:10:07+10:00">
-                2019-06-02
+              <time title="Post modified" itemprop="dateModified" datetime="2019-06-10T19:55:01+10:00">
+                2019-06-10
               </time>
             
           </span>
@@ -421,7 +421,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  1.4k
+                  1.5k
                 </span>
               
 
@@ -437,7 +437,7 @@
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
                 <span title="Reading time">
-                  8
+                  9
                 </span>
               
             </div>
@@ -559,6 +559,7 @@
 <h3 id="merge-sort">Merge Sort</h3>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">merge_sort</span><span class="params">(the_list)</span>:</span></span><br><span class="line">    n = len(the_list)</span><br><span class="line">    <span class="keyword">if</span> n &gt; <span class="number">1</span>:</span><br><span class="line">        mid = n // <span class="number">2</span></span><br><span class="line">        left = the_list[:mid]</span><br><span class="line">        right = the_list[mid:]</span><br><span class="line">        </span><br><span class="line">        merge_sort(left)</span><br><span class="line">        merge_sort(right)</span><br><span class="line">        </span><br><span class="line">        i = <span class="number">0</span>    <span class="comment"># left list</span></span><br><span class="line">        j = <span class="number">0</span>    <span class="comment"># right list</span></span><br><span class="line">        k = <span class="number">0</span>    <span class="comment"># main list</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">while</span> i &lt; len(left) <span class="keyword">and</span> j &lt; len(right):</span><br><span class="line">            <span class="keyword">if</span> left[i] &lt;= right[j]:</span><br><span class="line">                the_list[k] = left[i]</span><br><span class="line">                i += <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                the_list[k] = right[j]</span><br><span class="line">                j += <span class="number">1</span></span><br><span class="line">            k += <span class="number">1</span></span><br><span class="line">            </span><br><span class="line">        <span class="keyword">while</span> i &lt; len(left):</span><br><span class="line">            the_list[k] = left[i]</span><br><span class="line">            i += <span class="number">1</span></span><br><span class="line">            k += <span class="number">1</span></span><br><span class="line">            </span><br><span class="line">        <span class="keyword">while</span> j &lt; len(right):</span><br><span class="line">            the_list[k] = right[j]</span><br><span class="line">            j += <span class="number">1</span></span><br><span class="line">            k += <span class="number">1</span></span><br><span class="line">        </span><br><span class="line">        print(the_list)</span><br></pre></td></tr></table></figure>
 <h3 id="quick-sort">Quick Sort</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">quick_sort</span><span class="params">(the_list)</span>:</span></span><br><span class="line">    first = <span class="number">0</span></span><br><span class="line">    last = len(the_list) - <span class="number">1</span></span><br><span class="line">    quick_sort_aux(the_list, first, last)</span><br><span class="line">    </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">quick_sort_aux</span><span class="params">(the_list, first, last)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> first &lt; last:</span><br><span class="line">        partition_point = partitioning(the_list, first, last)</span><br><span class="line">        </span><br><span class="line">        quick_sort_aux(the_list, first, partition_point - <span class="number">1</span>)</span><br><span class="line">        quick_sort_aux(the_list, partition_point + <span class="number">1</span>, last)</span><br><span class="line">        </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">partitioning</span><span class="params">(the_list, first, last)</span>:</span></span><br><span class="line">    pivot_value = the_list[first]</span><br><span class="line">    left_index = first + <span class="number">1</span></span><br><span class="line">    right_index = last</span><br><span class="line">    </span><br><span class="line">    complete = <span class="literal">False</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">while</span> <span class="keyword">not</span> complete:</span><br><span class="line">        <span class="keyword">while</span> left_index &lt;= right_index <span class="keyword">and</span> the_list[left_index] &lt;= pivot_value:</span><br><span class="line">            left_index += <span class="number">1</span></span><br><span class="line">            </span><br><span class="line">        <span class="keyword">while</span> right_index &gt;= left_index <span class="keyword">and</span> the_list[right_index] &gt;= pivot_value:</span><br><span class="line">            right_index -= <span class="number">1</span></span><br><span class="line">            </span><br><span class="line">        <span class="keyword">if</span> right_index &lt; left_index:</span><br><span class="line">            complete = <span class="literal">True</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            temp = the_list[left_index]</span><br><span class="line">            the_list[left_index] = the_list[right_index]</span><br><span class="line">            the_list[right_index] = temp</span><br><span class="line">        </span><br><span class="line">    temp = the_list[first]</span><br><span class="line">    the_list[first] = the_list[right_index]</span><br><span class="line">    the_list[right_index] = temp</span><br><span class="line">        </span><br><span class="line">    <span class="keyword">return</span> right_index</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -791,7 +792,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">18.4k</span>
+    <span title="Site words total count">18.6k</span>
   
 </div>
 
