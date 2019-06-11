@@ -138,7 +138,7 @@
 <meta property="og:description" content="Python Summary A brief summary of Python, including some basic foundations.">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/images/python_summary/1.jpg">
-<meta property="og:updated_time" content="2019-06-10T09:55:01.652Z">
+<meta property="og:updated_time" content="2019-06-11T11:26:50.434Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python Summary">
 <meta name="twitter:description" content="Python Summary A brief summary of Python, including some basic foundations.">
@@ -393,8 +393,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2019-06-10T19:55:01+10:00">
-                2019-06-10
+              <time title="Post modified" itemprop="dateModified" datetime="2019-06-11T21:26:50+10:00">
+                2019-06-11
               </time>
             
           </span>
@@ -516,9 +516,10 @@
 </ul>
 <h2 id="file-operation">File Operation</h2>
 <p>The <code>open(file, mode)</code> function will open the specific file in the specific mode : <img src="/images/python_summary/1.jpg" alt="open mode"></p>
-<p>Open modes for file writing : * <code>open(file_handle, 'w')</code>: overwrite the existing content of the output file with the new content</p>
+<p>Open modes for file writing :</p>
 <ul>
-<li><code>open(file_handle, 'a')</code>: append the new content at the end of the output file</li>
+<li><p><code>open(file_handle, 'w')</code>: overwrite the existing content of the output file with the new content</p></li>
+<li><p><code>open(file_handle, 'a')</code>: append the new content at the end of the output file</p></li>
 </ul>
 <p>Writing lines to a file : * <code>file_handle.write(the_line)</code>: write one line at a time to the file</p>
 <p>Reading line by line : <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> open(file, <span class="string">'a'</span>) <span class="keyword">as</span> file_handle:</span><br><span class="line">    lines = file_handle.readlines()</span><br><span class="line">    <span class="keyword">for</span> line <span class="keyword">in</span> lines:</span><br><span class="line">        print(line)</span><br><span class="line">        </span><br><span class="line"><span class="keyword">with</span> open(file, <span class="string">'a'</span>) <span class="keyword">as</span> file_handle:</span><br><span class="line">    line = file_handle.readline()</span><br><span class="line">    <span class="keyword">while</span> line:</span><br><span class="line">        print(line)</span><br><span class="line">        line = file_handle.readline()</span><br></pre></td></tr></table></figure></p>
