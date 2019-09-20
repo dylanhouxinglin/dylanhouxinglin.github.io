@@ -129,18 +129,18 @@
 
 
 
-<meta name="description" content="Logistic Regression 逻辑回归(logistic regression)，一种典型的分类方法.">
+<meta name="description" content="Logistic Regression Introduction 逻辑回归(logistic regression)，一种典型的分类方法.">
 <meta name="keywords" content="Machine Learning">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Logistic Regression">
 <meta property="og:url" content="http://yoursite.com/2019/09/08/Logistic-Regression/index.html">
 <meta property="og:site_name" content="Just For Fun">
-<meta property="og:description" content="Logistic Regression 逻辑回归(logistic regression)，一种典型的分类方法.">
+<meta property="og:description" content="Logistic Regression Introduction 逻辑回归(logistic regression)，一种典型的分类方法.">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-09-08T11:45:23.297Z">
+<meta property="og:updated_time" content="2019-09-20T12:16:32.462Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Logistic Regression">
-<meta name="twitter:description" content="Logistic Regression 逻辑回归(logistic regression)，一种典型的分类方法.">
+<meta name="twitter:description" content="Logistic Regression Introduction 逻辑回归(logistic regression)，一种典型的分类方法.">
 
 
 
@@ -391,8 +391,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2019-09-08T21:45:23+10:00">
-                2019-09-08
+              <time title="Post modified" itemprop="dateModified" datetime="2019-09-20T22:16:32+10:00">
+                2019-09-20
               </time>
             
           </span>
@@ -441,7 +441,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  235
+                  1.1k
                 </span>
               
 
@@ -457,7 +457,7 @@
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
                 <span title="Reading time">
-                  1
+                  5
                 </span>
               
             </div>
@@ -478,21 +478,45 @@
       
 
       
-        <h2 id="logistic-regression">Logistic Regression</h2>
-<p>逻辑回归(logistic regression)，一种典型的分类方法. <a id="more"></a> Logistic distribution 的分布函数是一条 S 形曲线，即 sigmoid 函数 :</p>
+        <h2 id="logistic-regression-introduction">Logistic Regression Introduction</h2>
+<p>逻辑回归(logistic regression)，一种典型的分类方法. <a id="more"></a></p>
+<h3 id="假设-assumption">假设 (Assumption)</h3>
+<p>Logistic distribution 的分布函数是一条 S 形曲线，即 sigmoid 函数 :</p>
 <p><span class="math display">\[g(x) = {1\over 1+e^{-x}}\]</span></p>
 <p>对于二分类问题，可以看作是伯努利试验，即 :</p>
 <p><span class="math display">\[P(y=1|x) = p ; P(y=0|x) = 1-p\]</span></p>
 <p><span class="math display">\[P(x|\theta)=\theta^x(1-\theta)^{1-x}\]</span></p>
+<h3 id="最大似然-maximum-likelihood">最大似然 (Maximum Likelihood)</h3>
 <p>对应的似然函数为 :</p>
 <p><span class="math display">\[L(x)=\Pi P(y|x) = \Pi x^y (1-x)^{1-y} = \Pi g(x)^y (1-g(x))^{1-y}\]</span></p>
-<p>则对数似然函数为 :</p>
+<p>则对数似然函数为 (使用对数函数因为其单调，可以避免指数和累乘运算，而且可以有效缩小原值大小) :</p>
 <p><span class="math display">\[L(\theta) = \Pi \log g(x)^y (1-g(x))^{1-y}\]</span></p>
 <p><span class="math display">\[=\sum \log g(x)^y + \log (1-g(x))^{1-y}\]</span></p>
 <p><span class="math display">\[=\sum y\log g(x) + (1-y)\log (1-g(x))\]</span></p>
 <p><span class="math display">\[=\sum y\log g(\theta^Tx) + (1-y)\log (1-g(\theta^Tx))\]</span></p>
-<p>这时我们只需要最大化似然函数，就可以得到最优的参数估计，这里对其取负后除<span class="math inline">\(n\)</span>作为最终的损失函数 :</p>
+<p>这时我们只需要最大化似然函数，就可以得到最优的参数估计，这里对其取负后除<span class="math inline">\(n\)</span>作为最终的损失函数 (取负值就可以将最大化问题变为最小化问题) :</p>
 <p><span class="math display">\[J(\theta) = -{1\over n}L(\theta)=-{1\over n}\sum_{i=1}^n y\log g(\theta^Tx) + (1-y)\log (1-g(\theta^Tx))\]</span></p>
+<h3 id="优化-optimization">优化 (Optimization)</h3>
+<p>这里先介绍应用 梯度下降 (Gradient Descent) 求解损失函数最优值，理论上我们沿着凸函数梯度的反方向缓慢的移动，就能达到局部最优点 (local minimum)，对于严格凸函数，可以达到全局最优点 (global minimum).</p>
+<p>先求 sigmoid 函数的倒数 :</p>
+<p><span class="math display">\[g&#39;(x) = {d g(x) \over dx} = -1 * {1\over (1+e^{-x})^2} * (-e^{-x})\]</span> <span class="math display">\[={e^{-x} \over (1+e^{-x})^2} = {1+e^{-x}-1 \over (1+e^{-x})^2}\]</span> <span class="math display">\[={1+e^{-x} \over (1+e^{-x})^2}-{1 \over (1+e^{-x})^2} \]</span> <span class="math display">\[= g(x)(1-g(x))\]</span></p>
+<p>对损失函数求关于参数 <span class="math inline">\(\theta\)</span> 的偏导数 (according to the chain law) :</p>
+<p><span class="math display">\[{\partial J(\theta) \over \partial \theta} = -{\partial J(\theta)\over \partial g(\theta^Tx)}*{\partial g(\theta^Tx)\over \partial \theta^Tx}*{\partial \theta^Tx \over \partial \theta}\]</span> <span class="math display">\[=(y*{1 \over g(\theta^Tx)} - (1-y){1 \over 1-g(\theta^Tx)}) * g(\theta^Tx)(1-g(\theta^Tx)) * x\]</span> <span class="math display">\[=-(y-g(\theta^Tx))x = (g(\theta^Tx)-y)x\]</span></p>
+<p>所以更新参数的方式为 : <span class="math display">\[\theta = \theta - \alpha(g(\theta^Tx)-y)x\]</span></p>
+<p>如果前面的损失函数不加负号，那这里更新参数时就是 : <span class="math display">\[\theta = \theta + \alpha(y-g(\theta^Tx))x = \theta + \alpha*error*x\]</span></p>
+<p>即在逻辑回归模型中，最大化似然函数和最小化log损失函数实际上是等价的.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LogisticRegression</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, max_iter=<span class="number">200</span>, learning_rate=<span class="number">0.01</span>)</span>:</span></span><br><span class="line">        self.max_iter = max_iter</span><br><span class="line">        self.learning_rate = learning_rate</span><br><span class="line">        </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">sigmoid</span><span class="params">(self, x)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span> / (<span class="number">1</span> + np.exp(-x))</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">data_matrix</span><span class="params">(self, x)</span>:</span></span><br><span class="line">        data_mat = []</span><br><span class="line">        <span class="keyword">for</span> d <span class="keyword">in</span> x:</span><br><span class="line">            data_mat.append([<span class="number">1.0</span>, *d])</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> np.array(data_mat)</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">fit</span><span class="params">(self, x, y)</span>:</span></span><br><span class="line">        data_mat = self.data_matrix(x)</span><br><span class="line">        self.w = np.zeros((len(data_mat[<span class="number">0</span>]), <span class="number">1</span>), dtype=np.float32)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> iter_ <span class="keyword">in</span> range(self.max_iter):</span><br><span class="line">            y_hat = self.sigmoid(np.dot(data_mat, self.w))</span><br><span class="line">            y = np.array(y).reshape(len(y), <span class="number">1</span>)</span><br><span class="line">            error = np.transpose(y - y_hat)</span><br><span class="line">            self.w += self.learning_rate * np.transpose(np.dot(error, data_mat))</span><br><span class="line">            <span class="string">'''</span></span><br><span class="line"><span class="string">             for i in range(len(x)):</span></span><br><span class="line"><span class="string">                 result = self.sigmoid(np.dot(data_mat[i], self.w))</span></span><br><span class="line"><span class="string">                 error = y[i] - result</span></span><br><span class="line"><span class="string">                 self.w += self.learning_rate * error * np.transpose([data_mat[i]])</span></span><br><span class="line"><span class="string">            '''</span></span><br></pre></td></tr></table></figure>
+<h2 id="引入正则化-regularization">引入正则化 (Regularization)</h2>
+<p>为了防止过拟合，可以通过在损失函数之后添加正则化项的方式来惩罚参数，从而降低模型复杂度，一般常用的是 L1, L2 正则化，L1 倾向于让参数等于0，L2 倾向于让参数接近于0.</p>
+<p><span class="math display">\[J(\theta) = -{1\over n}L(\theta)=-{1\over n}\sum_{i=1}^n y\log g(\theta^Tx) + (1-y)\log (1-g(\theta^Tx)) + \lambda||\theta||\]</span></p>
+<p><span class="math display">\[J(\theta) = -{1\over n}L(\theta)=-{1\over n}\sum_{i=1}^n y\log g(\theta^Tx) + (1-y)\log (1-g(\theta^Tx)) + {\lambda \over 2}||w||^2\]</span></p>
+<p>关于正则化的详细内容，我记录在了另一篇 blog 中 : <a href="https://dylanhouxinglin.github.io/2019/04/03/Regularization-in-Machine-Learnig" target="_blank" rel="noopener">Regularization in Machine Learnig</a></p>
+<h2 id="解决多分类-multi-classification">解决多分类 (Multi-Classification)</h2>
+<h3 id="sigmoid---softmax">Sigmoid -&gt; Softmax</h3>
+<h3 id="one-vs-all">One vs all</h3>
+<h2 id="线性不可分问题">线性不可分问题</h2>
+<p>可以从sigmoid函数看出，当 <span class="math inline">\(θ^Tx &gt; 0\)</span> 时，<span class="math inline">\(y=1\)</span>，否则 <span class="math inline">\(y=0\)</span>。<span class="math inline">\(θ^Tx=0\)</span> 是模型隐含的分类平面（在高维空间中，我们说是超平面）。所以说逻辑回归本质上是一个线性模型，但是，这不意味着只有线性可分的数据能通过LR求解，实际上，我们可以通过特征变换的方式把低维空间转换到高维空间，而在低维空间不可分的数据，到高维空间中线性可分的几率会高一些.</p>
+<p>logistic regression 本质上是线性回归，只是在特征到结果的映射中加入了一个sigmoid函数，即先把特征线性求和，然后使用非线性的函数将连续值映射到0与1之间.</p>
 
       
     </div>
@@ -687,7 +711,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#logistic-regression"><span class="nav-number">1.</span> <span class="nav-text">Logistic Regression</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#logistic-regression-introduction"><span class="nav-number">1.</span> <span class="nav-text">Logistic Regression Introduction</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#假设-assumption"><span class="nav-number">1.1.</span> <span class="nav-text">假设 (Assumption)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#最大似然-maximum-likelihood"><span class="nav-number">1.2.</span> <span class="nav-text">最大似然 (Maximum Likelihood)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#优化-optimization"><span class="nav-number">1.3.</span> <span class="nav-text">优化 (Optimization)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引入正则化-regularization"><span class="nav-number">2.</span> <span class="nav-text">引入正则化 (Regularization)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解决多分类-multi-classification"><span class="nav-number">3.</span> <span class="nav-text">解决多分类 (Multi-Classification)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#sigmoid---softmax"><span class="nav-number">3.1.</span> <span class="nav-text">Sigmoid -&gt; Softmax</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#one-vs-all"><span class="nav-number">3.2.</span> <span class="nav-text">One vs all</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线性不可分问题"><span class="nav-number">4.</span> <span class="nav-text">线性不可分问题</span></a></li></ol></div>
             
 
           </div>
@@ -721,7 +745,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">19.4k</span>
+    <span title="Site words total count">20.2k</span>
   
 </div>
 
