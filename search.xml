@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Activation Functions]]></title>
+    <url>%2F2020%2F02%2F06%2Factivation-function%2F</url>
+    <content type="text"><![CDATA[Activation Functions 线性可分 VS 线性不可分 在讨论激活函数之前，我们应该先了解为什么激活函数是有必要存在的. 对于线性神经网络，可以表示为 \[y = Wx + b\] 无论隐藏层有多少、隐藏节点有多少，线性神经网络的本质上依旧是线性的组合. 这样的神经网络理论上可以通过寻找空间中超平面的方式来解决线性可分的问题： 但是对于一些稍微复杂的问题，线性分类器就无法找到一条直线(超平面)去划分出不同的类别： 同样的，对于回归问题，当因变量和自变量之间的关系无法简单用一条直线描述时，线性神经网络的效果就非常差了. 激活函数 对于上面说到的线性神经网络无法解决非线性分类和回归的问题，可以通过加入激活层来引入非线性因素，本质上是每个节点的输出在加权和的基础上做了一个分线性变换： \[y = Activation(Wx + b)\] 经典的损失函数 Sigmoid Sigmoid 函数本身的表达非常简单： \[g(x) = {1 \over {1+e^{-x}}}\] 而且其求导也非常方便(derivates of sigmoid function)： \[g&#39;(x) = {e^{-x} \over {(1+e^{-x}})^2} = g(x)(1-g(x))\] Sigmoid 函数可以将任意的输出值转换到\([0, 1]\)之间且\(f(0)=0.5\)，因此在分类问题中很适合作为概率值.]]></content>
+      <categories>
+        <category>Deep Learning</category>
+      </categories>
+      <tags>
+        <tag>Machine Learning</tag>
+        <tag>Deep Learning</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Logistic Regression]]></title>
     <url>%2F2019%2F09%2F08%2FLogistic-Regression%2F</url>
     <content type="text"><![CDATA[Logistic Regression Introduction 逻辑回归(logistic regression)，一种典型的分类方法. 假设 (Assumption) Logistic distribution 的分布函数是一条 S 形曲线，即 sigmoid 函数 : \[g(x) = {1\over 1+e^{-x}}\] 对于二分类问题，可以看作是伯努利试验，即 : \[P(y=1|x) = p ; P(y=0|x) = 1-p\] \[P(x|\theta)=\theta^x(1-\theta)^{1-x}\] 最大似然 (Maximum Likelihood) 对应的似然函数为 : \[L(x)=\Pi P(y|x) = \Pi x^y (1-x)^{1-y} = \Pi g(x)^y (1-g(x))^{1-y}\] 则对数似然函数为 (使用对数函数因为其单调，可以避免指数和累乘运算，而且可以有效缩小原值大小) : \[L(\theta) = \Pi \log g(x)^y (1-g(x))^{1-y}\] \[=\sum \log g(x)^y + \log (1-g(x))^{1-y}\] \[=\sum y\log g(x) + (1-y)\log (1-g(x))\] \[=\sum y\log g(\theta^Tx) + (1-y)\log (1-g(\theta^Tx))\] 这时我们只需要最大化似然函数，就可以得到最优的参数估计，这里对其取负后除\(n\)作为最终的损失函数 (取负值就可以将最大化问题变为最小化问题) : \[J(\theta) = -{1\over n}L(\theta)=-{1\over n}\sum_{i=1}^n y\log g(\theta^Tx) + (1-y)\log (1-g(\theta^Tx))\] 优化 (Optimization) 这里先介绍应用 梯度下降 (Gradient Descent) 求解损失函数最优值，理论上我们沿着凸函数梯度的反方向缓慢的移动，就能达到局部最优点 (local minimum)，对于严格凸函数，可以达到全局最优点 (global minimum). 先求 sigmoid 函数的倒数 : \[g&#39;(x) = {d g(x) \over dx} = -1 * {1\over (1+e^{-x})^2} * (-e^{-x})\] \[={e^{-x} \over (1+e^{-x})^2} = {1+e^{-x}-1 \over (1+e^{-x})^2}\] \[={1+e^{-x} \over (1+e^{-x})^2}-{1 \over (1+e^{-x})^2} \] \[= g(x)(1-g(x))\] 对损失函数求关于参数 \(\theta\) 的偏导数 (according to the chain law) : \[{\partial J(\theta) \over \partial \theta} = -{\partial J(\theta)\over \partial g(\theta^Tx)}*{\partial g(\theta^Tx)\over \partial \theta^Tx}*{\partial \theta^Tx \over \partial \theta}\] \[=(y*{1 \over g(\theta^Tx)} - (1-y){1 \over 1-g(\theta^Tx)}) * g(\theta^Tx)(1-g(\theta^Tx)) * x\] \[=-(y-g(\theta^Tx))x = (g(\theta^Tx)-y)x\] 所以更新参数的方式为 : \[\theta = \theta - \alpha(g(\theta^Tx)-y)x\] 如果前面的损失函数不加负号，那这里更新参数时就是 : \[\theta = \theta + \alpha(y-g(\theta^Tx))x = \theta + \alpha*error*x\] 即在逻辑回归模型中，最大化似然函数和最小化log损失函数实际上是等价的. 123456789101112131415161718192021222324252627282930class LogisticRegression: def __init__(self, max_iter=200, learning_rate=0.01): self.max_iter = max_iter self.learning_rate = learning_rate def sigmoid(self, x): return 1 / (1 + np.exp(-x)) def data_matrix(self, x): data_mat = [] for d in x: data_mat.append([1.0, *d]) return np.array(data_mat) def fit(self, x, y): data_mat = self.data_matrix(x) self.w = np.zeros((len(data_mat[0]), 1), dtype=np.float32) for iter_ in range(self.max_iter): y_hat = self.sigmoid(np.dot(data_mat, self.w)) y = np.array(y).reshape(len(y), 1) error = np.transpose(y - y_hat) self.w += self.learning_rate * np.transpose(np.dot(error, data_mat)) ''' for i in range(len(x)): result = self.sigmoid(np.dot(data_mat[i], self.w)) error = y[i] - result self.w += self.learning_rate * error * np.transpose([data_mat[i]]) ''' 引入正则化 (Regularization) 为了防止过拟合，可以通过在损失函数之后添加正则化项的方式来惩罚参数，从而降低模型复杂度，一般常用的是 L1, L2 正则化，L1 倾向于让参数等于0，L2 倾向于让参数接近于0. \[J(\theta) = -{1\over n}L(\theta)=-{1\over n}\sum_{i=1}^n y\log g(\theta^Tx) + (1-y)\log (1-g(\theta^Tx)) + \lambda||\theta||\] \[J(\theta) = -{1\over n}L(\theta)=-{1\over n}\sum_{i=1}^n y\log g(\theta^Tx) + (1-y)\log (1-g(\theta^Tx)) + {\lambda \over 2}||w||^2\] 关于正则化的详细内容，我记录在了另一篇 blog 中 : Regularization in Machine Learnig 解决多分类 (Multi-Classification) Sigmoid -&gt; Softmax One vs all 线性不可分问题 可以从sigmoid函数看出，当 \(θ^Tx &gt; 0\) 时，\(y=1\)，否则 \(y=0\)。\(θ^Tx=0\) 是模型隐含的分类平面（在高维空间中，我们说是超平面）。所以说逻辑回归本质上是一个线性模型，但是，这不意味着只有线性可分的数据能通过LR求解，实际上，我们可以通过特征变换的方式把低维空间转换到高维空间，而在低维空间不可分的数据，到高维空间中线性可分的几率会高一些. logistic regression 本质上是线性回归，只是在特征到结果的映射中加入了一个sigmoid函数，即先把特征线性求和，然后使用非线性的函数将连续值映射到0与1之间.]]></content>
@@ -95,8 +107,8 @@
         <category>Feature Engineering</category>
       </categories>
       <tags>
-        <tag>Feature Engineering</tag>
         <tag>Machine Learning</tag>
+        <tag>Feature Engineering</tag>
       </tags>
   </entry>
   <entry>
