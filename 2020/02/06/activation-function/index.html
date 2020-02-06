@@ -140,7 +140,8 @@
 <meta property="og:image" content="http://yoursite.com/images/activation/1.png">
 <meta property="og:image" content="http://yoursite.com/images/activation/2.png">
 <meta property="og:image" content="http://yoursite.com/images/activation/3.png">
-<meta property="og:updated_time" content="2020-02-06T13:17:24.236Z">
+<meta property="og:image" content="http://yoursite.com/images/activation/4.png">
+<meta property="og:updated_time" content="2020-02-06T14:08:11.876Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Activation Functions">
 <meta name="twitter:description" content="Activation Functions 线性可分 VS 线性不可分 在讨论激活函数之前，我们应该先了解为什么激活函数是有必要存在的.">
@@ -395,7 +396,7 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2020-02-06T21:17:24+08:00">
+              <time title="Post modified" itemprop="dateModified" datetime="2020-02-06T22:08:11+08:00">
                 2020-02-06
               </time>
             
@@ -445,7 +446,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  390
+                  584
                 </span>
               
 
@@ -461,7 +462,7 @@
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
                 <span title="Reading time">
-                  1
+                  2
                 </span>
               
             </div>
@@ -492,6 +493,9 @@
 <h2 id="经典的损失函数">经典的损失函数</h2>
 <h3 id="sigmoid">Sigmoid</h3>
 <p>Sigmoid 函数本身的表达非常简单： <span class="math display">\[g(x) = {1 \over {1+e^{-x}}}\]</span> 而且其求导也非常方便(derivates of sigmoid function)： <span class="math display">\[g&#39;(x) = {e^{-x} \over {(1+e^{-x}})^2} = g(x)(1-g(x))\]</span> <img src="/images/activation/3.png" alt="sigmoid"> Sigmoid 函数可以将任意的输出值转换到<span class="math inline">\([0, 1]\)</span>之间且<span class="math inline">\(f(0)=0.5\)</span>，因此在分类问题中很适合作为概率值.</p>
+<p>然而Sigmoid函数有它的局限性，从上图中可以看出，当自定义值超过一定范围后，其导数值趋近于零，这将会导致神经网络前几层起不到太大的作用，俗称「梯度消失」(vanishing gradient). 一般来说当神经网络超过5层时梯度消失问题就可能会出现. 而且Sigmoid函数的导数涉及除法，计算量相对较大；其敏感区间较短(-1,1)，超过该范围则进入饱和区间(saturation area).</p>
+<h3 id="tanh">Tanh</h3>
+<p>双曲正切函数(Hyperbolic Tangent) 是双曲正弦函数和双曲余弦函数的比值： <span class="math display">\[tanh(x) = {sinh(x) \over cosh(x)} = {e^x - e^{-x} \over e^x + e^{-x}}\]</span> Tanh函数可以由Sigmoid函数变换得出： <span class="math display">\[tanh(x) = 2sigmoid(2x)-1\]</span> <img src="/images/activation/4.png" alt="tanh"></p>
 
       
     </div>
@@ -688,7 +692,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#activation-functions"><span class="nav-number">1.</span> <span class="nav-text">Activation Functions</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#线性可分-vs-线性不可分"><span class="nav-number">1.1.</span> <span class="nav-text">线性可分 VS 线性不可分</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#激活函数"><span class="nav-number">1.2.</span> <span class="nav-text">激活函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#经典的损失函数"><span class="nav-number">1.3.</span> <span class="nav-text">经典的损失函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#sigmoid"><span class="nav-number">1.3.1.</span> <span class="nav-text">Sigmoid</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#activation-functions"><span class="nav-number">1.</span> <span class="nav-text">Activation Functions</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#线性可分-vs-线性不可分"><span class="nav-number">1.1.</span> <span class="nav-text">线性可分 VS 线性不可分</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#激活函数"><span class="nav-number">1.2.</span> <span class="nav-text">激活函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#经典的损失函数"><span class="nav-number">1.3.</span> <span class="nav-text">经典的损失函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#sigmoid"><span class="nav-number">1.3.1.</span> <span class="nav-text">Sigmoid</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tanh"><span class="nav-number">1.3.2.</span> <span class="nav-text">Tanh</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -722,7 +726,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">20.6k</span>
+    <span title="Site words total count">20.8k</span>
   
 </div>
 

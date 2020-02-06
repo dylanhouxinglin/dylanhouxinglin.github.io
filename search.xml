@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[Activation Functions]]></title>
     <url>%2F2020%2F02%2F06%2Factivation-function%2F</url>
-    <content type="text"><![CDATA[Activation Functions 线性可分 VS 线性不可分 在讨论激活函数之前，我们应该先了解为什么激活函数是有必要存在的. 对于线性神经网络，可以表示为 \[y = Wx + b\] 无论隐藏层有多少、隐藏节点有多少，线性神经网络的本质上依旧是线性的组合. 这样的神经网络理论上可以通过寻找空间中超平面的方式来解决线性可分的问题： 但是对于一些稍微复杂的问题，线性分类器就无法找到一条直线(超平面)去划分出不同的类别： 同样的，对于回归问题，当因变量和自变量之间的关系无法简单用一条直线描述时，线性神经网络的效果就非常差了. 激活函数 对于上面说到的线性神经网络无法解决非线性分类和回归的问题，可以通过加入激活层来引入非线性因素，本质上是每个节点的输出在加权和的基础上做了一个分线性变换： \[y = Activation(Wx + b)\] 经典的损失函数 Sigmoid Sigmoid 函数本身的表达非常简单： \[g(x) = {1 \over {1+e^{-x}}}\] 而且其求导也非常方便(derivates of sigmoid function)： \[g&#39;(x) = {e^{-x} \over {(1+e^{-x}})^2} = g(x)(1-g(x))\] Sigmoid 函数可以将任意的输出值转换到\([0, 1]\)之间且\(f(0)=0.5\)，因此在分类问题中很适合作为概率值.]]></content>
+    <content type="text"><![CDATA[Activation Functions 线性可分 VS 线性不可分 在讨论激活函数之前，我们应该先了解为什么激活函数是有必要存在的. 对于线性神经网络，可以表示为 \[y = Wx + b\] 无论隐藏层有多少、隐藏节点有多少，线性神经网络的本质上依旧是线性的组合. 这样的神经网络理论上可以通过寻找空间中超平面的方式来解决线性可分的问题： 但是对于一些稍微复杂的问题，线性分类器就无法找到一条直线(超平面)去划分出不同的类别： 同样的，对于回归问题，当因变量和自变量之间的关系无法简单用一条直线描述时，线性神经网络的效果就非常差了. 激活函数 对于上面说到的线性神经网络无法解决非线性分类和回归的问题，可以通过加入激活层来引入非线性因素，本质上是每个节点的输出在加权和的基础上做了一个分线性变换： \[y = Activation(Wx + b)\] 经典的损失函数 Sigmoid Sigmoid 函数本身的表达非常简单： \[g(x) = {1 \over {1+e^{-x}}}\] 而且其求导也非常方便(derivates of sigmoid function)： \[g&#39;(x) = {e^{-x} \over {(1+e^{-x}})^2} = g(x)(1-g(x))\] Sigmoid 函数可以将任意的输出值转换到\([0, 1]\)之间且\(f(0)=0.5\)，因此在分类问题中很适合作为概率值. 然而Sigmoid函数有它的局限性，从上图中可以看出，当自定义值超过一定范围后，其导数值趋近于零，这将会导致神经网络前几层起不到太大的作用，俗称「梯度消失」(vanishing gradient). 一般来说当神经网络超过5层时梯度消失问题就可能会出现. 而且Sigmoid函数的导数涉及除法，计算量相对较大；其敏感区间较短(-1,1)，超过该范围则进入饱和区间(saturation area). Tanh 双曲正切函数(Hyperbolic Tangent) 是双曲正弦函数和双曲余弦函数的比值： \[tanh(x) = {sinh(x) \over cosh(x)} = {e^x - e^{-x} \over e^x + e^{-x}}\] Tanh函数可以由Sigmoid函数变换得出： \[tanh(x) = 2sigmoid(2x)-1\]]]></content>
       <categories>
         <category>Deep Learning</category>
       </categories>
@@ -107,8 +107,8 @@
         <category>Feature Engineering</category>
       </categories>
       <tags>
-        <tag>Machine Learning</tag>
         <tag>Feature Engineering</tag>
+        <tag>Machine Learning</tag>
       </tags>
   </entry>
   <entry>
