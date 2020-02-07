@@ -141,7 +141,8 @@
 <meta property="og:image" content="http://yoursite.com/images/activation/2.png">
 <meta property="og:image" content="http://yoursite.com/images/activation/3.png">
 <meta property="og:image" content="http://yoursite.com/images/activation/4.png">
-<meta property="og:updated_time" content="2020-02-06T14:08:11.876Z">
+<meta property="og:image" content="http://yoursite.com/images/activation/5.png">
+<meta property="og:updated_time" content="2020-02-07T09:46:23.990Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Activation Functions">
 <meta name="twitter:description" content="Activation Functions 线性可分 VS 线性不可分 在讨论激活函数之前，我们应该先了解为什么激活函数是有必要存在的.">
@@ -396,8 +397,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2020-02-06T22:08:11+08:00">
-                2020-02-06
+              <time title="Post modified" itemprop="dateModified" datetime="2020-02-07T17:46:23+08:00">
+                2020-02-07
               </time>
             
           </span>
@@ -446,7 +447,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  584
+                  1k
                 </span>
               
 
@@ -462,7 +463,7 @@
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
                 <span title="Reading time">
-                  2
+                  4
                 </span>
               
             </div>
@@ -495,7 +496,24 @@
 <p>Sigmoid 函数本身的表达非常简单： <span class="math display">\[g(x) = {1 \over {1+e^{-x}}}\]</span> 而且其求导也非常方便(derivates of sigmoid function)： <span class="math display">\[g&#39;(x) = {e^{-x} \over {(1+e^{-x}})^2} = g(x)(1-g(x))\]</span> <img src="/images/activation/3.png" alt="sigmoid"> Sigmoid 函数可以将任意的输出值转换到<span class="math inline">\([0, 1]\)</span>之间且<span class="math inline">\(f(0)=0.5\)</span>，因此在分类问题中很适合作为概率值.</p>
 <p>然而Sigmoid函数有它的局限性，从上图中可以看出，当自定义值超过一定范围后，其导数值趋近于零，这将会导致神经网络前几层起不到太大的作用，俗称「梯度消失」(vanishing gradient). 一般来说当神经网络超过5层时梯度消失问题就可能会出现. 而且Sigmoid函数的导数涉及除法，计算量相对较大；其敏感区间较短(-1,1)，超过该范围则进入饱和区间(saturation area).</p>
 <h3 id="tanh">Tanh</h3>
-<p>双曲正切函数(Hyperbolic Tangent) 是双曲正弦函数和双曲余弦函数的比值： <span class="math display">\[tanh(x) = {sinh(x) \over cosh(x)} = {e^x - e^{-x} \over e^x + e^{-x}}\]</span> Tanh函数可以由Sigmoid函数变换得出： <span class="math display">\[tanh(x) = 2sigmoid(2x)-1\]</span> <img src="/images/activation/4.png" alt="tanh"></p>
+<p>双曲正切函数(Hyperbolic Tangent) 是双曲正弦函数和双曲余弦函数的比值： <span class="math display">\[tanh(x) = {sinh(x) \over cosh(x)} = {e^x - e^{-x} \over e^x + e^{-x}}\]</span> Tanh函数可以由Sigmoid函数变换得出： <span class="math display">\[tanh(x) = 2sigmoid(2x)-1\]</span> 这个函数从图像上看很像是对Sigmoid的一种缩放，而且Tanh函数是关于原点对称的，相比Sigmoid可以提高训练效率，因为其输出更容易接近均值(0). 但它并没有解决Sigmoid中vanishing gradient 和 calculating cost 的问题. <span class="math display">\[tanh&#39;(x) = {4e^{-2x}\over (1+e^{-2x})^2}\]</span> <img src="/images/activation/4.png" alt="tanh"></p>
+<h3 id="relu">Relu</h3>
+<p>根据神经科学的研究发现，人脑的神经系统偏稀疏？(The operating mode of the neurons has the characteristic of sparsity)，仅有1%-4%的神经元会在传递中被同时激活. 但在前面提到的两种激活函数中，大概会有50%的神经元会被同时激活.</p>
+<p>线性修正单元，ReLU(Rectified linear units)的定义就要简单许多： <span class="math display">\[g(x) = max(0, x) = \begin{cases} 
+x&amp;  x \ge 0 \\
+0&amp; x \le 0
+\end{cases}\]</span> 其导数也十分简单： <span class="math display">\[g&#39;(x) = = \begin{cases} 
+1&amp;  x \ge 0 \\
+0&amp; x \le 0
+\end{cases}\]</span> 当<span class="math inline">\(x \ge 0\)</span>时其导数为一个常数，这样就解决了vanishing gradient problem. <img src="/images/activation/5.png" alt="relu"> 而且ReLU还有以下这些优点：</p>
+<ul>
+<li>因为函数简单，不涉及除法和幂运算，计算速度会得到提升；</li>
+<li>因为梯度在持续下降，因此ReLU也会使损失函数更快速的converge；</li>
+<li>可以使神经网络更容易获得稀疏的表达. 因为有更多的0；</li>
+<li>因为导数是常数，所以可以避免陷入local optimization；</li>
+<li>Deep neural networks with ReLU activation functions can reach their best performance without requiring any unsupervised pre-training on purely supervised tasks with large labeled datasets. (这句不太理解，cited from 'Activation Functions and Their Characteristics in Deep Neural Networks')</li>
+</ul>
+<p>但是当<span class="math inline">\(x \le 0\)</span>时，这部分值的神经元永远不会被激活；而且经过ReLU的数值平均值是一个positive value，也就是说下一层接收到的inputs永远都是正数. 这两个问题都会对神经网络的收敛造成影响.</p>
 
       
     </div>
@@ -692,7 +710,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#activation-functions"><span class="nav-number">1.</span> <span class="nav-text">Activation Functions</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#线性可分-vs-线性不可分"><span class="nav-number">1.1.</span> <span class="nav-text">线性可分 VS 线性不可分</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#激活函数"><span class="nav-number">1.2.</span> <span class="nav-text">激活函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#经典的损失函数"><span class="nav-number">1.3.</span> <span class="nav-text">经典的损失函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#sigmoid"><span class="nav-number">1.3.1.</span> <span class="nav-text">Sigmoid</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tanh"><span class="nav-number">1.3.2.</span> <span class="nav-text">Tanh</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#activation-functions"><span class="nav-number">1.</span> <span class="nav-text">Activation Functions</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#线性可分-vs-线性不可分"><span class="nav-number">1.1.</span> <span class="nav-text">线性可分 VS 线性不可分</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#激活函数"><span class="nav-number">1.2.</span> <span class="nav-text">激活函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#经典的损失函数"><span class="nav-number">1.3.</span> <span class="nav-text">经典的损失函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#sigmoid"><span class="nav-number">1.3.1.</span> <span class="nav-text">Sigmoid</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tanh"><span class="nav-number">1.3.2.</span> <span class="nav-text">Tanh</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#relu"><span class="nav-number">1.3.3.</span> <span class="nav-text">Relu</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -726,7 +744,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">20.8k</span>
+    <span title="Site words total count">21.3k</span>
   
 </div>
 
