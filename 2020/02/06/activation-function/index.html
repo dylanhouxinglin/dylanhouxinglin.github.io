@@ -142,7 +142,8 @@
 <meta property="og:image" content="http://yoursite.com/images/activation/3.png">
 <meta property="og:image" content="http://yoursite.com/images/activation/4.png">
 <meta property="og:image" content="http://yoursite.com/images/activation/5.png">
-<meta property="og:updated_time" content="2020-02-07T09:46:23.990Z">
+<meta property="og:image" content="http://yoursite.com/images/activation/6.png">
+<meta property="og:updated_time" content="2020-02-08T08:35:08.980Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Activation Functions">
 <meta name="twitter:description" content="Activation Functions 线性可分 VS 线性不可分 在讨论激活函数之前，我们应该先了解为什么激活函数是有必要存在的.">
@@ -397,8 +398,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2020-02-07T17:46:23+08:00">
-                2020-02-07
+              <time title="Post modified" itemprop="dateModified" datetime="2020-02-08T16:35:08+08:00">
+                2020-02-08
               </time>
             
           </span>
@@ -447,7 +448,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  1k
+                  1.3k
                 </span>
               
 
@@ -463,7 +464,7 @@
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
                 <span title="Reading time">
-                  4
+                  5
                 </span>
               
             </div>
@@ -514,6 +515,27 @@ x&amp;  x \ge 0 \\
 <li>Deep neural networks with ReLU activation functions can reach their best performance without requiring any unsupervised pre-training on purely supervised tasks with large labeled datasets. (这句不太理解，cited from 'Activation Functions and Their Characteristics in Deep Neural Networks')</li>
 </ul>
 <p>但是当<span class="math inline">\(x \le 0\)</span>时，这部分值的神经元永远不会被激活；而且经过ReLU的数值平均值是一个positive value，也就是说下一层接收到的inputs永远都是正数. 这两个问题都会对神经网络的收敛造成影响.</p>
+<p>针对上面的问题，LReLU(leaky rectified linear units)进行了改进： <span class="math display">\[g(x) = max(0, x) = \begin{cases} 
+x&amp;  x \ge 0 \\
+0.01x&amp; x \le 0
+\end{cases}\]</span> 所以导数也就变成了： <span class="math display">\[g&#39;(x) = = \begin{cases} 
+1&amp;  x \ge 0 \\
+0.01&amp; x \le 0
+\end{cases}\]</span></p>
+<p>在上式中，如果用<span class="math inline">\(a\)</span>替换掉<span class="math inline">\(0.01\)</span>，那这个函数就被成为PReLU. 还有一种针对ReLU的improvement，RReLU(random)就是在训练的时候每次从uniform distribution中选一个值作为<span class="math inline">\(a\)</span>，a~U(0,1)，然后在测试时，把参数设置成0.5.</p>
+<h3 id="elu">ELU</h3>
+<p>为了能够将激活层输出的均值尽可能的靠近均值(0)，有人提出了一种ELU(exponential linear unit)函数(<span class="math inline">\(\alpha &gt; 0\)</span>)： <span class="math display">\[g(x) = = \begin{cases} 
+x&amp;  x \ge 0 \\
+\alpha (e^x -1 ) &amp; x \le 0
+\end{cases}\]</span> the derivative function is： <span class="math display">\[g&#39;(x) = = \begin{cases} 
+1&amp;  x \ge 0 \\
+\alpha e^x &amp; x \le 0
+\end{cases}\]</span></p>
+<p>函数图像如下所示： <img src="/images/activation/6.png" alt="elu"></p>
+<p>其中参数<span class="math inline">\(\alpha\)</span>的作用是使激活函数的负定义域部分保持饱和，这样的设计可以使网络becomes more robust. 因为激活函数的右半部分的导数是一个constant，因此vanishing gradient问题也得到了缓解.</p>
+<h3 id="swish">Swish</h3>
+<p><span class="math display">\[f(x) = x · sigmoid(\beta x)\]</span></p>
+<h3 id="maxout">Maxout</h3>
 
       
     </div>
@@ -710,7 +732,7 @@ x&amp;  x \ge 0 \\
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#activation-functions"><span class="nav-number">1.</span> <span class="nav-text">Activation Functions</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#线性可分-vs-线性不可分"><span class="nav-number">1.1.</span> <span class="nav-text">线性可分 VS 线性不可分</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#激活函数"><span class="nav-number">1.2.</span> <span class="nav-text">激活函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#经典的损失函数"><span class="nav-number">1.3.</span> <span class="nav-text">经典的损失函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#sigmoid"><span class="nav-number">1.3.1.</span> <span class="nav-text">Sigmoid</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tanh"><span class="nav-number">1.3.2.</span> <span class="nav-text">Tanh</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#relu"><span class="nav-number">1.3.3.</span> <span class="nav-text">Relu</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#activation-functions"><span class="nav-number">1.</span> <span class="nav-text">Activation Functions</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#线性可分-vs-线性不可分"><span class="nav-number">1.1.</span> <span class="nav-text">线性可分 VS 线性不可分</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#激活函数"><span class="nav-number">1.2.</span> <span class="nav-text">激活函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#经典的损失函数"><span class="nav-number">1.3.</span> <span class="nav-text">经典的损失函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#sigmoid"><span class="nav-number">1.3.1.</span> <span class="nav-text">Sigmoid</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tanh"><span class="nav-number">1.3.2.</span> <span class="nav-text">Tanh</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#relu"><span class="nav-number">1.3.3.</span> <span class="nav-text">Relu</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#elu"><span class="nav-number">1.3.4.</span> <span class="nav-text">ELU</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#swish"><span class="nav-number">1.3.5.</span> <span class="nav-text">Swish</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#maxout"><span class="nav-number">1.3.6.</span> <span class="nav-text">Maxout</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -744,7 +766,7 @@ x&amp;  x \ge 0 \\
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">21.3k</span>
+    <span title="Site words total count">21.6k</span>
   
 </div>
 
