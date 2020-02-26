@@ -118,7 +118,7 @@
 
 
 
-  <meta name="keywords" content="Machine Learning,">
+  <meta name="keywords" content="Tensorflow,">
 
 
 
@@ -129,18 +129,20 @@
 
 
 
-<meta name="description" content="Perceptron Perceptron is a kind of simple binary classification algorithm, which can only be applied on binary dataset with linearly separable.">
-<meta name="keywords" content="Machine Learning">
+<meta name="description" content="Tensorflow记录(2)">
+<meta name="keywords" content="Tensorflow">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Perceptron">
-<meta property="og:url" content="http://yoursite.com/2020/02/18/Perceptron/index.html">
+<meta property="og:title" content="Tensorflow记录(2)">
+<meta property="og:url" content="http://yoursite.com/2020/02/26/tensorflow2/index.html">
 <meta property="og:site_name" content="Just For Fun">
-<meta property="og:description" content="Perceptron Perceptron is a kind of simple binary classification algorithm, which can only be applied on binary dataset with linearly separable.">
+<meta property="og:description" content="Tensorflow记录(2)">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-02-18T14:02:58.466Z">
+<meta property="og:image" content="http://yoursite.com/images/tensorflow/ema1.png">
+<meta property="og:updated_time" content="2020-02-26T13:42:26.466Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Perceptron">
-<meta name="twitter:description" content="Perceptron Perceptron is a kind of simple binary classification algorithm, which can only be applied on binary dataset with linearly separable.">
+<meta name="twitter:title" content="Tensorflow记录(2)">
+<meta name="twitter:description" content="Tensorflow记录(2)">
+<meta name="twitter:image" content="http://yoursite.com/images/tensorflow/ema1.png">
 
 
 
@@ -170,13 +172,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2020/02/18/Perceptron/">
+  <link rel="canonical" href="http://yoursite.com/2020/02/26/tensorflow2/">
 
 
 
 
 
-  <title>Perceptron | Just For Fun</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>Tensorflow记录(2) | Just For Fun</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -345,7 +347,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/18/Perceptron/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/26/tensorflow2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="dylan_houxinglin">
@@ -362,7 +364,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Perceptron</h1>
+          <h1 class="post-title" itemprop="name headline">Tensorflow记录(2)</h1>
         
 
         <div class="post-meta">
@@ -375,8 +377,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-02-18T21:56:18+08:00">
-                2020-02-18
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-02-26T20:00:02+08:00">
+                2020-02-26
               </time>
             
 
@@ -391,8 +393,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2020-02-18T22:02:58+08:00">
-                2020-02-18
+              <time title="Post modified" itemprop="dateModified" datetime="2020-02-26T21:42:26+08:00">
+                2020-02-26
               </time>
             
           </span>
@@ -410,8 +412,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Machine-Learning/" itemprop="url" rel="index">
-                    <span itemprop="name">Machine Learning</span>
+                  <a href="/categories/Deep-Learning/" itemprop="url" rel="index">
+                    <span itemprop="name">Deep Learning</span>
                   </a>
                 </span>
 
@@ -441,7 +443,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  617
+                  1.1k
                 </span>
               
 
@@ -457,7 +459,7 @@
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
                 <span title="Reading time">
-                  3
+                  4
                 </span>
               
             </div>
@@ -478,62 +480,37 @@
       
 
       
-        <h2 id="perceptron">Perceptron</h2>
-<p>Perceptron is a kind of simple binary classification algorithm, which can only be applied on binary dataset with linearly separable. <a id="more"></a> The essence of perceptron is training a hyper plane to separate the data, the process is minimizing loss function by gradient descent algorithm. Although perceptron has plenty of limitations, it is the foundation of neural network and support vector machine.</p>
-<p>The function of perceptron is extremely simple:</p>
-<p><span class="math display">\[f(x) = sign(wx+b)\]</span></p>
-<p><span class="math display">\[sign(x)=\begin{cases}
-+1 &amp; x \ge 0 \\
--1 &amp; x &lt; 0 \\
-\end{cases}\]</span></p>
-<h2 id="the-loss-function">The loss function</h2>
-<p>The loss function of perceptron is the sum of the distance of all the misclassification points. It is easy to come out, the value of loss function will become to zero when there is no misclassification points by the current hyperplane.</p>
-<p>According to the formula of Distance From a Point a Line, the distance should be: <span class="math display">\[
-distance = {1 \over ||w||}|wx+b|
-\]</span></p>
-<p>For the misclassification points, since the results of <span class="math inline">\(wx_i+b\)</span> are always opposite with <span class="math inline">\(y_i\)</span>, therefore, we have: <span class="math display">\[
--y_i(wx_i+b) &gt; 0
-\]</span> So for the misclassification points, the total distance can be changed to: <span class="math display">\[
-distance = -{1 \over ||w||} \sum_{i=1}^N y_i(wx_i+b)
-\]</span> Since the term <span class="math inline">\(||w||\)</span> is a constant in the formula, we can define the loss function as: <span class="math display">\[
-L(w, b) = -\sum_{i=1}^N y_i(wx_i+b)
-\]</span> Which means the value of loss function will be zero if there is no misclassification, and the loss will become</p>
-<p>lower when the misclassification points are getting closer to the hyperplane.</p>
-<h2 id="algorithm">Algorithm</h2>
-<p>Here we need to minimize the above loss function by using gradient descent approach. The gradient of the two variables are shown below: <span class="math display">\[
-\nabla_w L(w,b) = -\sum_{i=1}^N y_ix_i \\
-\nabla_b L(w,b) = -\sum_{i=1}^N y_i
-\]</span> In the process of minimizing, we only select one misclassification point randomly to adjust the variables: <span class="math display">\[
-w = w + \eta y_ix_i \\
-b = b + \eta y_i
-\]</span> To sum up, the steps of the algorithm can be described as:</p>
-<ol type="1">
-<li>initialize <span class="math inline">\(w\)</span> and <span class="math inline">\(b\)</span></li>
-<li>for each training points, calculate <span class="math inline">\(y_i(wx_i+b)\)</span>, if the result is less or equal than zero, adjust the two variables</li>
-<li>loop on step 2 until there is no misclassification points</li>
-</ol>
-<h2 id="the-duality-format">The duality format</h2>
-<p>During this approach, we are going to solve the problem on another side. We have known that: <span class="math display">\[
-w = w + \eta y_ix_i \\
-b = b + \eta y_i
-\]</span> In this process, we are trying to modify the value of the two variables, assume that the variables become to <span class="math inline">\(\alpha_iy_ix_i\)</span> and <span class="math inline">\(\alpha_iy_i\)</span> for the misclassification point <span class="math inline">\((x_i, y_i)\)</span> after <span class="math inline">\(n\)</span> times changes, and <span class="math inline">\(\alpha_i = n_i \eta\)</span>, therefore, the final results of two variables can be represented as: <span class="math display">\[
-w = \sum_{i-1}^N\alpha_iy_ix_i \\
-b = \sum_{i=1}^N\alpha_iy_i
-\]</span> The variable <span class="math inline">\(\alpha_i\)</span> represents the number of changes due to the misclassification point <span class="math inline">\((x_i, y_i)\)</span>. According to this method, the algorithm will minimize the variable <span class="math inline">\(\alpha\)</span> instead of <span class="math inline">\(w\)</span>. The model has been changed to this format: <span class="math display">\[
-f(x) = sign(\sum_{i=1}^N \alpha_iy_ix_i·x + b)
-\]</span> The steps can be described as:</p>
-<ol type="1">
-<li><p><span class="math inline">\(\alpha = (\alpha_1, \alpha_2, ... , \alpha_N)^T\)</span>, <span class="math inline">\(\alpha=0\)</span>, <span class="math inline">\(b=0\)</span></p></li>
-<li><p>for each training points, calculate <span class="math inline">\(y_i(\sum_{j_1}^N \alpha_j y_j x_j · x_i + b)\)</span>, if the result is less or equal than zero, adjust the variables as: <span class="math display">\[
-\alpha_i = \alpha_i + \eta \\
-b = b + \eta y_i
-\]</span></p></li>
-<li><p>loop on step 2 until there is no misclassification points</p></li>
-</ol>
-<p>From the above formula, it can be seen that the training data <span class="math inline">\(x_i\)</span> and <span class="math inline">\(x_j\)</span> only occur in the inner product format, for the convenience of computation, we can calculate the inner product of the training data and store them in a gram matrix first: <span class="math display">\[
-G = [x_i · x_j]_{N*N}
-\]</span></p>
-<h2 id="codes">Codes</h2>
+        <h2 id="tensorflow记录2">Tensorflow记录(2)</h2>
+<a id="more"></a>
+<h2 id="移动平均模型-ema">移动平均模型 (EMA)</h2>
+<p>移动平均模型(Exponential Moving Average)可以用来估计变量的局部均值，这样的做法可以使得变量的更新和取值不仅和当前的因素有关，同时还会受到历史取值的影响.</p>
+<p>设变量<span class="math inline">\(v\)</span>在<span class="math inline">\(t\)</span>时刻的为<span class="math inline">\(v_t\)</span>，取值为<span class="math inline">\(\theta_t\)</span>，在使用EMA后，<span class="math inline">\(v_t\)</span>的更新将变为：</p>
+<p><span class="math display">\[v_t = \beta ⋅ v_{t-1} + (1-\beta) ⋅ \theta_t\]</span></p>
+<p>其中<span class="math inline">\(\beta \in [0,1)\)</span>，如下图所示，经过EMA平滑处理后的变量<span class="math inline">\(v\)</span>在一段时间的更新后趋于稳定，而且在迭代过程中的抖动也明显减弱：</p>
+<figure>
+<img src="/images/tensorflow/ema1.png" alt="ema"><figcaption>ema</figcaption>
+</figure>
+<p><span class="math inline">\(t\)</span>时刻变量<span class="math inline">\(v\)</span>的移动平均值大致等于过去<span class="math inline">\(1 \over (1-\beta)\)</span>个时刻<span class="math inline">\(\theta\)</span>的平均值，这个结论在移动平均起始时相差比较大，所以通过<span class="math inline">\(v_t\)</span>除以<span class="math inline">\((1-\beta^t)\)</span>修正对均值的估计：</p>
+<p><span class="math display">\[v\_biased_t = {1 \over 1-\beta^t}\]</span></p>
+<p>通过上式可以发现，当<span class="math inline">\(t\)</span>越来越大时，<span class="math inline">\(1-beta^t\)</span>的值越接近1，因此<span class="math inline">\(v_t\)</span>和<span class="math inline">\(v\_biased_t\)</span>的值将会越来越接近. 当<span class="math inline">\(\beta\)</span>的取值越来越大时，移动平均得到的值会越发的和<span class="math inline">\(\theta\)</span>的历史值相关. 使用移动平均的好处在于程序所占的内存小，因为我们不需要去保存变量的历史值，就能够估计出其均值.</p>
+<h2 id="tensorflow中的ema">Tensorflow中的EMA</h2>
+<p>相比对变量直接赋值而言，移动平均得到的值在图像上更加平缓光滑，抖动性更小，不会因为某次的异常取值而使得滑动平均值波动很大. TensorFlow 提供了 tf.train.ExponentialMovingAverage 来实现滑动平均. 在初始化 ExponentialMovingAverage 时，需要提供一个衰减率(decay)，即公式中的<span class="math inline">\(\beta\)</span>. 这个衰减率将用于控制模型的更新速度. ExponentialMovingAverage 对每一个变量(variable)会维护一个影子变量(shadow_variable)，这个影子变量的初始值就是相应变量的初始值，而每次运行变量更新时，影子变量的值会更新为：</p>
+<p><span class="math display">\[shadow\_variable = decay ⋅ shadow\_variable + (1-decay) ⋅ variable\]</span></p>
+<p>其中的shadow variable就是公式中的<span class="math inline">\(v_t\)</span>， variable就是<span class="math inline">\(\theta_t\)</span>，decay就是<span class="math inline">\(\beta\)</span>. 公式中的decay 决定了影子变量的更新速度，<strong>decay 越大影子变量越趋于稳定</strong>. 在实际运用中，decay一般会设成非常接近1的数，为了使得影子变量在训练前期可以更新更快，ExponentialMovingAverage 还提供了 num_updates 参数动态设置 decay 的大小. 如果在初始化 ExponentialMovingAverage 时提供了 num_updates 参数，那么每次使用的衰减率将是：</p>
+<p><span class="math display">\[min\{decay, {1+num\_updates \over 10+num\_updates}\}\]</span></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">v1 = tf.Variable(<span class="number">0</span>, dtype=tf.float32)</span><br><span class="line">step = tf.Variable(<span class="number">0</span>, trainable=<span class="literal">False</span>)</span><br><span class="line">ema = tf.train.ExponentialMovingAverage(<span class="number">0.99</span>, step)</span><br><span class="line">maintain_averages_op = ema.apply([v1])</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</span><br><span class="line">  <span class="comment"># initialize</span></span><br><span class="line">	init_op = tf.global_variables_initilizer()</span><br><span class="line">  sess.run(init_op)</span><br><span class="line">  print(sess.run([v1, ema.average(v1)]))</span><br><span class="line">  </span><br><span class="line">  <span class="comment"># update v1</span></span><br><span class="line">  sess.run(tf.assign(v1, <span class="number">5</span>))</span><br><span class="line">  sess.run(maintain_averages_op)</span><br><span class="line">  print(sess.run([v1, ema.average(v1)]))</span><br><span class="line">  </span><br><span class="line">  <span class="comment"># update step and v1</span></span><br><span class="line">  sess.run(tf.assign(step, <span class="number">10000</span>))</span><br><span class="line">  sess.run(tf.assign(v1, <span class="number">10</span>))</span><br><span class="line">  sess.run(maintain_averages_op)</span><br><span class="line">  print(sess.run([v1, ema.average(v1)]))</span><br><span class="line">  </span><br><span class="line">  <span class="comment"># update v1 by using EMA</span></span><br><span class="line">  sess.run(maintain_averages_op)</span><br><span class="line">  print(sess.run([v1, ema.average(v1)]))</span><br></pre></td></tr></table></figure>
+<p>上面代码的执行结果时：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[<span class="number">0.0</span>, <span class="number">0.0</span>]</span><br><span class="line">[<span class="number">5.0</span>, <span class="number">4.5</span>]</span><br><span class="line">[<span class="number">10.0</span>, <span class="number">4.5549998</span>]</span><br><span class="line">[<span class="number">10.0</span>, <span class="number">4.6094499</span>]</span><br></pre></td></tr></table></figure>
+<h2 id="ema的使用场景">EMA的使用场景</h2>
+<p>移动平均模型可以使模型在测试集上更加robust，用随机梯度下降算法训练神经网络时，使用滑动平均在很多应用中都可以在一定程度上提高最终模型在测试数据上的表现. 对神经网络边的权重 weights 使用滑动平均，得到对应的影子变量 shadow_weights，之后在测试过程中使用 shadow_weights 来代替 weights 作为神经网络边的权重，这样在测试数据上效果更好. 因为 shadow_weights 的更新更加平滑，对于随机梯度下降而言，更平滑的更新说明不会偏离最优点很远. 对于 mini-batch gradient decent，可以尝试滑动平均，毕竟 mini-batch gradient decent 对参数的更新也存在抖动.</p>
+<h2 id="tensoerflow持久化">Tensoerflow持久化</h2>
+<p>tf.train.Saver 类提供了保存模型的API，通过以下代码可以实现对当前模型的保存：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">saver = tf.train.Saver()</span><br><span class="line">saver.save(sess, <span class="string">'/path/models/model.ckpt'</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="references">References</h2>
+<ul>
+<li>https://www.cnblogs.com/wuliytTaotao/p/9479958.html</li>
+<li>《TensorFlow实战Google深度学习框架》</li>
+</ul>
 
       
     </div>
@@ -551,7 +528,7 @@ G = [x_i · x_j]_{N*N}
       
         <div class="post-tags">
           
-            <a href="/tags/Machine-Learning/" rel="tag"># Machine Learning</a>
+            <a href="/tags/Tensorflow/" rel="tag"># Tensorflow</a>
           
         </div>
       
@@ -564,8 +541,8 @@ G = [x_i · x_j]_{N*N}
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/02/17/tensorflow1/" rel="next" title="Tensorflow记录(1)">
-                <i class="fa fa-chevron-left"></i> Tensorflow记录(1)
+              <a href="/2020/02/25/KNN/" rel="next" title="KNN">
+                <i class="fa fa-chevron-left"></i> KNN
               </a>
             
           </div>
@@ -573,10 +550,6 @@ G = [x_i · x_j]_{N*N}
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/02/25/KNN/" rel="prev" title="KNN">
-                KNN <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -732,7 +705,7 @@ G = [x_i · x_j]_{N*N}
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#perceptron"><span class="nav-number">1.</span> <span class="nav-text">Perceptron</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#the-loss-function"><span class="nav-number">2.</span> <span class="nav-text">The loss function</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#algorithm"><span class="nav-number">3.</span> <span class="nav-text">Algorithm</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#the-duality-format"><span class="nav-number">4.</span> <span class="nav-text">The duality format</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#codes"><span class="nav-number">5.</span> <span class="nav-text">Codes</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#tensorflow记录2"><span class="nav-number">1.</span> <span class="nav-text">Tensorflow记录(2)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#移动平均模型-ema"><span class="nav-number">2.</span> <span class="nav-text">移动平均模型 (EMA)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tensorflow中的ema"><span class="nav-number">3.</span> <span class="nav-text">Tensorflow中的EMA</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ema的使用场景"><span class="nav-number">4.</span> <span class="nav-text">EMA的使用场景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tensoerflow持久化"><span class="nav-number">5.</span> <span class="nav-text">Tensoerflow持久化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#references"><span class="nav-number">6.</span> <span class="nav-text">References</span></a></li></ol></div>
             
 
           </div>

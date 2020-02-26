@@ -129,18 +129,18 @@
 
 
 
-<meta name="description" content="Perceptron Perceptron is a kind of simple binary classification algorithm, which can only be applied on binary dataset with linearly separable.">
+<meta name="description" content="KNN KNN(K-Nearest Neighbor) is a extremely simple classification algorithm.">
 <meta name="keywords" content="Machine Learning">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Perceptron">
-<meta property="og:url" content="http://yoursite.com/2020/02/18/Perceptron/index.html">
+<meta property="og:title" content="KNN">
+<meta property="og:url" content="http://yoursite.com/2020/02/25/KNN/index.html">
 <meta property="og:site_name" content="Just For Fun">
-<meta property="og:description" content="Perceptron Perceptron is a kind of simple binary classification algorithm, which can only be applied on binary dataset with linearly separable.">
+<meta property="og:description" content="KNN KNN(K-Nearest Neighbor) is a extremely simple classification algorithm.">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-02-18T14:02:58.466Z">
+<meta property="og:updated_time" content="2020-02-25T12:37:35.099Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Perceptron">
-<meta name="twitter:description" content="Perceptron Perceptron is a kind of simple binary classification algorithm, which can only be applied on binary dataset with linearly separable.">
+<meta name="twitter:title" content="KNN">
+<meta name="twitter:description" content="KNN KNN(K-Nearest Neighbor) is a extremely simple classification algorithm.">
 
 
 
@@ -170,13 +170,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2020/02/18/Perceptron/">
+  <link rel="canonical" href="http://yoursite.com/2020/02/25/KNN/">
 
 
 
 
 
-  <title>Perceptron | Just For Fun</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>KNN | Just For Fun</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -345,7 +345,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/18/Perceptron/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/25/KNN/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="dylan_houxinglin">
@@ -362,7 +362,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Perceptron</h1>
+          <h1 class="post-title" itemprop="name headline">KNN</h1>
         
 
         <div class="post-meta">
@@ -375,8 +375,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-02-18T21:56:18+08:00">
-                2020-02-18
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-02-25T20:32:41+08:00">
+                2020-02-25
               </time>
             
 
@@ -391,8 +391,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2020-02-18T22:02:58+08:00">
-                2020-02-18
+              <time title="Post modified" itemprop="dateModified" datetime="2020-02-25T20:37:35+08:00">
+                2020-02-25
               </time>
             
           </span>
@@ -441,7 +441,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  617
+                  11
                 </span>
               
 
@@ -457,7 +457,7 @@
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
                 <span title="Reading time">
-                  3
+                  1
                 </span>
               
             </div>
@@ -478,62 +478,8 @@
       
 
       
-        <h2 id="perceptron">Perceptron</h2>
-<p>Perceptron is a kind of simple binary classification algorithm, which can only be applied on binary dataset with linearly separable. <a id="more"></a> The essence of perceptron is training a hyper plane to separate the data, the process is minimizing loss function by gradient descent algorithm. Although perceptron has plenty of limitations, it is the foundation of neural network and support vector machine.</p>
-<p>The function of perceptron is extremely simple:</p>
-<p><span class="math display">\[f(x) = sign(wx+b)\]</span></p>
-<p><span class="math display">\[sign(x)=\begin{cases}
-+1 &amp; x \ge 0 \\
--1 &amp; x &lt; 0 \\
-\end{cases}\]</span></p>
-<h2 id="the-loss-function">The loss function</h2>
-<p>The loss function of perceptron is the sum of the distance of all the misclassification points. It is easy to come out, the value of loss function will become to zero when there is no misclassification points by the current hyperplane.</p>
-<p>According to the formula of Distance From a Point a Line, the distance should be: <span class="math display">\[
-distance = {1 \over ||w||}|wx+b|
-\]</span></p>
-<p>For the misclassification points, since the results of <span class="math inline">\(wx_i+b\)</span> are always opposite with <span class="math inline">\(y_i\)</span>, therefore, we have: <span class="math display">\[
--y_i(wx_i+b) &gt; 0
-\]</span> So for the misclassification points, the total distance can be changed to: <span class="math display">\[
-distance = -{1 \over ||w||} \sum_{i=1}^N y_i(wx_i+b)
-\]</span> Since the term <span class="math inline">\(||w||\)</span> is a constant in the formula, we can define the loss function as: <span class="math display">\[
-L(w, b) = -\sum_{i=1}^N y_i(wx_i+b)
-\]</span> Which means the value of loss function will be zero if there is no misclassification, and the loss will become</p>
-<p>lower when the misclassification points are getting closer to the hyperplane.</p>
-<h2 id="algorithm">Algorithm</h2>
-<p>Here we need to minimize the above loss function by using gradient descent approach. The gradient of the two variables are shown below: <span class="math display">\[
-\nabla_w L(w,b) = -\sum_{i=1}^N y_ix_i \\
-\nabla_b L(w,b) = -\sum_{i=1}^N y_i
-\]</span> In the process of minimizing, we only select one misclassification point randomly to adjust the variables: <span class="math display">\[
-w = w + \eta y_ix_i \\
-b = b + \eta y_i
-\]</span> To sum up, the steps of the algorithm can be described as:</p>
-<ol type="1">
-<li>initialize <span class="math inline">\(w\)</span> and <span class="math inline">\(b\)</span></li>
-<li>for each training points, calculate <span class="math inline">\(y_i(wx_i+b)\)</span>, if the result is less or equal than zero, adjust the two variables</li>
-<li>loop on step 2 until there is no misclassification points</li>
-</ol>
-<h2 id="the-duality-format">The duality format</h2>
-<p>During this approach, we are going to solve the problem on another side. We have known that: <span class="math display">\[
-w = w + \eta y_ix_i \\
-b = b + \eta y_i
-\]</span> In this process, we are trying to modify the value of the two variables, assume that the variables become to <span class="math inline">\(\alpha_iy_ix_i\)</span> and <span class="math inline">\(\alpha_iy_i\)</span> for the misclassification point <span class="math inline">\((x_i, y_i)\)</span> after <span class="math inline">\(n\)</span> times changes, and <span class="math inline">\(\alpha_i = n_i \eta\)</span>, therefore, the final results of two variables can be represented as: <span class="math display">\[
-w = \sum_{i-1}^N\alpha_iy_ix_i \\
-b = \sum_{i=1}^N\alpha_iy_i
-\]</span> The variable <span class="math inline">\(\alpha_i\)</span> represents the number of changes due to the misclassification point <span class="math inline">\((x_i, y_i)\)</span>. According to this method, the algorithm will minimize the variable <span class="math inline">\(\alpha\)</span> instead of <span class="math inline">\(w\)</span>. The model has been changed to this format: <span class="math display">\[
-f(x) = sign(\sum_{i=1}^N \alpha_iy_ix_i·x + b)
-\]</span> The steps can be described as:</p>
-<ol type="1">
-<li><p><span class="math inline">\(\alpha = (\alpha_1, \alpha_2, ... , \alpha_N)^T\)</span>, <span class="math inline">\(\alpha=0\)</span>, <span class="math inline">\(b=0\)</span></p></li>
-<li><p>for each training points, calculate <span class="math inline">\(y_i(\sum_{j_1}^N \alpha_j y_j x_j · x_i + b)\)</span>, if the result is less or equal than zero, adjust the variables as: <span class="math display">\[
-\alpha_i = \alpha_i + \eta \\
-b = b + \eta y_i
-\]</span></p></li>
-<li><p>loop on step 2 until there is no misclassification points</p></li>
-</ol>
-<p>From the above formula, it can be seen that the training data <span class="math inline">\(x_i\)</span> and <span class="math inline">\(x_j\)</span> only occur in the inner product format, for the convenience of computation, we can calculate the inner product of the training data and store them in a gram matrix first: <span class="math display">\[
-G = [x_i · x_j]_{N*N}
-\]</span></p>
-<h2 id="codes">Codes</h2>
+        <h1 id="knn">KNN</h1>
+<p>KNN(K-Nearest Neighbor) is a extremely simple classification algorithm.<a id="more"></a></p>
 
       
     </div>
@@ -564,8 +510,8 @@ G = [x_i · x_j]_{N*N}
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/02/17/tensorflow1/" rel="next" title="Tensorflow记录(1)">
-                <i class="fa fa-chevron-left"></i> Tensorflow记录(1)
+              <a href="/2020/02/18/Perceptron/" rel="next" title="Perceptron">
+                <i class="fa fa-chevron-left"></i> Perceptron
               </a>
             
           </div>
@@ -574,8 +520,8 @@ G = [x_i · x_j]_{N*N}
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2020/02/25/KNN/" rel="prev" title="KNN">
-                KNN <i class="fa fa-chevron-right"></i>
+              <a href="/2020/02/26/tensorflow2/" rel="prev" title="Tensorflow记录(2)">
+                Tensorflow记录(2) <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -732,7 +678,7 @@ G = [x_i · x_j]_{N*N}
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#perceptron"><span class="nav-number">1.</span> <span class="nav-text">Perceptron</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#the-loss-function"><span class="nav-number">2.</span> <span class="nav-text">The loss function</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#algorithm"><span class="nav-number">3.</span> <span class="nav-text">Algorithm</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#the-duality-format"><span class="nav-number">4.</span> <span class="nav-text">The duality format</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#codes"><span class="nav-number">5.</span> <span class="nav-text">Codes</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#knn"><span class="nav-number">1.</span> <span class="nav-text">KNN</span></a></li></ol></div>
             
 
           </div>
