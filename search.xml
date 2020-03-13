@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[读书笔记-曾国藩的正面与侧面]]></title>
+    <url>%2F2020%2F03%2F14%2F%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E6%9B%BE%E5%9B%BD%E8%97%A9%E7%9A%84%E6%AD%A3%E9%9D%A2%E4%B8%8E%E4%BE%A7%E9%9D%A2%2F</url>
+    <content type="text"><![CDATA[]]></content>
+  </entry>
+  <entry>
     <title><![CDATA[Entity Linking]]></title>
     <url>%2F2020%2F03%2F13%2FEntity-Linking%2F</url>
     <content type="text"><![CDATA[]]></content>
@@ -156,8 +161,8 @@
         <category>Feature Engineering</category>
       </categories>
       <tags>
-        <tag>Feature Engineering</tag>
         <tag>Machine Learning</tag>
+        <tag>Feature Engineering</tag>
       </tags>
   </entry>
   <entry>
