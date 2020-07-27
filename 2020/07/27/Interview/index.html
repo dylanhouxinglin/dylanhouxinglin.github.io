@@ -118,7 +118,7 @@
 
 
 
-  <meta name="keywords" content="Tensorflow,">
+  <meta name="keywords" content="Interview,">
 
 
 
@@ -129,20 +129,18 @@
 
 
 
-<meta name="description" content="Tensorflow记录(2)">
-<meta name="keywords" content="Tensorflow">
+<meta name="description" content="Interview Summary">
+<meta name="keywords" content="Interview">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Tensorflow记录(2)">
-<meta property="og:url" content="http://yoursite.com/2020/02/26/tensorflow2/index.html">
+<meta property="og:title" content="Interview">
+<meta property="og:url" content="http://yoursite.com/2020/07/27/Interview/index.html">
 <meta property="og:site_name" content="Just For Fun">
-<meta property="og:description" content="Tensorflow记录(2)">
+<meta property="og:description" content="Interview Summary">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://yoursite.com/images/tensorflow/ema1.png">
-<meta property="og:updated_time" content="2020-02-26T13:42:26.466Z">
+<meta property="og:updated_time" content="2020-07-27T14:56:15.610Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Tensorflow记录(2)">
-<meta name="twitter:description" content="Tensorflow记录(2)">
-<meta name="twitter:image" content="http://yoursite.com/images/tensorflow/ema1.png">
+<meta name="twitter:title" content="Interview">
+<meta name="twitter:description" content="Interview Summary">
 
 
 
@@ -172,13 +170,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2020/02/26/tensorflow2/">
+  <link rel="canonical" href="http://yoursite.com/2020/07/27/Interview/">
 
 
 
 
 
-  <title>Tensorflow记录(2) | Just For Fun</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>Interview | Just For Fun</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -347,7 +345,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/26/tensorflow2/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/27/Interview/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="dylan_houxinglin">
@@ -364,7 +362,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Tensorflow记录(2)</h1>
+          <h1 class="post-title" itemprop="name headline">Interview</h1>
         
 
         <div class="post-meta">
@@ -377,8 +375,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-02-26T20:00:02+08:00">
-                2020-02-26
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-07-27T22:30:24+08:00">
+                2020-07-27
               </time>
             
 
@@ -393,8 +391,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2020-02-26T21:42:26+08:00">
-                2020-02-26
+              <time title="Post modified" itemprop="dateModified" datetime="2020-07-27T22:56:15+08:00">
+                2020-07-27
               </time>
             
           </span>
@@ -412,8 +410,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Deep-Learning/" itemprop="url" rel="index">
-                    <span itemprop="name">Deep Learning</span>
+                  <a href="/categories/Interview/" itemprop="url" rel="index">
+                    <span itemprop="name">Interview</span>
                   </a>
                 </span>
 
@@ -443,7 +441,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  1.1k
+                  570
                 </span>
               
 
@@ -459,7 +457,7 @@
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
                 <span title="Reading time">
-                  4
+                  2
                 </span>
               
             </div>
@@ -480,36 +478,68 @@
       
 
       
-        <h2 id="tensorflow记录2">Tensorflow记录(2)</h2>
+        <h2 id="interview-summary">Interview Summary</h2>
 <a id="more"></a>
-<h2 id="移动平均模型-ema">移动平均模型 (EMA)</h2>
-<p>移动平均模型(Exponential Moving Average)可以用来估计变量的局部均值，这样的做法可以使得变量的更新和取值不仅和当前的因素有关，同时还会受到历史取值的影响.</p>
-<p>设变量<span class="math inline">\(v\)</span>在<span class="math inline">\(t\)</span>时刻的为<span class="math inline">\(v_t\)</span>，取值为<span class="math inline">\(\theta_t\)</span>，在使用EMA后，<span class="math inline">\(v_t\)</span>的更新将变为：</p>
-<p><span class="math display">\[v_t = \beta ⋅ v_{t-1} + (1-\beta) ⋅ \theta_t\]</span></p>
-<p>其中<span class="math inline">\(\beta \in [0,1)\)</span>，如下图所示，经过EMA平滑处理后的变量<span class="math inline">\(v\)</span>在一段时间的更新后趋于稳定，而且在迭代过程中的抖动也明显减弱：</p>
-<figure>
-<img src="/images/tensorflow/ema1.png" alt="ema"><figcaption>ema</figcaption>
-</figure>
-<p><span class="math inline">\(t\)</span>时刻变量<span class="math inline">\(v\)</span>的移动平均值大致等于过去<span class="math inline">\(1 \over (1-\beta)\)</span>个时刻<span class="math inline">\(\theta\)</span>的平均值，这个结论在移动平均起始时相差比较大，所以通过<span class="math inline">\(v_t\)</span>除以<span class="math inline">\((1-\beta^t)\)</span>修正对均值的估计：</p>
-<p><span class="math display">\[v\_biased_t = {1 \over 1-\beta^t}\]</span></p>
-<p>通过上式可以发现，当<span class="math inline">\(t\)</span>越来越大时，<span class="math inline">\(1-beta^t\)</span>的值越接近1，因此<span class="math inline">\(v_t\)</span>和<span class="math inline">\(v\_biased_t\)</span>的值将会越来越接近. 当<span class="math inline">\(\beta\)</span>的取值越来越大时，移动平均得到的值会越发的和<span class="math inline">\(\theta\)</span>的历史值相关. 使用移动平均的好处在于程序所占的内存小，因为我们不需要去保存变量的历史值，就能够估计出其均值.</p>
-<h2 id="tensorflow中的ema">Tensorflow中的EMA</h2>
-<p>相比对变量直接赋值而言，移动平均得到的值在图像上更加平缓光滑，抖动性更小，不会因为某次的异常取值而使得滑动平均值波动很大. TensorFlow 提供了 tf.train.ExponentialMovingAverage 来实现滑动平均. 在初始化 ExponentialMovingAverage 时，需要提供一个衰减率(decay)，即公式中的<span class="math inline">\(\beta\)</span>. 这个衰减率将用于控制模型的更新速度. ExponentialMovingAverage 对每一个变量(variable)会维护一个影子变量(shadow_variable)，这个影子变量的初始值就是相应变量的初始值，而每次运行变量更新时，影子变量的值会更新为：</p>
-<p><span class="math display">\[shadow\_variable = decay ⋅ shadow\_variable + (1-decay) ⋅ variable\]</span></p>
-<p>其中的shadow variable就是公式中的<span class="math inline">\(v_t\)</span>， variable就是<span class="math inline">\(\theta_t\)</span>，decay就是<span class="math inline">\(\beta\)</span>. 公式中的decay 决定了影子变量的更新速度，<strong>decay 越大影子变量越趋于稳定</strong>. 在实际运用中，decay一般会设成非常接近1的数，为了使得影子变量在训练前期可以更新更快，ExponentialMovingAverage 还提供了 num_updates 参数动态设置 decay 的大小. 如果在初始化 ExponentialMovingAverage 时提供了 num_updates 参数，那么每次使用的衰减率将是：</p>
-<p><span class="math display">\[min\{decay, {1+num\_updates \over 10+num\_updates}\}\]</span></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">v1 = tf.Variable(<span class="number">0</span>, dtype=tf.float32)</span><br><span class="line">step = tf.Variable(<span class="number">0</span>, trainable=<span class="literal">False</span>)</span><br><span class="line">ema = tf.train.ExponentialMovingAverage(<span class="number">0.99</span>, step)</span><br><span class="line">maintain_averages_op = ema.apply([v1])</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</span><br><span class="line">  <span class="comment"># initialize</span></span><br><span class="line">	init_op = tf.global_variables_initilizer()</span><br><span class="line">  sess.run(init_op)</span><br><span class="line">  print(sess.run([v1, ema.average(v1)]))</span><br><span class="line">  </span><br><span class="line">  <span class="comment"># update v1</span></span><br><span class="line">  sess.run(tf.assign(v1, <span class="number">5</span>))</span><br><span class="line">  sess.run(maintain_averages_op)</span><br><span class="line">  print(sess.run([v1, ema.average(v1)]))</span><br><span class="line">  </span><br><span class="line">  <span class="comment"># update step and v1</span></span><br><span class="line">  sess.run(tf.assign(step, <span class="number">10000</span>))</span><br><span class="line">  sess.run(tf.assign(v1, <span class="number">10</span>))</span><br><span class="line">  sess.run(maintain_averages_op)</span><br><span class="line">  print(sess.run([v1, ema.average(v1)]))</span><br><span class="line">  </span><br><span class="line">  <span class="comment"># update v1 by using EMA</span></span><br><span class="line">  sess.run(maintain_averages_op)</span><br><span class="line">  print(sess.run([v1, ema.average(v1)]))</span><br></pre></td></tr></table></figure>
-<p>上面代码的执行结果时：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[<span class="number">0.0</span>, <span class="number">0.0</span>]</span><br><span class="line">[<span class="number">5.0</span>, <span class="number">4.5</span>]</span><br><span class="line">[<span class="number">10.0</span>, <span class="number">4.5549998</span>]</span><br><span class="line">[<span class="number">10.0</span>, <span class="number">4.6094499</span>]</span><br></pre></td></tr></table></figure>
-<h2 id="ema的使用场景">EMA的使用场景</h2>
-<p>移动平均模型可以使模型在测试集上更加robust，用随机梯度下降算法训练神经网络时，使用滑动平均在很多应用中都可以在一定程度上提高最终模型在测试数据上的表现. 对神经网络边的权重 weights 使用滑动平均，得到对应的影子变量 shadow_weights，之后在测试过程中使用 shadow_weights 来代替 weights 作为神经网络边的权重，这样在测试数据上效果更好. 因为 shadow_weights 的更新更加平滑，对于随机梯度下降而言，更平滑的更新说明不会偏离最优点很远. 对于 mini-batch gradient decent，可以尝试滑动平均，毕竟 mini-batch gradient decent 对参数的更新也存在抖动.</p>
-<h2 id="tensoerflow持久化">Tensoerflow持久化</h2>
-<p>tf.train.Saver 类提供了保存模型的API，通过以下代码可以实现对当前模型的保存：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">saver = tf.train.Saver()</span><br><span class="line">saver.save(sess, <span class="string">'/path/models/model.ckpt'</span>)</span><br></pre></td></tr></table></figure>
-<h2 id="references">References</h2>
+<h3 id="字节跳动-飞书-算法">7.27 字节跳动-飞书-算法</h3>
 <ul>
-<li>https://www.cnblogs.com/wuliytTaotao/p/9479958.html</li>
-<li>《TensorFlow实战Google深度学习框架》</li>
+<li><p>滴滴实习所做的事</p></li>
+<li><p>解释SVM</p></li>
+<li><p>过拟合和欠拟合出现的原因以及各自的解决方案</p></li>
+<li><p>python装饰器</p></li>
+<li><p>mysql和mongodb的区别</p></li>
+<li><p>正负样本不均衡怎么办</p></li>
+<li><p>用过哪些shell命令，给定进程文件名，如何拉取该进程</p></li>
+<li><p>50个硬币面值随机，两个人依次从轮流从首尾拿取，如何保证拿到的面值和比别人的多</p></li>
+<li><p>写代码输出所有合法的括号组合</p></li>
+</ul>
+<h3 id="腾讯-算法实习-二面">7.24 腾讯-算法实习-二面</h3>
+<ul>
+<li>实体链接怎么解决一词多义</li>
+<li>小球坠落，临界值最优解</li>
+</ul>
+<h3 id="腾讯-算法实习-一面">7.15 腾讯-算法实习-一面</h3>
+<ul>
+<li>Bert的输入是什么</li>
+<li>sentence similarity是怎么做的</li>
+<li>除了用Bert，还有哪些文本分类的方法</li>
+<li>Bert为什么有效</li>
+<li>知识(三元组)如何抽取</li>
+<li>正负样本不均衡怎么办</li>
+<li>如何构建对话系统(拿到query后干什么)</li>
+</ul>
+<h3 id="虎博科技-算法实习">6.13 虎博科技-算法实习</h3>
+<ul>
+<li>Bert的输入输出，维度描述</li>
+<li>如何用Bert做文本分类(面试官补充：可以接Seq2Seq)</li>
+<li>training loss 下降一段后不再降了，可能是什么原因导致的(batch, learning rate, etc)</li>
+<li>training loss 下降-平稳-又上升，可能是什么原因导致的(shuffle, adam optimizer)</li>
+<li>最长回问子串</li>
+</ul>
+<h3 id="平安科技-算法实习">6.8 平安科技-算法实习</h3>
+<ul>
+<li>LSTM 中的三个门</li>
+<li>ConvLSTM 和 LSTM 的区别</li>
+<li>Bert 中 transformer 和 normal transformer 区别</li>
+<li>GBDT 和 RandomForest 区别，各自应用场景</li>
+<li>KNN 和 KMeans 区别</li>
+<li>Map-Reduce 机制，举例子</li>
+<li>LSTM-Attention 机制是怎么做的</li>
+<li>Pytorch 中 view 函数的作用</li>
+<li>Python 中 shallow copy 和 deep copy 区别</li>
+<li>如何判断链表是否有环，如何找到环的入口</li>
+</ul>
+<h3 id="字节跳动笔试">字节跳动笔试</h3>
+<ul>
+<li>二叉树前序/中序遍历</li>
+<li>KNN代码找错</li>
+<li>山形数组排序 (1,2,3,4,5,4,3,2,1)</li>
+<li>从URL中提取host (http://bytedance.com/xxx -&gt; bytedance.com)</li>
+<li>寻找数组中上下左右相邻元素</li>
+</ul>
+<h3 id="华为笔试">华为笔试</h3>
+<ul>
+<li>学生学习网课ppt，每60s最多只能看4页，数组记录了学习每个页面上的停留时间 (20, 120, 30, 50 ...)，判断学生是否有违规</li>
+<li>将一组数据放入两个数组中，要求每个数组中的数值之和尽可能小</li>
 </ul>
 
       
@@ -528,7 +558,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Tensorflow/" rel="tag"># Tensorflow</a>
+            <a href="/tags/Interview/" rel="tag"># Interview</a>
           
         </div>
       
@@ -541,8 +571,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/02/25/KNN/" rel="next" title="KNN">
-                <i class="fa fa-chevron-left"></i> KNN
+              <a href="/2020/05/20/Reading-Notes-Zero-Shot-Entity-Linking-by-Reading-Entity-Descriptions/" rel="next" title="Reading Notes: Zero-Shot Entity Linking by Reading Entity Descriptions">
+                <i class="fa fa-chevron-left"></i> Reading Notes: Zero-Shot Entity Linking by Reading Entity Descriptions
               </a>
             
           </div>
@@ -550,10 +580,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/03/13/Entity-Linking/" rel="prev" title="Entity Linking">
-                Entity Linking <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -709,7 +735,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#tensorflow记录2"><span class="nav-number">1.</span> <span class="nav-text">Tensorflow记录(2)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#移动平均模型-ema"><span class="nav-number">2.</span> <span class="nav-text">移动平均模型 (EMA)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tensorflow中的ema"><span class="nav-number">3.</span> <span class="nav-text">Tensorflow中的EMA</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ema的使用场景"><span class="nav-number">4.</span> <span class="nav-text">EMA的使用场景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tensoerflow持久化"><span class="nav-number">5.</span> <span class="nav-text">Tensoerflow持久化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#references"><span class="nav-number">6.</span> <span class="nav-text">References</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#interview-summary"><span class="nav-number">1.</span> <span class="nav-text">Interview Summary</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#字节跳动-飞书-算法"><span class="nav-number">1.1.</span> <span class="nav-text">7.27 字节跳动-飞书-算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#腾讯-算法实习-二面"><span class="nav-number">1.2.</span> <span class="nav-text">7.24 腾讯-算法实习-二面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#腾讯-算法实习-一面"><span class="nav-number">1.3.</span> <span class="nav-text">7.15 腾讯-算法实习-一面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#虎博科技-算法实习"><span class="nav-number">1.4.</span> <span class="nav-text">6.13 虎博科技-算法实习</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#平安科技-算法实习"><span class="nav-number">1.5.</span> <span class="nav-text">6.8 平安科技-算法实习</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字节跳动笔试"><span class="nav-number">1.6.</span> <span class="nav-text">字节跳动笔试</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#华为笔试"><span class="nav-number">1.7.</span> <span class="nav-text">华为笔试</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -1226,42 +1252,7 @@
         onPopupClose();
       }
     });
-  </script>
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-  
-
-  
-  
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-      });
-    </script>
-
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-      });
-    </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config("");
 </script>
@@ -1279,6 +1270,21 @@
 </script>
 <!-- End: Injected MathJax -->
 <!-- hexo-inject:end -->
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
   
 
 
