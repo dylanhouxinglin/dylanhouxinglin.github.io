@@ -485,12 +485,12 @@
 <p>Auto encoder is a kind of method to reduce the dimension of input data, it's a shallow neural network which learning the weights by back propagation. <a id="more"></a> By this algorithm, the auto encoder can learn the useful features automatically, so it's always used in feature extraction and generally has a better performance than PCA, which is another common way to reduce dimensions.</p>
 <p>A typical auto encoder is consist of encoder and decoder :</p>
 <figure>
-<img src="/images/auto_encoder/1.jpg" alt="auto coder"><figcaption>auto coder</figcaption>
+<img src="/images/auto_encoder/1.jpg" alt="auto coder"><figcaption aria-hidden="true">auto coder</figcaption>
 </figure>
 <p>As the above picture shows, firstly, the encoder transfer the input into <span class="math inline">\(y=f(x)\)</span>, and then it will be decoded into <span class="math inline">\(g(y)=g(f(x))\)</span>. Auto encoder is a kind of unsupervised learning algorithm, the main target of it is going to encode the input data <span class="math inline">\(x\)</span> according to the output which is decoded from <span class="math inline">\(y\)</span>, that means the algorithm tries to copy its input to its output, the auto encoder modifies the weights in the hidden layer as well as the output layer according to calculate the difference (we call this as loss function or cost function).</p>
 <p>Here is the graph of the auto encoder, shown in neural network :</p>
 <figure>
-<img src="/images/auto_encoder/2.jpg" alt="neural network"><figcaption>neural network</figcaption>
+<img src="/images/auto_encoder/2.jpg" alt="neural network"><figcaption aria-hidden="true">neural network</figcaption>
 </figure>
 <p>The formulas of the above neural network are, where <span class="math inline">\(L\)</span> means the loss function (usually squared error or cross entropy loss) : <span class="math display">\[y=f(x)=s(w1*x+b1)\]</span> <span class="math display">\[\hat{x}=g(y)=s(w2*x+b)s\]</span> <span class="math display">\[L(x, \hat x) = L(x, g(f(x)))\]</span> feature extracting method in recent few years.</p>
 
@@ -616,7 +616,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-count">29</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -627,7 +627,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -638,7 +638,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-count">19</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -713,7 +713,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
   <span class="with-love" id="heart">
     <i class="fa fa-heart"></i>
   </span>
@@ -727,7 +727,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">28.2k</span>
+    <span title="Site words total count">28.3k</span>
   
 </div>
 

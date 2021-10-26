@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[由lsof展开]]></title>
+    <url>%2F2021%2F10%2F26%2F%E7%94%B1lsof%E5%B1%95%E5%BC%80%2F</url>
+    <content type="text"><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title><![CDATA[Spark]]></title>
+    <url>%2F2020%2F07%2F29%2FSpark%2F</url>
+    <content type="text"><![CDATA[Spark Spark集群安装 问题 提交一个Spark程序到Spark集群，会产生哪些进程？ SparkSubmit (Driver) 提交任务 Executor 执行真正的计算任务 如何保证提及任务高可用？ 提交任务可以指定多个master地址]]></content>
+      <categories>
+        <category>Spark</category>
+      </categories>
+      <tags>
+        <tag>Spark</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Interview]]></title>
     <url>%2F2020%2F07%2F27%2FInterview%2F</url>
     <content type="text"><![CDATA[Interview Summary 7.27 字节跳动-飞书-算法 滴滴实习所做的事 解释SVM 过拟合和欠拟合出现的原因以及各自的解决方案 python装饰器 mysql和mongodb的区别 正负样本不均衡怎么办 用过哪些shell命令，给定进程文件名，如何拉取该进程 50个硬币面值随机，两个人依次从轮流从首尾拿取，如何保证拿到的面值和比别人的多 写代码输出所有合法的括号组合 7.24 腾讯-算法实习-二面 实体链接怎么解决一词多义 小球坠落，临界值最优解 7.15 腾讯-算法实习-一面 Bert的输入是什么 sentence similarity是怎么做的 除了用Bert，还有哪些文本分类的方法 Bert为什么有效 知识(三元组)如何抽取 正负样本不均衡怎么办 如何构建对话系统(拿到query后干什么) 6.13 虎博科技-算法实习 Bert的输入输出，维度描述 如何用Bert做文本分类(面试官补充：可以接Seq2Seq) training loss 下降一段后不再降了，可能是什么原因导致的(batch, learning rate, etc) training loss 下降-平稳-又上升，可能是什么原因导致的(shuffle, adam optimizer) 最长回问子串 6.8 平安科技-算法实习 LSTM 中的三个门 ConvLSTM 和 LSTM 的区别 Bert 中 transformer 和 normal transformer 区别 GBDT 和 RandomForest 区别，各自应用场景 KNN 和 KMeans 区别 Map-Reduce 机制，举例子 LSTM-Attention 机制是怎么做的 Pytorch 中 view 函数的作用 Python 中 shallow copy 和 deep copy 区别 如何判断链表是否有环，如何找到环的入口 字节跳动笔试 二叉树前序/中序遍历 KNN代码找错 山形数组排序 (1,2,3,4,5,4,3,2,1) 从URL中提取host (http://bytedance.com/xxx -&gt; bytedance.com) 寻找数组中上下左右相邻元素 华为笔试 学生学习网课ppt，每60s最多只能看4页，数组记录了学习每个页面上的停留时间 (20, 120, 30, 50 ...)，判断学生是否有违规 将一组数据放入两个数组中，要求每个数组中的数值之和尽可能小]]></content>
