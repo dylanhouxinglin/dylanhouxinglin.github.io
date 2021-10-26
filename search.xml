@@ -3,7 +3,15 @@
   <entry>
     <title><![CDATA[由lsof展开]]></title>
     <url>%2F2021%2F10%2F26%2F%E7%94%B1lsof%E5%B1%95%E5%BC%80%2F</url>
-    <content type="text"><![CDATA[]]></content>
+    <content type="text"><![CDATA[由losf展开 lsof (list all open files)，列出当前系统打开的所有文件。在linux环境下，任何事物都以文件的形式存在，通过文件不仅仅可以访问常规数据，还可以访问网络连接和硬件。 字段 COMMAND: 进程名 PID：进程标识符 FD：file descripter 文件描述符 TYPE：文件类型 DEVICE：磁盘名称 SIZE：文件大小 NODE：索引节点 NAME：打开的文件名称 获取网络信息 语法：lsof -i[46] [protocol][@hostname|hostaddr][:service|port] , 一些demo： 仅显示TCP连接 1lsof -i TCP # lsof -i | grep TCP 显示与指定主机/端口相关的网络信息 123lsof -i @192.168.237.87lsof -i :8080lsof -i @fw.google.com:2150=2180 # 端口范围 显示特定状态的端口 12lsof -i -s TCP:LISTEN # lsof -i | grep -i TCP:LISTENlsof -i -s TCP:ESTABLISHED 显示用户行为 12lsof -u usernamelsof -u ^username # exclude user 杀死指定用户的所有动作 12kill -9 `lsof -t -u username`lsof -t # 只返回pid 显示指定命令正在使用的文件/网络连接 1lsof -c nginx 显示指定pid已打开的文件 1lsof -p [pid] 显示与指定目录/文件所交互的进程 12lsof /home/homework/xxxlsof /home/homework/xxx/xxx.log 恢复被删除文件(部分) 123456# 当系统中的某个文件被意外地删除了，只要这个时候系统中还有进程正在访问该文件，就可以通过lsof从/proc目录下恢复该文件的内容。 假如由于误操作将/var/log/messages文件删除掉了，那么这时要将/var/log/messages文件恢复的方法如下lsof | grep /var/log/messages# syslogd 1283 root 2w REG 3,3 5381017 1773647 /var/log/messages (deleted)head -n 10 /proc/1283/fd/2# 可以通过文件描述符查看相应的数据，那么就可以使用 I/O 重定向将其复制到文件中cat /proc/1283/fd/2 &gt; /var/log/messages 展开内容1-/proc Linux 内核提供了一种通过 /proc 文件系统，在运行时访问内核内部数据结构、改变内核设置的机制。proc文件系统是一个伪文件系统，它只存在内存当中，而不占用外存空间。它以文件系统的方式为访问系统内核数据的操作提供接口，即proc 文件系统是内核空间和用户空间之间的一种通信媒介。 每一个运行的进程在 /proc 下都有一个以该进程 PID 命名的专属目录，这些进程目录是读取进程信息的接口 dir/file desc /proc/PID/cmdline 启动当前进程的完整命令(僵尸进程此文件为空) /proc/PID/cwd 指向当前进程运行目录的一个软链接 /proc/PID/environ 进程环境变量列表 /proc/PID/limits 保存了进程使用资源的限制信息 /proc/PID/fd 包含进程相关的所有的文件描述符 /proc/PID/maps 与进程相关的内存映射信息 /proc/PID/statm 进程使用的内存状态信息 /proc/PID/status 进程状态信息 /proc/PID/task 当前进程所运行的每一个线程的相关信息，每个线程的相关信息文件均保存在一个由线程号命名的目录中 /proc 目录中的文件及其说明(部分) file desc /proc/buddyinfo 每个内存区中的每个 order 有多少块可用，和内存碎片问题有关 /proc/cmdline 启动时传递给 kernel 的参数信息 /proc/mounts 系统当前的所有挂载信息 /proc/devices 已装载的设备（包括字符设备和块设备） /proc/diskstats 每个逻辑磁盘设备的信息（包括设备编号） /proc/filesystems 内核当前支持的文件系统类型 /proc/interrupts 当前系统使用的中断信息 /proc/iomem 每个物理设备当前在系统内存中的映射 /proc/stat 所有的 CPU 活动信息 展开内容2-signal linux中，信号被用于进程间通信，是一个发送到某个进程或同一进程中的特定线程的异步通知，用于通知发生的一个事件；当一个事件发生时，会产生一个信号，然后内核会将事件传递到接收的进程。每个信号都有以SIG开头的名称，并定义为唯一的正整数。 各种终止信号： 123456SIGINT # kill -2, Ctrl-C触发，通知前台进程组终止进程SIGTERM # kill -15, 通常用来要求程序自己正常退出，shell命令kill缺省产生这个信号SIGKILL # kill -9, 使进程立即终止，不能被捕获和忽略SIGSTOP # kill -17, Ctrl-Z触发，暂停进程执行，不能被阻塞SIGQUIT # kill -3, Ctrl-\触发，进程退出时会产生core文件，类似程序错误信号；类似SIGILL，kill -4, 生成 core 文件然后终止进程SIGHUP # kill -1, 挂断，在用户终端连接结束时发出；通常是在终端的控制进程结束时, 通知同一session内的各个作业, 这时它们与控制终端不再关联。登录Linux时，系统会分配给登录用户一个终端(Session)。在这个终端运行的所有程序，包括前台进程组和 后台进程组，一般都属于这个 Session。当用户退出Linux登录时，前台进程组和后台有对终端输出的进程将会收到SIGHUP信号。这个信号的默认操作为终止进程，因此前台进 程组和后台有终端输出的进程就会中止。不过可以捕获这个信号，比如wget能捕获SIGHUP信号，并忽略它，这样就算退出了Linux登录，wget也能继续下载；对于与终端脱离关系的守护进程，这个信号用于通知它重新读取配置文件 查询进程正在监听的信号： 123456cat /proc/PID/status...SigBlk: 0000000000000000 # 被阻止的信号SigIgn: fffffffe57f0d8fc # 被忽略的信号SigCgt: 00000000280b2603 # 被捕获的信号... 将其从十六进制转换为二进制，则每个1位代表捕获的信号，从1开始从右到左计数，通过解释SigCgt行，可以看到我的进程正在捕获以下信号： 123456789101100000000280b2603 ==&gt; 101000000010110010011000000011 | | | || | || |`-&gt; 1 = SIGHUP | | | || | || `--&gt; 2 = SIGINT | | | || | |`----------&gt; 10 = SIGUSR1 | | | || | `-----------&gt; 11 = SIGSEGV | | | || `--------------&gt; 14 = SIGALRM | | | |`-----------------&gt; 17 = SIGCHLD | | | `------------------&gt; 18 = SIGCONT | | `--------------------&gt; 20 = SIGTSTP | `----------------------------&gt; 28 = SIGWINCH `------------------------------&gt; 30 = SIGPWR 展开内容3-链接 硬链接：ln src-file dst-file 软连接：ln -s src-file dist-file 硬链接通过索引节点进行链接。在linux的文件系统，保存在磁盘分区的文件不管是什么类型都会给他分配一个编号，称为索引节点号 (ls -i)。在linux中，多个文件名指向同一个索引节点是存在的。这种情况就是硬链接。即便删除源文件，如果这个文件的硬链接还存在，则这个文件不会被删除，除非所有的硬链接全部被删除（即当前文件的索引计数为0），这个文件才真正意义上的被删除。硬链接只能链接文件，不能指向文件夹；硬链接与源文件的inode相同 类似于快捷方式，是一个特殊的文件，其中保存的是另一个文件的位置信息，符号链接可以指向文件夹和文件，当源文件删除时，符号链接失效；软链接与源文件的inode不同 展开内容4-文件描述符 展开内容5-进程和线程]]></content>
+      <categories>
+        <category>Network</category>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Network</tag>
+        <tag>Linux</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[Spark]]></title>
@@ -218,8 +226,8 @@
         <category>Feature Engineering</category>
       </categories>
       <tags>
-        <tag>Feature Engineering</tag>
         <tag>Machine Learning</tag>
+        <tag>Feature Engineering</tag>
       </tags>
   </entry>
   <entry>
