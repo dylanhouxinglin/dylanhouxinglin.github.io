@@ -539,6 +539,199 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/11/03/sync-mutex/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="dylan_houxinglin">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/head.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Just For Fun">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2021/11/03/sync-mutex/" itemprop="url">sync.mutex</a></h1>
+        
+
+        <div class="post-meta">
+		
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-11-03T09:59:26+08:00">
+                2021-11-03
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2021-11-03T10:03:05+08:00">
+                2021-11-03
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Golang/" itemprop="url" rel="index">
+                    <span itemprop="name">Golang</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  2.2k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  8
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="go-mutex">Go Mutex</h2>
+<h3 id="实现思路">实现思路</h3>
+<p>Golang中的互斥锁有两种模式：正常模式和饥饿模式；正常模式下，goroutinue按照正常的先进先出(FIFO)顺序出队，依次被唤醒，被唤醒的goroutine并不一定能直接获得锁，它需要与新请求锁的goroutines去争夺锁的所有权，因为新来的goroutinue正在CPU上运行且数量较多，刚被唤醒的goroutinue在抢锁上并没有优势(外来的和尚好念经...)，如果一个等待的goroutine超过1ms时仍未获取到锁，会将这把锁转换为饥饿模式；饥饿模式下，锁的所有权会直接给到排在队头的goroutinue(保证公平性，不能让辛苦排队等待的goroutinues一直拿不到锁)，将新来的goroutinue放到队尾.</p>
+<p>如果一个被唤醒的goroutinue拿到了锁，且是队列中的最后一个或它的等待时间少于1ms，互斥锁切回正常模式(差不多得了，不能让人家新来的都往队尾排，毕竟人家带着资源)；普通模式的好处是：一个goroutinue可以多次竞争锁，不用每次都从队尾排起(你行就直接上，不用等)；饥饿模式的好处是可以避免尾部延迟，照顾了排在队列后部的goroutinue，不会让它们等待的时间过长.</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2021/11/03/sync-mutex/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/10/26/由lsof展开/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -587,8 +780,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2021-10-26T23:45:17+08:00">
-                2021-10-26
+              <time title="Post modified" itemprop="dateModified" datetime="2021-11-03T10:05:10+08:00">
+                2021-11-03
               </time>
             
           </span>
@@ -648,7 +841,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  1.9k
+                  2.9k
                 </span>
               
 
@@ -664,7 +857,7 @@
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
                 <span title="Reading time">
-                  7
+                  11
                 </span>
               
             </div>
@@ -686,160 +879,18 @@
 
       
         
-          
-            <h2 id="由losf展开">由losf展开</h2>
-<p>lsof (list all open files)，列出当前系统打开的所有文件。在linux环境下，任何事物都以文件的形式存在，通过文件不仅仅可以访问常规数据，还可以访问网络连接和硬件。</p>
-<h3 id="字段">字段</h3>
-<ul>
-<li>COMMAND: 进程名</li>
-<li>PID：进程标识符</li>
-<li>FD：file descripter 文件描述符</li>
-<li>TYPE：文件类型</li>
-<li>DEVICE：磁盘名称</li>
-<li>SIZE：文件大小</li>
-<li>NODE：索引节点</li>
-<li>NAME：打开的文件名称</li>
-</ul>
-<h3 id="获取网络信息">获取网络信息</h3>
-<p>语法：<code>lsof -i[46] [protocol][@hostname|hostaddr][:service|port]</code> , 一些demo：</p>
-<ul>
-<li><p>仅显示TCP连接</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lsof -i TCP # lsof -i | grep TCP</span><br></pre></td></tr></table></figure></li>
-<li><p>显示与指定主机/端口相关的网络信息</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">lsof -i @192.168.237.87</span><br><span class="line">lsof -i :8080</span><br><span class="line">lsof  -i @fw.google.com:2150=2180 # 端口范围</span><br></pre></td></tr></table></figure></li>
-<li><p>显示特定状态的端口</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">lsof -i -s TCP:LISTEN # lsof -i | grep -i TCP:LISTEN</span><br><span class="line">lsof -i -s TCP:ESTABLISHED</span><br></pre></td></tr></table></figure></li>
-<li><p>显示用户行为</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">lsof -u username</span><br><span class="line">lsof -u ^username	# exclude user</span><br></pre></td></tr></table></figure></li>
-<li><p>杀死指定用户的所有动作</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">kill -9 `lsof -t -u username`</span><br><span class="line">lsof -t # 只返回pid</span><br></pre></td></tr></table></figure></li>
-<li><p>显示指定命令正在使用的文件/网络连接</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lsof -c nginx</span><br></pre></td></tr></table></figure></li>
-<li><p>显示指定pid已打开的文件</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lsof -p [pid]</span><br></pre></td></tr></table></figure></li>
-<li><p>显示与指定目录/文件所交互的进程</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">lsof /home/homework/xxx</span><br><span class="line">lsof /home/homework/xxx/xxx.log</span><br></pre></td></tr></table></figure></li>
-<li><p>恢复被删除文件(部分)</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 当系统中的某个文件被意外地删除了，只要这个时候系统中还有进程正在访问该文件，就可以通过lsof从/proc目录下恢复该文件的内容。 假如由于误操作将/var/<span class="built_in">log</span>/messages文件删除掉了，那么这时要将/var/<span class="built_in">log</span>/messages文件恢复的方法如下</span></span><br><span class="line">lsof | grep /var/log/messages</span><br><span class="line"><span class="meta">#</span><span class="bash"> syslogd   1283      root    2w      REG        3,3  5381017    1773647 /var/<span class="built_in">log</span>/messages (deleted)</span></span><br><span class="line">head -n 10 /proc/1283/fd/2</span><br><span class="line"><span class="meta">#</span><span class="bash"> 可以通过文件描述符查看相应的数据，那么就可以使用 I/O 重定向将其复制到文件中</span></span><br><span class="line">cat /proc/1283/fd/2 &gt; /var/log/messages</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h3 id="展开内容1-proc">展开内容1-/proc</h3>
-<p>Linux 内核提供了一种通过 /proc 文件系统，在运行时访问内核内部数据结构、改变内核设置的机制。proc文件系统是一个伪文件系统，它只存在内存当中，而不占用外存空间。它以文件系统的方式为访问系统内核数据的操作提供接口，即proc 文件系统是内核空间和用户空间之间的一种通信媒介。</p>
-<p>每一个运行的进程在 /proc 下都有一个以该进程 PID 命名的专属目录，这些进程目录是读取进程信息的接口</p>
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: center;">dir/file</th>
-<th style="text-align: center;">desc</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">/proc/PID/cmdline</td>
-<td style="text-align: center;">启动当前进程的完整命令(僵尸进程此文件为空)</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">/proc/PID/cwd</td>
-<td style="text-align: center;">指向当前进程运行目录的一个软链接</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">/proc/PID/environ</td>
-<td style="text-align: center;">进程环境变量列表</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">/proc/PID/limits</td>
-<td style="text-align: center;">保存了进程使用资源的限制信息</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">/proc/PID/fd</td>
-<td style="text-align: center;">包含进程相关的所有的文件描述符</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">/proc/PID/maps</td>
-<td style="text-align: center;">与进程相关的内存映射信息</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">/proc/PID/statm</td>
-<td style="text-align: center;">进程使用的内存状态信息</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">/proc/PID/status</td>
-<td style="text-align: center;">进程状态信息</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">/proc/PID/task</td>
-<td style="text-align: center;">当前进程所运行的每一个线程的相关信息，每个线程的相关信息文件均保存在一个由线程号命名的目录中</td>
-</tr>
-</tbody>
-</table>
-<p>/proc 目录中的文件及其说明(部分)</p>
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: center;">file</th>
-<th style="text-align: center;">desc</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">/proc/buddyinfo</td>
-<td style="text-align: center;">每个内存区中的每个 order 有多少块可用，和内存碎片问题有关</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">/proc/cmdline</td>
-<td style="text-align: center;">启动时传递给 kernel 的参数信息</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">/proc/mounts</td>
-<td style="text-align: center;">系统当前的所有挂载信息</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">/proc/devices</td>
-<td style="text-align: center;">已装载的设备（包括字符设备和块设备）</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">/proc/diskstats</td>
-<td style="text-align: center;">每个逻辑磁盘设备的信息（包括设备编号）</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">/proc/filesystems</td>
-<td style="text-align: center;">内核当前支持的文件系统类型</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">/proc/interrupts</td>
-<td style="text-align: center;">当前系统使用的中断信息</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">/proc/iomem</td>
-<td style="text-align: center;">每个物理设备当前在系统内存中的映射</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">/proc/stat</td>
-<td style="text-align: center;">所有的 CPU 活动信息</td>
-</tr>
-</tbody>
-</table>
-<h3 id="展开内容2-signal">展开内容2-signal</h3>
-<p>linux中，信号被用于进程间通信，是一个发送到某个进程或同一进程中的特定线程的异步通知，用于通知发生的一个事件；当一个事件发生时，会产生一个信号，然后内核会将事件传递到接收的进程。每个信号都有以<code>SIG</code>开头的名称，并定义为唯一的正整数。</p>
-<p>各种终止信号：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">SIGINT # kill -2, Ctrl-C触发，通知前台进程组终止进程</span><br><span class="line">SIGTERM # kill -15, 通常用来要求程序自己正常退出，shell命令kill缺省产生这个信号</span><br><span class="line">SIGKILL # kill -9, 使进程立即终止，不能被捕获和忽略</span><br><span class="line">SIGSTOP # kill -17, Ctrl-Z触发，暂停进程执行，不能被阻塞</span><br><span class="line">SIGQUIT # kill -3, Ctrl-\触发，进程退出时会产生core文件，类似程序错误信号；类似SIGILL，kill -4, 生成 core 文件然后终止进程</span><br><span class="line">SIGHUP # kill -1, 挂断，在用户终端连接结束时发出；通常是在终端的控制进程结束时, 通知同一session内的各个作业, 这时它们与控制终端不再关联。登录Linux时，系统会分配给登录用户一个终端(Session)。在这个终端运行的所有程序，包括前台进程组和 后台进程组，一般都属于这个 Session。当用户退出Linux登录时，前台进程组和后台有对终端输出的进程将会收到SIGHUP信号。这个信号的默认操作为终止进程，因此前台进 程组和后台有终端输出的进程就会中止。不过可以捕获这个信号，比如wget能捕获SIGHUP信号，并忽略它，这样就算退出了Linux登录，wget也能继续下载；对于与终端脱离关系的守护进程，这个信号用于通知它重新读取配置文件</span><br></pre></td></tr></table></figure>
-<p>查询进程正在监听的信号：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">cat /proc/PID/status</span><br><span class="line">...</span><br><span class="line">SigBlk: 0000000000000000		# 被阻止的信号</span><br><span class="line">SigIgn: fffffffe57f0d8fc		# 被忽略的信号</span><br><span class="line">SigCgt: 00000000280b2603		# 被捕获的信号</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-<p>将其从十六进制转换为二进制，则每个1位代表捕获的信号，从1开始从右到左计数，通过解释SigCgt行，可以看到我的进程正在捕获以下信号：</p>
-<figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">00000000280b2603 ==&gt; 101000000010110010011000000011</span><br><span class="line">                     |<span class="string"> </span>|<span class="string">       </span>|<span class="string"> </span>||<span class="string">  </span>|<span class="string">  </span>||<span class="string">       </span>|<span class="string">`-&gt;  1 = SIGHUP</span></span><br><span class="line"><span class="string">                     </span>|<span class="string"> </span>|<span class="string">       </span>|<span class="string"> </span>||<span class="string">  </span>|<span class="string">  </span>||<span class="string">       `--&gt;  2 = SIGINT</span></span><br><span class="line"><span class="string">                     </span>|<span class="string"> </span>|<span class="string">       </span>|<span class="string"> </span>||<span class="string">  </span>|<span class="string">  </span>|<span class="string">`----------&gt; 10 = SIGUSR1</span></span><br><span class="line"><span class="string">                     </span>|<span class="string"> </span>|<span class="string">       </span>|<span class="string"> </span>||<span class="string">  </span>|<span class="string">  `-----------&gt; 11 = SIGSEGV</span></span><br><span class="line"><span class="string">                     </span>|<span class="string"> </span>|<span class="string">       </span>|<span class="string"> </span>||<span class="string">  `--------------&gt; 14 = SIGALRM</span></span><br><span class="line"><span class="string">                     </span>|<span class="string"> </span>|<span class="string">       </span>|<span class="string"> </span>|<span class="string">`-----------------&gt; 17 = SIGCHLD</span></span><br><span class="line"><span class="string">                     </span>|<span class="string"> </span>|<span class="string">       </span>|<span class="string"> `------------------&gt; 18 = SIGCONT</span></span><br><span class="line"><span class="string">                     </span>|<span class="string"> </span>|<span class="string">       `--------------------&gt; 20 = SIGTSTP</span></span><br><span class="line"><span class="string">                     </span>|<span class="string"> `----------------------------&gt; 28 = SIGWINCH</span></span><br><span class="line"><span class="string">                     `------------------------------&gt; 30 = SIGPWR</span></span><br></pre></td></tr></table></figure>
-<h3 id="展开内容3-链接">展开内容3-链接</h3>
-<ul>
-<li>硬链接：ln src-file dst-file</li>
-<li>软连接：ln -s src-file dist-file</li>
-</ul>
-<p>硬链接通过索引节点进行链接。在linux的文件系统，保存在磁盘分区的文件不管是什么类型都会给他分配一个编号，称为索引节点号 (ls -i)。在linux中，多个文件名指向同一个索引节点是存在的。这种情况就是硬链接。即便删除源文件，如果这个文件的硬链接还存在，则这个文件不会被删除，除非所有的硬链接全部被删除（即当前文件的索引计数为0），这个文件才真正意义上的被删除。<strong>硬链接只能链接文件，不能指向文件夹</strong>；硬链接与源文件的inode相同</p>
-<p>类似于快捷方式，是一个特殊的文件，其中保存的是另一个文件的位置信息，符号链接可以指向文件夹和文件，当源文件删除时，符号链接失效；软链接与源文件的inode不同</p>
-<h3 id="展开内容4-文件描述符">展开内容4-文件描述符</h3>
-<h3 id="展开内容5-进程和线程">展开内容5-进程和线程</h3>
-
-          
+          <h2 id="由losf展开">由losf展开</h2>
+<p>lsof (list all open files)，列出当前系统打开的所有文件。在linux环境下，任何事物都以文件的形式存在，通过文件不仅仅可以访问常规数据，还可以访问网络连接和硬件。
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2021/10/26/由lsof展开/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
-    </div>
+    </p></div>
     
     
     
@@ -2143,196 +2194,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/26/tensorflow2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="dylan_houxinglin">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/head.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Just For Fun">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/02/26/tensorflow2/" itemprop="url">Tensorflow记录(2)</a></h1>
-        
-
-        <div class="post-meta">
-		
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-02-26T20:00:02+08:00">
-                2020-02-26
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Post modified&#58;</span>
-              
-              <time title="Post modified" itemprop="dateModified" datetime="2020-02-26T21:42:26+08:00">
-                2020-02-26
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Deep-Learning/" itemprop="url" rel="index">
-                    <span itemprop="name">Deep Learning</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Words count in article&#58;</span>
-                
-                <span title="Words count in article">
-                  1.1k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Reading time &asymp;</span>
-                
-                <span title="Reading time">
-                  4
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="tensorflow记录2">Tensorflow记录(2)</h2>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/02/26/tensorflow2/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2385,7 +2246,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">29</span>
+                  <span class="site-state-item-count">30</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -2396,7 +2257,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -2407,7 +2268,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-count">22</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -2480,7 +2341,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">30.2k</span>
+    <span title="Site words total count">33.5k</span>
   
 </div>
 
